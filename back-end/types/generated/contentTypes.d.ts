@@ -699,6 +699,7 @@ export interface ApiAutorAutor extends Schema.CollectionType {
       'manyToOne',
       'api::projeto.projeto'
     >;
+    slug: Attribute.UID<'api::autor.autor', 'Nome'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -796,6 +797,72 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
   };
 }
 
+export interface ApiPremioPremio extends Schema.CollectionType {
+  collectionName: 'premios';
+  info: {
+    singularName: 'premio';
+    pluralName: 'premios';
+    displayName: 'Premio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Titulo: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Descricao: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    autor: Attribute.Relation<
+      'api::premio.premio',
+      'oneToOne',
+      'api::autor.autor'
+    >;
+    slug: Attribute.UID<'api::premio.premio', 'Titulo'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::premio.premio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::premio.premio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::premio.premio',
+      'oneToMany',
+      'api::premio.premio'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProjetoProjeto extends Schema.CollectionType {
   collectionName: 'projetos';
   info: {
@@ -846,6 +913,20 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
       'oneToMany',
       'api::autor.autor'
     >;
+    Destaque: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    slug: Attribute.UID<'api::projeto.projeto', 'Titulo'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -888,6 +969,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::autor.autor': ApiAutorAutor;
       'api::certificado.certificado': ApiCertificadoCertificado;
+      'api::premio.premio': ApiPremioPremio;
       'api::projeto.projeto': ApiProjetoProjeto;
     }
   }

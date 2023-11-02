@@ -38,6 +38,11 @@
       "relation": "manyToOne",
       "target": "api::projeto.projeto",
       "inversedBy": "autores"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Nome",
+      "required": true
     }
   }
 }
