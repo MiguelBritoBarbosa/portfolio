@@ -1,6 +1,13 @@
-"use client";
-import styled from "styled-components";
+'use client';
+import { theme } from '@/styles/theme';
+import styled from 'styled-components';
 
-export const ContainerHeader = styled.header`
-    background-color: aliceblue;
+export const ContainerFooter = styled.footer`
+    background-color: ${theme.backgroundDark};
+`;
+
+export const LineTopic = styled.hr`
+    width: 60px;
+    background-color: ${theme.colors.primary};
+    height: 2px;
 `;
