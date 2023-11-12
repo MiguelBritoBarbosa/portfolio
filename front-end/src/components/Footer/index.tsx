@@ -1,9 +1,7 @@
-// import { theme } from "@/styles/theme";
 import Link from 'next/link';
 import { ContainerFooter, LineTopic } from './styled';
 
 export const Footer = () => {
-    // const anoAtual = date();
     return (
         <ContainerFooter className="text-center text-lg-start">
             <section className="container text-center text-md-start mt-5 p-4">

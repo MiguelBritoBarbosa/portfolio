@@ -5,17 +5,17 @@ import Link from 'next/link';
 export const Header = () => {
     return (
         <ContainerHeader className="container-fluid ">
-            <div className="row">
+            <div className="row d-flex justify-content-center">
                 <HeaderTop>
                     <div className="d-flex justify-content-end">
-                        <ul id="language" className="nav nav-tabs font-bold ">
+                        {/* <ul id="language" className="nav nav-tabs font-bold ">
                             <li className="nav-item">
                                 <button className="nav-link buttons">En</button>
                             </li>
                             <li className="nav-item">
                                 <button className="nav-link buttons active">Pt-BR</button>
                             </li>
-                        </ul>
+                        </ul> */}
                         <div className="d-flex align-items-center px-2 fw-bold buttons">
                             <Link className="nav-link" href="/contato">
                                 Contato
@@ -23,9 +23,9 @@ export const Header = () => {
                         </div>
                     </div>
                 </HeaderTop>
-                <div id="banner" className="text-center mt-5">
-                    <Link id="menu" href="/"></Link>
-                </div>
+                <Link id="menu" href="/">
+                    <div id="banner" className="text-center mt-5"></div>
+                </Link>
             </div>
         </ContainerHeader>
     );

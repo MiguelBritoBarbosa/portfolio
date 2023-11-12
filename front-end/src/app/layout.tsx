@@ -7,6 +7,7 @@ import NprogressComponent from '@/config/nprogress';
 import '@/styles/nprogress.css';
 import { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import { Navbar } from '@/components/Navbar';
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800', '900'] });
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Bootstrap />
                 <NprogressComponent />
                 <Header />
+                <Navbar />
                 <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
                 <Footer />
             </body>

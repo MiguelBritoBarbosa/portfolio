@@ -1,10 +1,11 @@
-import Landing from '@/containers/Landing'
+import { getAllCertificados } from '@/config/data/certificados/getAllCertificados';
+import Landing from '@/containers/Landing';
 
-
-export default function LandingPage() {
+export default async function LandingPage() {
+    const certificados: any = await getAllCertificados();
     return (
         <>
-            <Landing />
+            <Landing certificados={certificados.data} />
         </>
-    )
+    );
 }

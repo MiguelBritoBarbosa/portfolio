@@ -8,7 +8,6 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
-        'standard-with-typescript',
         'plugin:react-hooks/recommended',
         'plugin:prettier/recommended',
         'next/core-web-vitals',
@@ -31,5 +30,12 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto',
+            },
+        ],
     },
 };

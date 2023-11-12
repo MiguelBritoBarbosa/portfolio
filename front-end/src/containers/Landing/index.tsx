@@ -1,11 +1,15 @@
-import { Header } from '@/components/Header';
 import { Container } from './styled';
-import Link from 'next/link';
+// import Link from 'next/link';
+import { CarrosselCertificados } from '@/components/CarrosselCertificados';
 
-export default function Landing() {
+interface LandingProps {
+    certificados: any;
+}
+
+export default function Landing({ certificados }: LandingProps) {
     return (
         <Container className="container-fluid text-center">
-            <Link href="/home" >Home</Link>
+            <CarrosselCertificados certificados={certificados} />
         </Container>
     );
 }
