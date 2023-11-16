@@ -4,18 +4,24 @@ import { ContainerFooter, LineTopic } from './styled';
 export const Footer = () => {
     return (
         <ContainerFooter className="text-center text-lg-start">
-            <section className="container text-center text-md-start mt-5 p-4">
-                <div className="row mt-3">
-                    <div className="col-12 col-md-6 col-lg-3 mx-auto mb-4">
+            <section className="container-fluid text-md-start mt-5 p-5">
+                <div className="row mt-3 d-flex justify-content-between">
+                    <div className="col-12 col-md-6 col-lg-4 mb-4">
                         <h6 className="text-uppercase fw-bold">Portfólio</h6>
                         <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
                         <p>
-                            Estudante entusiasta nas áreas de Engenharia de Software e Análises e desenvolvimento
-                            Sistema. Resiliente e determinado a procura de novas experiências profissionais.
+                            Seja bem-vindo ao meu Site! Sou um programador resiliente apaixonado pela área e um
+                            estudante entusiasta na area de engenharia de software. Aqui, você encontrará meu portfólio
+                            repleto de projetos que participei, seja em âmbito profissional, pessoal ou para estudo.
+                            Sinta-se a vontade de explorar e descubra como minha curiosidade e vontade de aprender
+                            moldam minhas linhas de código. Aqui está o link para o repositório desse projeto:{' '}
+                            <a href="https://github.com/MiguelBritoBarbosa/portfolio" target="_blank">
+                                Portfólio
+                            </a>
                         </p>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-3 mx-auto mb-4">
+                    <div className="col-12 col-md-6 col-lg-2 mb-4">
                         <h6 className="text-uppercase fw-bold">Products</h6>
                         <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
                         <p>
@@ -40,7 +46,7 @@ export const Footer = () => {
                         </p>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-3 mx-auto mb-4">
+                    <div className="col-12 col-md-6 col-lg-2 mb-4">
                         <h6 className="text-uppercase fw-bold">Useful links</h6>
                         <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
                         <p>
@@ -65,7 +71,7 @@ export const Footer = () => {
                         </p>
                     </div>
 
-                    <div className="col-12 col-md-6 col-lg-3 mx-auto mb-md-0 mb-4">
+                    <div className="col-12 col-md-6 col-lg-4 mb-md-0 mb-4">
                         <h6 className="text-uppercase fw-bold">Contact</h6>
                         <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
                         <p>

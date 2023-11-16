@@ -678,7 +678,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
 }
 
 export interface ApiAutorAutor extends Schema.CollectionType {
-  collectionName: 'autors';
+  collectionName: 'autor';
   info: {
     singularName: 'autor';
     pluralName: 'autores';
@@ -694,12 +694,13 @@ export interface ApiAutorAutor extends Schema.CollectionType {
     GitHub: Attribute.Text;
     Linkedin: Attribute.Text;
     site: Attribute.Text;
-    projeto: Attribute.Relation<
+    slug: Attribute.UID<'api::autor.autor', 'Nome'> & Attribute.Required;
+    projetos: Attribute.Relation<
       'api::autor.autor',
-      'manyToOne',
+      'manyToMany',
       'api::projeto.projeto'
     >;
-    slug: Attribute.UID<'api::autor.autor', 'Nome'> & Attribute.Required;
+    Apresentacao: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -894,7 +895,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    conver: Attribute.Media &
+    cover: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -910,7 +911,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
       }>;
     autores: Attribute.Relation<
       'api::projeto.projeto',
-      'oneToMany',
+      'manyToMany',
       'api::autor.autor'
     >;
     Destaque: Attribute.Boolean &
@@ -927,6 +928,25 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    Link: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Repositorio: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Visibilidade: Attribute.Enumeration<['Privado', 'P\u00FAblico']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'P\u00FAblico'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

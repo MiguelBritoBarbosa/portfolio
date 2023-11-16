@@ -18,19 +18,17 @@ export const CarrosselCertificados = ({ certificados }: CarrosselCertificadosPro
 
     return (
         <Container className="container-fluid my-3">
-            <h3>Certificados</h3>
             <div className="logos">
                 <div className="logos-slide p-3">
                     {certificados.map((certificado: CertificadoData) => {
                         const url = `${API_ROOT}${certificado.attributes.documento.data.attributes.formats.thumbnail.url}`;
                         const width = certificado.attributes.documento.data.attributes.formats.thumbnail.width;
                         const height = certificado.attributes.documento.data.attributes.formats.thumbnail.height;
-                        console.log(`width: ${width}`);
-                        console.log(`height: ${height}`);
                         return (
                             <>
-                                <Link key={certificado.id} href={certificado.attributes.credencial}>
+                                <Link key={certificado.attributes.slug} href={certificado.attributes.credencial}>
                                     <Image
+                                        className="img-fluid"
                                         src={url}
                                         alt={certificado.attributes.Titulo}
                                         width={width}

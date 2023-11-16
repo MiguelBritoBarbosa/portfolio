@@ -39,10 +39,6 @@ export const Container = styled.section`
         background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
     }
 
-    /* .logos:hover .logos-slide {
-        animation-play-state: paused;
-    } */
-
     .logos-slide {
         display: inline-block;
         animation: 35s slide infinite linear;
@@ -53,4 +49,41 @@ export const Container = styled.section`
         width: 220px;
         margin: 0 40px;
     }
+
+    @media (max-width: 768px) {
+        .logos:before {
+            left: -5%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+        }
+
+        .logos:after {
+            right: -5%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+        }
+        .logos-slide {
+            display: inline-block;
+            animation: 25s slide infinite linear;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .logos:before {
+            left: -25%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+        }
+
+        .logos:after {
+            right: -25%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+        }
+
+        .logos-slide {
+            display: inline-block;
+            animation: 15s slide infinite linear;
+        }
+    }
+
+    /* .logos:hover .logos-slide {
+        animation-play-state: paused;
+    } */
 `;

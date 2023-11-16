@@ -24,7 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <NprogressComponent />
                 <Header />
                 <Navbar />
-                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+                <StyledComponentsRegistry>
+                    <main>{children}</main>
+                </StyledComponentsRegistry>
                 <Footer />
             </body>
         </html>

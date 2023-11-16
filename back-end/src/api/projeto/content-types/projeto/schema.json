@@ -34,7 +34,7 @@
       "type": "richtext",
       "required": true
     },
-    "conver": {
+    "cover": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -63,9 +63,9 @@
     },
     "autores": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::autor.autor",
-      "mappedBy": "projeto"
+      "mappedBy": "projetos"
     },
     "Destaque": {
       "pluginOptions": {
@@ -85,6 +85,35 @@
       "type": "uid",
       "targetField": "Titulo",
       "required": true
+    },
+    "Link": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "Repositorio": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "Visibilidade": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Privado",
+        "Público"
+      ],
+      "default": "Público"
     }
   }
 }

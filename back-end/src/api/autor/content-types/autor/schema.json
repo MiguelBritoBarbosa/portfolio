@@ -1,6 +1,6 @@
 {
   "kind": "collectionType",
-  "collectionName": "autors",
+  "collectionName": "autor",
   "info": {
     "singularName": "autor",
     "pluralName": "autores",
@@ -33,16 +33,19 @@
     "site": {
       "type": "text"
     },
-    "projeto": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::projeto.projeto",
-      "inversedBy": "autores"
-    },
     "slug": {
       "type": "uid",
       "targetField": "Nome",
       "required": true
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projeto.projeto",
+      "inversedBy": "autores"
+    },
+    "Apresentacao": {
+      "type": "richtext"
     }
   }
 }
