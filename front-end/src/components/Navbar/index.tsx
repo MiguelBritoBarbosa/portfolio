@@ -28,6 +28,11 @@ export const Navbar = () => {
                                     Prêmios
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link fw-bold" href="/autores">
+                                    Autores
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
