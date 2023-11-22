@@ -804,6 +804,7 @@ export interface ApiPremioPremio extends Schema.CollectionType {
     singularName: 'premio';
     pluralName: 'premios';
     displayName: 'Premio';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -834,6 +835,13 @@ export interface ApiPremioPremio extends Schema.CollectionType {
       'api::autor.autor'
     >;
     slug: Attribute.UID<'api::premio.premio', 'Titulo'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

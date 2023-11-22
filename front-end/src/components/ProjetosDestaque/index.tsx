@@ -1,4 +1,3 @@
-'use client';
 import Link from 'next/link';
 import { Container } from './styled';
 import Image from 'next/image';
@@ -13,7 +12,6 @@ export const ProjetosDestaque = ({ destaques }: ProjetosDestaqueProps) => {
     return (
         <Container className="row p-3 d-flex justify-content-between rounded">
             {destaques.map((destaque) => {
-                console.log(destaque);
                 const url = `${API_ROOT}${destaque.attributes.cover.data.attributes.formats.small.url}`;
                 const width = destaque.attributes.cover.data.attributes.formats.small.width;
                 const height = destaque.attributes.cover.data.attributes.formats.small.height;

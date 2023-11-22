@@ -1,12 +1,12 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-    content: ["./src/**/*.tsx"],
+    content: ['./src/**/*.tsx'],
     theme: {
         extend: {},
     },
     plugins: [],
-    prefix: "tw-",
+    prefix: 'tw-',
     corePlugins: {
         preflight: false,
     },

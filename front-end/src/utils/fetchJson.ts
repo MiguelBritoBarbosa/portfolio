@@ -1,5 +1,5 @@
 export const fetchJson = async <T>(url: string): Promise<T> => {
-    const data = await fetch(url);
+    const data = await fetch(url, {});
 
     if (!data.ok) {
         // This will activate the closest `error.js` Error Boundary
