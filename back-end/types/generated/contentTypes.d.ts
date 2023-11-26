@@ -691,6 +691,7 @@ export interface ApiAutorAutor extends Schema.CollectionType {
   attributes: {
     Nome: Attribute.String & Attribute.Required;
     Foto: Attribute.Media;
+    Apresentacao: Attribute.Blocks;
     GitHub: Attribute.Text;
     Linkedin: Attribute.Text;
     site: Attribute.Text;
@@ -700,7 +701,6 @@ export interface ApiAutorAutor extends Schema.CollectionType {
       'manyToMany',
       'api::projeto.projeto'
     >;
-    Apresentacao: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -822,7 +822,7 @@ export interface ApiPremioPremio extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Text &
+    Descricao: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -896,7 +896,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Descricao: Attribute.RichText &
+    Descricao: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

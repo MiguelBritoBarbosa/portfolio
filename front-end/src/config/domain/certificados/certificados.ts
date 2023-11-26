@@ -1,5 +1,5 @@
 import { AutorData } from '../autores/autores';
-import { StrapiFile } from '../strapiFiles/strapiFiles';
+import { StrapiImageFile } from '../strapiImageFiles/strapiFiles';
 
 export type CertificadoId = number;
 
@@ -15,6 +15,6 @@ export interface CertificadoData {
         publishedAt: string;
         locale: string;
         autor: AutorData;
-        documento: StrapiFile;
+        documento: StrapiImageFile;
     };
 }

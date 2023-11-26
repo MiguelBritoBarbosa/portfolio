@@ -1,5 +1,6 @@
+import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 import { AutorData } from '../autores/autores';
-import { StrapiFile } from '../strapiFiles/strapiFiles';
+import { StrapiImageFile } from '../strapiImageFiles/strapiFiles';
 
 export type PremioId = number;
 
@@ -7,7 +8,7 @@ export interface PremioData {
     id: PremioId;
     attributes: {
         Titulo: string;
-        Descricao: string;
+        Descricao: RootNode[];
         credencial: string;
         slug: string;
         createdAt: string;
@@ -15,6 +16,6 @@ export interface PremioData {
         publishedAt: string;
         locale: string;
         autor: AutorData;
-        cover: StrapiFile;
+        cover: StrapiImageFile;
     };
 }

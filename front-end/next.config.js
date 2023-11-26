@@ -7,6 +7,7 @@ const nextConfig = {
     images: {
         domains: ['localhost', 'fakeimg.pl'],
     },
+    reactStrictMode: false,
 };
 
 module.exports = nextConfig;

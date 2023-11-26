@@ -1,11 +1,11 @@
 import { ProjetosDestaque } from '@/components/ProjetosDestaque';
-import { Container } from './styled';
+import { Container } from './styles';
 // import Link from 'next/link';
 import { CarrosselCertificados } from '@/components/CarrosselCertificados';
 import { CertificadoData } from '@/config/domain/certificados/certificados';
 import { ProjetoData } from '@/config/domain/projetos/projetos';
 import { CardMiguel } from '@/components/CardMiguel';
-import { PremiosSlider } from '@/components/PremiosSlider/indext';
+import { PremiosSlider } from '@/components/PremiosSlider';
 import { PremioData } from '@/config/domain/premios/premios';
 
 interface LandingProps {

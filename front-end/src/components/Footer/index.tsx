@@ -50,24 +50,19 @@ export const Footer = () => {
                         <h6 className="text-uppercase fw-bold">Useful links</h6>
                         <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
                         <p>
-                            <a href="#!" className="">
+                            <Link href="/" className="">
+                                Home
+                            </Link>
+                        </p>
+                        <p>
+                            <Link href="/contato" className="">
                                 Contato
-                            </a>
+                            </Link>
                         </p>
                         <p>
-                            <a href="#!" className="">
+                            <Link href="/curriculo" className="">
                                 Currículo
-                            </a>
-                        </p>
-                        <p>
-                            <a href="#!" className="">
-                                Shipping Rates
-                            </a>
-                        </p>
-                        <p>
-                            <a href="#!" className="">
-                                Help
-                            </a>
+                            </Link>
                         </p>
                     </div>
 

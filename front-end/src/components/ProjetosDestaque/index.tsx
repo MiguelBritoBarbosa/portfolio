@@ -1,8 +1,10 @@
+'use client';
 import Link from 'next/link';
 import { Container } from './styled';
 import Image from 'next/image';
 import { ProjetoData } from '@/config/domain/projetos/projetos';
 import { API_ROOT } from '@/config/siteConfig';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 interface ProjetosDestaqueProps {
     destaques: ProjetoData[];
@@ -30,7 +32,7 @@ export const ProjetosDestaque = ({ destaques }: ProjetosDestaqueProps) => {
                             </div>
                             <p className="mt-1">
                                 <span className="d-block text-start text-truncate">
-                                    {destaque.attributes.Descricao}
+                                    <BlocksRenderer content={destaque.attributes.Descricao} />
                                 </span>
                                 <span className="">
                                     <Link

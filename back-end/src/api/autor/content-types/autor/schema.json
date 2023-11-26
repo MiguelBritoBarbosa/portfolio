@@ -1,51 +1,49 @@
 {
-  "kind": "collectionType",
-  "collectionName": "autor",
-  "info": {
-    "singularName": "autor",
-    "pluralName": "autores",
-    "displayName": "Autor",
-    "description": ""
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {},
-  "attributes": {
-    "Nome": {
-      "type": "string",
-      "required": true
+    "kind": "collectionType",
+    "collectionName": "autor",
+    "info": {
+        "singularName": "autor",
+        "pluralName": "autores",
+        "displayName": "Autor",
+        "description": ""
     },
-    "Foto": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+    "options": {
+        "draftAndPublish": true
     },
-    "GitHub": {
-      "type": "text"
-    },
-    "Linkedin": {
-      "type": "text"
-    },
-    "site": {
-      "type": "text"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "Nome",
-      "required": true
-    },
-    "projetos": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::projeto.projeto",
-      "inversedBy": "autores"
-    },
-    "Apresentacao": {
-      "type": "richtext"
+    "pluginOptions": {},
+    "attributes": {
+        "Nome": {
+            "type": "string",
+            "required": true
+        },
+        "Foto": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images"]
+        },
+        "Apresentacao": {
+            "type": "blocks"
+        },
+        "GitHub": {
+            "type": "text"
+        },
+        "Linkedin": {
+            "type": "text"
+        },
+        "site": {
+            "type": "text"
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "Nome",
+            "required": true
+        },
+        "projetos": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::projeto.projeto",
+            "inversedBy": "autores"
+        }
     }
-  }
 }

@@ -5,6 +5,7 @@ import { PremioData } from '@/config/domain/premios/premios';
 import { API_ROOT } from '@/config/siteConfig';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 interface PremiosSliderProps {
     premios: PremioData[];
@@ -73,7 +74,7 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                                     className={`carousel-item ${index === 0 ? 'active' : ''}`}
                                 >
                                     <Image
-                                        className="d-blok w-100"
+                                        className="d-md-block img-fluid"
                                         src={`${API_ROOT}${premio.attributes.cover.data.attributes.formats.medium.url}`}
                                         alt={premio.attributes.slug}
                                         width={premio.attributes.cover.data.attributes.formats.medium.width}
@@ -84,13 +85,21 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                                         <p className="fw-bold">
                                             <div className="d-flex px-1">
                                                 <span className="d-block text-start text-truncate">
-                                                    {premio.attributes.Descricao}
+                                                    <BlocksRenderer content={premio.attributes.Descricao} />
                                                 </span>
                                                 <span className="d-flex align-items-end">...</span>
                                             </div>
                                         </p>
                                         <Link href={`/premios/${premio.attributes.slug}`} className="btn btn-primary">
                                             Veja Mais
+                                        </Link>
+                                    </div>
+                                    <div className="carousel-caption d-block d-md-none fs-1">
+                                        <Link
+                                            className="text-decoration-underline ver-mais"
+                                            href={`/premios/${premio.attributes.slug}`}
+                                        >
+                                            Acesse
                                         </Link>
                                     </div>
                                 </div>

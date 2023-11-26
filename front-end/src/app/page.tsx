@@ -3,7 +3,7 @@ import { getAllDestaques } from '@/config/data/destaques/getAllDestaques';
 import { getAllPremios } from '@/config/data/premios/getAllPremios';
 import Landing from '@/containers/Landing';
 
-export const revalidate = 30;
+export const revalidate = 300;
 
 export default async function LandingPage() {
     const certificados: any = await getAllCertificados();

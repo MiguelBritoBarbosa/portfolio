@@ -23,4 +23,10 @@ export const Container = styled.section`
         text-overflow: ellipsis;
         white-space: pre-line;
     }
+    .ver-mais {
+        color: ${theme.colors.primary};
+    }
+    .ver-mais:hover {
+        color: ${theme.colors.secondary};
+    }
 `;
