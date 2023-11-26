@@ -31,7 +31,7 @@ export const ProjetosDestaque = ({ destaques }: ProjetosDestaqueProps) => {
                                 />
                             </div>
                             <p className="mt-1">
-                                <span className="d-block text-start text-truncate">
+                                <span className="d-block text-truncate tw-text-justify">
                                     <BlocksRenderer content={destaque.attributes.Descricao} />
                                 </span>
                                 <span className="">

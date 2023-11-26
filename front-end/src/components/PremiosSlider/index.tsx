@@ -84,7 +84,7 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                                         <h5 className="fs-5">{premio.attributes.Titulo}</h5>
                                         <p className="fw-bold">
                                             <div className="d-flex px-1">
-                                                <span className="d-block text-start text-truncate">
+                                                <span className="d-block text-truncate tw-text-justify">
                                                     <BlocksRenderer content={premio.attributes.Descricao} />
                                                 </span>
                                                 <span className="d-flex align-items-end">...</span>
