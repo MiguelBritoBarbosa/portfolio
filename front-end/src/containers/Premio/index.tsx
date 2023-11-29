@@ -3,7 +3,7 @@ import { Container } from './styles';
 import { Heading } from '@/components/Heading';
 import { PremioContainer } from '@/components/PremioContainer';
 import { API_ROOT } from '@/config/siteConfig';
-import { SimpleDetails } from '@/components/SimpleDetails';
+import { PremioDetails } from '@/components/PremioDetails';
 
 export interface PremioProps {
     premio: PremioData;
@@ -21,7 +21,7 @@ export default function Premio({ premio }: PremioProps) {
                 height={premio.attributes.cover.data.attributes.formats.medium.height}
             />
             <hr />
-            <SimpleDetails date={premio.attributes.createdAt} autor={premio.attributes.autor.data} />
+            <PremioDetails date={premio.attributes.createdAt} autor={premio.attributes.autor.data} />
         </Container>
     );
 }

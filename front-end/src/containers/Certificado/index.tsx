@@ -3,7 +3,7 @@ import { Container } from './styles';
 import { Heading } from '@/components/Heading';
 import { API_ROOT } from '@/config/siteConfig';
 import { CertificadoContainer } from '@/components/CertificadoContainer';
-import { SimpleDetails } from '@/components/SimpleDetails';
+import { CertificadoDetails } from '@/components/CertificadoDetails';
 
 export interface CertificadoProps {
     certificado: CertificadoData;
@@ -21,7 +21,11 @@ export default function Certificado({ certificado }: CertificadoProps) {
                 height={certificado.attributes.documento.data.attributes.formats.medium.height}
             />
             <hr />
-            <SimpleDetails date={certificado.attributes.createdAt} autor={certificado.attributes.autor.data} />
+            <CertificadoDetails
+                date={certificado.attributes.createdAt}
+                autor={certificado.attributes.autor.data}
+                credencial={certificado.attributes.credencial}
+            />
         </Container>
     );
 }
