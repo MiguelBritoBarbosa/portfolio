@@ -1,6 +1,6 @@
 import { ProjetoData } from '@/config/domain/projetos/projetos';
 import { Container } from './styles';
-import { ProjetoHeading } from '@/components/ProjetoHeading';
+import { Heading } from '@/components/Heading';
 import { ProjetoContainer } from '@/components/ProjetoContainer';
 import { API_ROOT } from '@/config/siteConfig';
 import { ProjetoDetails } from '@/components/ProjetoDetails';
@@ -12,7 +12,7 @@ export interface ProjetoProps {
 export default function Projeto({ projeto }: ProjetoProps) {
     return (
         <Container id={projeto.attributes.slug} className="container mt-3 p-5">
-            <ProjetoHeading>{projeto.attributes.Titulo}</ProjetoHeading>
+            <Heading>{projeto.attributes.Titulo}</Heading>
             <ProjetoContainer
                 content={projeto.attributes.Descricao}
                 titulo={projeto.attributes.Titulo}

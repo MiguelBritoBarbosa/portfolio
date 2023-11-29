@@ -1,13 +1,11 @@
 import { getProjeto } from '@/config/data/projetos/getProjeto';
-import { ProjetoData } from '@/config/domain/projetos/projetos';
 import Projeto from '@/containers/Projeto';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const projetoData: any = await getProjeto(params.slug);
-    const projeto: ProjetoData = projetoData.data[0];
+    const projeto: any = await getProjeto(params.slug);
     return {
-        title: projeto.attributes.Titulo,
-        description: projeto.attributes.Descricao[0].children[0].text.slice(0, 100),
+        title: projeto.data[0].attributes.Titulo,
+        description: projeto.data[0].attributes.Descricao[0].children[0].text.slice(0, 100),
     };
 }
 

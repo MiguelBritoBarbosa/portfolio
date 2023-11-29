@@ -15,7 +15,7 @@ export interface PremioData {
         updatedAt: string;
         publishedAt: string;
         locale: string;
-        autor: AutorData;
+        autor: { data: AutorData };
         cover: StrapiImageFile;
     };
 }

@@ -23,7 +23,7 @@ export const ProjetosDestaque = ({ destaques }: ProjetosDestaqueProps) => {
                             <h3 className="text-center">{destaque.attributes.Titulo}</h3>
                             <div className="d-flex justify-content-center">
                                 <Image
-                                    className="img-fluid img-thumbnail"
+                                    className="img-fluid img-thumbnaild"
                                     src={url}
                                     alt={destaque.attributes.Titulo}
                                     width={width}

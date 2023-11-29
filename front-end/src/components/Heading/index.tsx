@@ -4,9 +4,9 @@ export interface HeadingProps {
     children: React.ReactNode;
 }
 
-export const ProjetoHeading = ({ children }: HeadingProps) => {
+export const Heading = ({ children }: HeadingProps) => {
     return (
-        <Container id="projeto-heading" className="display-4 text-center">
+        <Container id="heading" className="display-4 text-center">
             {children}
         </Container>
     );

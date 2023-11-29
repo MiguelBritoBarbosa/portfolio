@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ProjetoDate } from '../ProjetoDate';
+import { DateFormat } from '../DateFormat';
 import { Container } from './styled';
 import { AutorData } from '@/config/domain/autores/autores';
 import { tipoProjeto, visibilidadeProjeto } from '@/config/domain/projetos/projetos';
@@ -24,17 +24,17 @@ export const ProjetoDetails = ({
     return (
         <Container className="rounded p-3">
             <p className="fs-5 text-white font-bold">
-                Publicado em <ProjetoDate date={date} /> por:{' '}
+                Publicado em <DateFormat date={date} /> por:{' '}
                 {autores.map((autor) => {
                     return (
-                        <>
-                            <span key={`${autor.attributes.slug}`}>
+                        <span key={`${autor.attributes.slug}`}>
+                            <span>
                                 <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
                                     {autor.attributes.Nome}
                                 </Link>
                             </span>
                             {' | '}
-                        </>
+                        </span>
                     );
                 })}
             </p>
@@ -50,17 +50,19 @@ export const ProjetoDetails = ({
                     </a>
                 ) : (
                     <>
-                        <span className="text-purple">Privado</span>
+                        <span className="text-purple">...</span>
                     </>
                 )}
             </p>
             <p className="fs-5 text-white font-bold">
                 Link do repositório:{' '}
                 {repositorio !== null ? (
-                    <a className="purple-color" href={repositorio} target="_blank"></a>
+                    <a className="purple-color" href={repositorio} target="_blank">
+                        {repositorio}
+                    </a>
                 ) : (
                     <>
-                        <span className="text-purple">Privado</span>
+                        <span className="text-purple">...</span>
                     </>
                 )}
             </p>

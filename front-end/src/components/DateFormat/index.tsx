@@ -5,6 +5,6 @@ export interface ProjetoDateProps {
     date: string;
 }
 
-export const ProjetoDate = ({ date }: ProjetoDateProps) => {
+export const DateFormat = ({ date }: ProjetoDateProps) => {
     return <Container className="">{formatDate(date)}</Container>;
 };
