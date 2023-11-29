@@ -26,7 +26,10 @@ export const CarrosselCertificados = ({ certificados }: CarrosselCertificadosPro
                         const height = certificado.attributes.documento.data.attributes.formats.thumbnail.height;
                         return (
                             <>
-                                <Link key={certificado.attributes.slug} href={certificado.attributes.credencial}>
+                                <Link
+                                    key={certificado.attributes.slug}
+                                    href={`/certificados/${certificado.attributes.slug}`}
+                                >
                                     <Image
                                         className="img-fluid"
                                         src={url}

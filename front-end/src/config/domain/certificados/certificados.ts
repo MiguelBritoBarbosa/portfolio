@@ -14,7 +14,7 @@ export interface CertificadoData {
         updatedAt: string;
         publishedAt: string;
         locale: string;
-        autor: AutorData;
+        autor: { data: AutorData };
         documento: StrapiImageFile;
     };
 }

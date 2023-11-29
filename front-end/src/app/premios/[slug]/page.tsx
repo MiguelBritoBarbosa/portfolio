@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function PremioPage({ params }: { params: { slug: string } }) {
     const premio: any = await getPremio(params.slug);
-    console.log(premio);
     return (
         <>
             <Premio premio={premio.data[0]} />

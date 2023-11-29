@@ -3,12 +3,12 @@ import { DateFormat } from '../DateFormat';
 import { Container } from './styled';
 import { AutorData } from '@/config/domain/autores/autores';
 
-export interface PremioDetailsProps {
+export interface SimpleDetailsProps {
     date: string;
     autor: AutorData;
 }
 
-export const PremioDetails = ({ date, autor }: PremioDetailsProps) => {
+export const SimpleDetails = ({ date, autor }: SimpleDetailsProps) => {
     return (
         <Container className="rounded p-3 d-flex align-items-center">
             <div className="fs-5 text-white font-bold ">
