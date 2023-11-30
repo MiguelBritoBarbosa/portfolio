@@ -26,7 +26,9 @@ export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetai
                             {credencial}
                         </a>
                     ) : (
-                        <>...</>
+                        <>
+                            <span className="text-purple">...</span>
+                        </>
                     )}
                 </p>
             </div>

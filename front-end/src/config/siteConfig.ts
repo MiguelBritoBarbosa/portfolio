@@ -6,3 +6,4 @@ export const CERTIFICADOS_URL = `${API_URL}/certificados?populate=*&`;
 export const PROJETOS_URL = `${API_URL}/projetos?populate=*&`;
 export const DESTAQUES_URL = `${API_URL}/projetos?populate=*&filters[Destaque][$eq]=true&`;
 export const PREMIOS_URL = `${API_URL}/premios?populate=*&`;
+export const AUTOR_URL = `${API_URL}/autores?populate=*&`;

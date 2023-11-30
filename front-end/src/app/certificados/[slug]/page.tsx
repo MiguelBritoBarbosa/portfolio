@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function CertificadoPage({ params }: { params: { slug: string } }) {
     const certificado: any = await getCertificado(params.slug);
-    console.log(certificado);
     return (
         <>
             <Certificado certificado={certificado.data[0]} />
