@@ -13,11 +13,13 @@ export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetai
     return (
         <Container className="rounded p-3 d-flex align-items-center">
             <div className="fs-5 text-white font-bold ">
-                Publicado em <DateFormat date={date} /> por:{' '}
                 <p>
-                    <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
-                        {autor.attributes.Nome}
-                    </Link>
+                    Publicado em <DateFormat date={date} /> por:{' '}
+                    <span>
+                        <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
+                            {autor.attributes.Nome}
+                        </Link>
+                    </span>
                 </p>
                 <p>
                     Credencial:{' '}

@@ -7,14 +7,16 @@ import { ProjetoData } from '@/config/domain/projetos/projetos';
 import { CardMiguel } from '@/components/CardMiguel';
 import { PremiosSlider } from '@/components/PremiosSlider';
 import { PremioData } from '@/config/domain/premios/premios';
+import { AutorData } from '@/config/domain/autores/autores';
 
 interface LandingProps {
     certificados: CertificadoData[];
     destaques: ProjetoData[];
     premios: PremioData[];
+    miguel: AutorData;
 }
 
-export default function Landing({ certificados, destaques, premios }: LandingProps) {
+export default function Landing({ certificados, destaques, premios, miguel }: LandingProps) {
     return (
         <Container className="container-fluid">
             <div className="row p-3">
@@ -24,7 +26,7 @@ export default function Landing({ certificados, destaques, premios }: LandingPro
                 </div>
                 <div className="col-12 col-lg-4 mt-2 order-1 order-lg-2">
                     <h2 className="text-center">Autor</h2>
-                    <CardMiguel />
+                    <CardMiguel miguel={miguel} />
                 </div>
             </div>
             <h2 className="text-center mt-3">Prêmios</h2>

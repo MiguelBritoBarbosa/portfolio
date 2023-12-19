@@ -19,7 +19,7 @@ export const ProjetosDestaque = ({ destaques }: ProjetosDestaqueProps) => {
                 const height = destaque.attributes.cover.data.attributes.formats.small.height;
                 return (
                     <div key={destaque.attributes.slug} className="col-12 col-lg-6">
-                        <div className="container p-3 shadow rounded mt-2 mb-2 bg-white">
+                        <div style={{ height: '700px' }} className="container p-3 shadow rounded mt-2 mb-2 bg-white">
                             <h3 className="text-center">{destaque.attributes.Titulo}</h3>
                             <div className="d-flex justify-content-center">
                                 <Image
