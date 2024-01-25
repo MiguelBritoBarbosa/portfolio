@@ -5,7 +5,7 @@ const nextConfig = {
         styledComponents: true,
     },
     images: {
-        domains: ['localhost', 'fakeimg.pl'],
+        domains: ['localhost', 'fakeimg.pl', ''],
     },
     reactStrictMode: false,
 };
