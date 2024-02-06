@@ -719,6 +719,72 @@ export interface ApiAutorAutor extends Schema.CollectionType {
   };
 }
 
+export interface ApiBancoDeDadosBancoDeDados extends Schema.CollectionType {
+  collectionName: 'bancos_de_dados';
+  info: {
+    singularName: 'banco-de-dados';
+    pluralName: 'bancos-de-dados';
+    displayName: 'Banco de Dados';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Nome: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Tipo: Attribute.Enumeration<['Relacional', 'N\u00E3o Relacional']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Descricao: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banco-de-dados.banco-de-dados',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::banco-de-dados.banco-de-dados',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::banco-de-dados.banco-de-dados',
+      'oneToMany',
+      'api::banco-de-dados.banco-de-dados'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCertificadoCertificado extends Schema.CollectionType {
   collectionName: 'certificados';
   info: {
@@ -979,6 +1045,83 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
   };
 }
 
+export interface ApiTecnologiaTecnologia extends Schema.CollectionType {
+  collectionName: 'tecnologias';
+  info: {
+    singularName: 'tecnologia';
+    pluralName: 'tecnologias';
+    displayName: 'Tecnologia';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Nome: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Tipo: Attribute.Enumeration<
+      [
+        'Linguagem de Programa\u00E7\u00E3o',
+        'Linguagem de Marca\u00E7\u00E3o de Texto',
+        'Linguagem de Estiliza\u00E7\u00E3o',
+        'Framework',
+        'Formato de Dados',
+        'Ferramenta',
+        'Outro'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Icon: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Descricao: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tecnologia.tecnologia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tecnologia.tecnologia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::tecnologia.tecnologia',
+      'oneToMany',
+      'api::tecnologia.tecnologia'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -996,9 +1139,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::autor.autor': ApiAutorAutor;
+      'api::banco-de-dados.banco-de-dados': ApiBancoDeDadosBancoDeDados;
       'api::certificado.certificado': ApiCertificadoCertificado;
       'api::premio.premio': ApiPremioPremio;
       'api::projeto.projeto': ApiProjetoProjeto;
+      'api::tecnologia.tecnologia': ApiTecnologiaTecnologia;
     }
   }
 }

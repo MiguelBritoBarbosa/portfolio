@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bancos_de_dados",
+  "info": {
+    "singularName": "banco-de-dados",
+    "pluralName": "bancos-de-dados",
+    "displayName": "Banco de Dados"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Tipo": {
+      "type": "enumeration",
+      "enum": [
+        "Relacional",
+        "Não Relacional"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Descricao": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
