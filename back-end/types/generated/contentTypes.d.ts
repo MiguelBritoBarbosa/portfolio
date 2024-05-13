@@ -403,9 +403,12 @@ export interface PluginUploadFile extends Schema.CollectionType {
     folderPath: Attribute.String &
       Attribute.Required &
       Attribute.Private &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -441,9 +444,12 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     pathId: Attribute.Integer & Attribute.Required & Attribute.Unique;
     parent: Attribute.Relation<
       'plugin::upload.folder',
@@ -462,9 +468,12 @@ export interface PluginUploadFolder extends Schema.CollectionType {
     >;
     path: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -475,6 +484,98 @@ export interface PluginUploadFolder extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::upload.folder',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginContentReleasesRelease extends Schema.CollectionType {
+  collectionName: 'strapi_releases';
+  info: {
+    singularName: 'release';
+    pluralName: 'releases';
+    displayName: 'Release';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    releasedAt: Attribute.DateTime;
+    actions: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToMany',
+      'plugin::content-releases.release-action'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginContentReleasesReleaseAction
+  extends Schema.CollectionType {
+  collectionName: 'strapi_release_actions';
+  info: {
+    singularName: 'release-action';
+    pluralName: 'release-actions';
+    displayName: 'Release Action';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    type: Attribute.Enumeration<['publish', 'unpublish']> & Attribute.Required;
+    entry: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'morphToOne'
+    >;
+    contentType: Attribute.String & Attribute.Required;
+    locale: Attribute.String;
+    release: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'manyToOne',
+      'plugin::content-releases.release'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::content-releases.release-action',
       'oneToOne',
       'admin::user'
     > &
@@ -504,10 +605,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
     code: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -688,19 +792,41 @@ export interface ApiAutorAutor extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Nome: Attribute.String & Attribute.Required;
-    Foto: Attribute.Media;
-    Apresentacao: Attribute.Blocks;
-    GitHub: Attribute.Text;
-    Linkedin: Attribute.Text;
+    nome: Attribute.String & Attribute.Required;
+    foto: Attribute.Media;
+    apresentacao: Attribute.Blocks;
+    github: Attribute.Text;
+    linkedin: Attribute.Text;
     site: Attribute.Text;
-    slug: Attribute.UID<'api::autor.autor', 'Nome'> & Attribute.Required;
+    slug: Attribute.UID<'api::autor.autor', 'nome'> & Attribute.Required;
     projetos: Attribute.Relation<
       'api::autor.autor',
       'manyToMany',
       'api::projeto.projeto'
     >;
+    curriculos: Attribute.Relation<
+      'api::autor.autor',
+      'oneToMany',
+      'api::curriculo.curriculo'
+    >;
+    titulo: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    experiencias: Attribute.Relation<
+      'api::autor.autor',
+      'oneToMany',
+      'api::experiencia.experiencia'
+    >;
+    post: Attribute.Relation<'api::autor.autor', 'manyToOne', 'api::post.post'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -716,6 +842,12 @@ export interface ApiAutorAutor extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::autor.autor',
+      'oneToMany',
+      'api::autor.autor'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -725,6 +857,7 @@ export interface ApiBancoDeDadosBancoDeDados extends Schema.CollectionType {
     singularName: 'banco-de-dados';
     pluralName: 'bancos-de-dados';
     displayName: 'Banco de Dados';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -735,14 +868,14 @@ export interface ApiBancoDeDadosBancoDeDados extends Schema.CollectionType {
     };
   };
   attributes: {
-    Nome: Attribute.String &
+    nome: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Tipo: Attribute.Enumeration<['Relacional', 'N\u00E3o Relacional']> &
+    tipo: Attribute.Enumeration<['Relacional', 'N\u00E3o Relacional']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -755,12 +888,24 @@ export interface ApiBancoDeDadosBancoDeDados extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Blocks &
+    descricao: Attribute.Blocks &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    slug: Attribute.UID<'api::banco-de-dados.banco-de-dados', 'nome'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    projetos: Attribute.Relation<
+      'api::banco-de-dados.banco-de-dados',
+      'manyToMany',
+      'api::projeto.projeto'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -791,6 +936,7 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
     singularName: 'certificado';
     pluralName: 'certificados';
     displayName: 'Certificado';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -801,14 +947,14 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
     };
   };
   attributes: {
-    Titulo: Attribute.String &
+    titulo: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Text &
+    descricao: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -828,7 +974,7 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    slug: Attribute.UID<'api::certificado.certificado', 'Titulo'> &
+    slug: Attribute.UID<'api::certificado.certificado', 'titulo'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -864,6 +1010,198 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
   };
 }
 
+export interface ApiCurriculoCurriculo extends Schema.CollectionType {
+  collectionName: 'curriculos';
+  info: {
+    singularName: 'curriculo';
+    pluralName: 'curriculos';
+    displayName: 'Curriculo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    documento: Attribute.Media & Attribute.Required;
+    autor: Attribute.Relation<
+      'api::curriculo.curriculo',
+      'manyToOne',
+      'api::autor.autor'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::curriculo.curriculo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::curriculo.curriculo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExperienciaExperiencia extends Schema.CollectionType {
+  collectionName: 'experiencias';
+  info: {
+    singularName: 'experiencia';
+    pluralName: 'experiencias';
+    displayName: 'Experiencia';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    empresa: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inicio: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    termino: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cargo: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descricao: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    autor: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'manyToOne',
+      'api::autor.autor'
+    >;
+    projetos: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToMany',
+      'api::projeto.projeto'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::experiencia.experiencia',
+      'oneToMany',
+      'api::experiencia.experiencia'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    titulo: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descricao: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    conteudo: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    autores: Attribute.Relation<
+      'api::post.post',
+      'oneToMany',
+      'api::autor.autor'
+    >;
+    slug: Attribute.UID<'api::post.post', 'titulo'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::post.post',
+      'oneToMany',
+      'api::post.post'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPremioPremio extends Schema.CollectionType {
   collectionName: 'premios';
   info: {
@@ -881,14 +1219,14 @@ export interface ApiPremioPremio extends Schema.CollectionType {
     };
   };
   attributes: {
-    Titulo: Attribute.String &
+    titulo: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Blocks &
+    descricao: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -900,7 +1238,7 @@ export interface ApiPremioPremio extends Schema.CollectionType {
       'oneToOne',
       'api::autor.autor'
     >;
-    slug: Attribute.UID<'api::premio.premio', 'Titulo'> &
+    slug: Attribute.UID<'api::premio.premio', 'titulo'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -955,14 +1293,14 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
     };
   };
   attributes: {
-    Titulo: Attribute.String &
+    titulo: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Blocks &
+    descricao: Attribute.Blocks &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -976,7 +1314,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    TipoProjeto: Attribute.Enumeration<['Profissional', 'Pessoal', 'Estudo']> &
+    tipoProjeto: Attribute.Enumeration<['Profissional', 'Pessoal', 'Estudo']> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -988,39 +1326,54 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
       'manyToMany',
       'api::autor.autor'
     >;
-    Destaque: Attribute.Boolean &
+    destaque: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }> &
       Attribute.DefaultTo<false>;
-    slug: Attribute.UID<'api::projeto.projeto', 'Titulo'> &
+    slug: Attribute.UID &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Link: Attribute.Text &
+    link: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Repositorio: Attribute.Text &
+    repositorio: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Visibilidade: Attribute.Enumeration<['Privado', 'P\u00FAblico']> &
+    visibilidade: Attribute.Enumeration<['Privado', 'P\u00FAblico']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }> &
       Attribute.DefaultTo<'P\u00FAblico'>;
+    tecnologias: Attribute.Relation<
+      'api::projeto.projeto',
+      'manyToMany',
+      'api::tecnologia.tecnologia'
+    >;
+    banco_de_dados: Attribute.Relation<
+      'api::projeto.projeto',
+      'manyToMany',
+      'api::banco-de-dados.banco-de-dados'
+    >;
+    experiencia: Attribute.Relation<
+      'api::projeto.projeto',
+      'manyToOne',
+      'api::experiencia.experiencia'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1062,14 +1415,14 @@ export interface ApiTecnologiaTecnologia extends Schema.CollectionType {
     };
   };
   attributes: {
-    Nome: Attribute.String &
+    nome: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Tipo: Attribute.Enumeration<
+    tipo: Attribute.Enumeration<
       [
         'Linguagem de Programa\u00E7\u00E3o',
         'Linguagem de Marca\u00E7\u00E3o de Texto',
@@ -1085,14 +1438,26 @@ export interface ApiTecnologiaTecnologia extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    Icon: Attribute.Media &
+    icon: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Descricao: Attribute.Blocks &
+    descricao: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    projetos: Attribute.Relation<
+      'api::tecnologia.tecnologia',
+      'manyToMany',
+      'api::projeto.projeto'
+    >;
+    slug: Attribute.UID<'api::tecnologia.tecnologia', 'nome'> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1134,6 +1499,8 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::content-releases.release': PluginContentReleasesRelease;
+      'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
@@ -1141,6 +1508,9 @@ declare module '@strapi/types' {
       'api::autor.autor': ApiAutorAutor;
       'api::banco-de-dados.banco-de-dados': ApiBancoDeDadosBancoDeDados;
       'api::certificado.certificado': ApiCertificadoCertificado;
+      'api::curriculo.curriculo': ApiCurriculoCurriculo;
+      'api::experiencia.experiencia': ApiExperienciaExperiencia;
+      'api::post.post': ApiPostPost;
       'api::premio.premio': ApiPremioPremio;
       'api::projeto.projeto': ApiProjetoProjeto;
       'api::tecnologia.tecnologia': ApiTecnologiaTecnologia;

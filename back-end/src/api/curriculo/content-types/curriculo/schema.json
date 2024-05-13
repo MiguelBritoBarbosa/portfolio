@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "curriculos",
+  "info": {
+    "singularName": "curriculo",
+    "pluralName": "curriculos",
+    "displayName": "Curriculo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "documento": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "autor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::autor.autor",
+      "inversedBy": "curriculos"
+    }
+  }
+}

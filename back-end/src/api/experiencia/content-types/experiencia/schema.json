@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "bancos_de_dados",
+  "collectionName": "experiencias",
   "info": {
-    "singularName": "banco-de-dados",
-    "pluralName": "bancos-de-dados",
-    "displayName": "Banco de Dados",
+    "singularName": "experiencia",
+    "pluralName": "experiencias",
+    "displayName": "Experiencia",
     "description": ""
   },
   "options": {
@@ -16,63 +16,60 @@
     }
   },
   "attributes": {
-    "nome": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "tipo": {
-      "type": "enumeration",
-      "enum": [
-        "Relacional",
-        "Não Relacional"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "descricao": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "slug": {
+    "empresa": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
-      "required": true,
-      "targetField": "nome"
+      "type": "string",
+      "required": true
+    },
+    "inicio": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date",
+      "required": true
+    },
+    "termino": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "date"
+    },
+    "cargo": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
+    },
+    "autor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::autor.autor",
+      "inversedBy": "experiencias"
     },
     "projetos": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::projeto.projeto",
-      "mappedBy": "banco_de_dados"
+      "mappedBy": "experiencia"
     }
   }
 }

@@ -1,49 +1,81 @@
 {
-    "kind": "collectionType",
-    "collectionName": "autor",
-    "info": {
-        "singularName": "autor",
-        "pluralName": "autores",
-        "displayName": "Autor",
-        "description": ""
-    },
-    "options": {
-        "draftAndPublish": true
-    },
-    "pluginOptions": {},
-    "attributes": {
-        "Nome": {
-            "type": "string",
-            "required": true
-        },
-        "Foto": {
-            "type": "media",
-            "multiple": false,
-            "required": false,
-            "allowedTypes": ["images"]
-        },
-        "Apresentacao": {
-            "type": "blocks"
-        },
-        "GitHub": {
-            "type": "text"
-        },
-        "Linkedin": {
-            "type": "text"
-        },
-        "site": {
-            "type": "text"
-        },
-        "slug": {
-            "type": "uid",
-            "targetField": "Nome",
-            "required": true
-        },
-        "projetos": {
-            "type": "relation",
-            "relation": "manyToMany",
-            "target": "api::projeto.projeto",
-            "inversedBy": "autores"
-        }
+  "kind": "collectionType",
+  "collectionName": "autor",
+  "info": {
+    "singularName": "autor",
+    "pluralName": "autores",
+    "displayName": "Autor",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
     }
+  },
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "apresentacao": {
+      "type": "blocks"
+    },
+    "github": {
+      "type": "text"
+    },
+    "linkedin": {
+      "type": "text"
+    },
+    "site": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nome",
+      "required": true
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projeto.projeto",
+      "inversedBy": "autores"
+    },
+    "curriculos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::curriculo.curriculo",
+      "mappedBy": "autor"
+    },
+    "titulo": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "experiencias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::experiencia.experiencia",
+      "mappedBy": "autor"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post.post",
+      "inversedBy": "autores"
+    }
+  }
 }

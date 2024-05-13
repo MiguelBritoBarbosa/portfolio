@@ -4,7 +4,8 @@
   "info": {
     "singularName": "certificado",
     "pluralName": "certificados",
-    "displayName": "Certificado"
+    "displayName": "Certificado",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "Titulo": {
+    "titulo": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "Descricao": {
+    "descricao": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -34,20 +35,20 @@
       "required": true
     },
     "documento": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     },
     "credencial": {
       "pluginOptions": {
@@ -64,8 +65,8 @@
         }
       },
       "type": "uid",
-      "targetField": "Titulo",
-      "required": true
+      "required": true,
+      "targetField": "titulo"
     },
     "autor": {
       "type": "relation",

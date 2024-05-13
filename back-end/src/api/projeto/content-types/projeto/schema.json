@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Titulo": {
+    "titulo": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -25,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "Descricao": {
+    "descricao": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -47,7 +47,7 @@
         }
       }
     },
-    "TipoProjeto": {
+    "tipoProjeto": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -67,7 +67,7 @@
       "target": "api::autor.autor",
       "mappedBy": "projetos"
     },
-    "Destaque": {
+    "destaque": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -83,10 +83,9 @@
         }
       },
       "type": "uid",
-      "targetField": "Titulo",
       "required": true
     },
-    "Link": {
+    "link": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -94,7 +93,7 @@
       },
       "type": "text"
     },
-    "Repositorio": {
+    "repositorio": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -102,7 +101,7 @@
       },
       "type": "text"
     },
-    "Visibilidade": {
+    "visibilidade": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -114,6 +113,24 @@
         "Público"
       ],
       "default": "Público"
+    },
+    "tecnologias": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tecnologia.tecnologia",
+      "inversedBy": "projetos"
+    },
+    "banco_de_dados": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::banco-de-dados.banco-de-dados",
+      "inversedBy": "projetos"
+    },
+    "experiencia": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::experiencia.experiencia",
+      "inversedBy": "projetos"
     }
   }
 }
