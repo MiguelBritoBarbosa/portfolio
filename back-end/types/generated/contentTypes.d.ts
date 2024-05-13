@@ -1333,7 +1333,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<false>;
-    slug: Attribute.UID &
+    slug: Attribute.UID<'api::projeto.projeto', 'titulo'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

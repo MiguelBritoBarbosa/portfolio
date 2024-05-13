@@ -83,7 +83,8 @@
         }
       },
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "titulo"
     },
     "link": {
       "pluginOptions": {
