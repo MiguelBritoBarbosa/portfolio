@@ -15,9 +15,10 @@ services:
         networks:
             - strapi
 
-    strapi:
+    backend:
         container_name: portifolio_backend
         build: .
+        image: miguelbritobarbosa/portifolio_backend:latest
         restart: always
         env_file: .env
         environment:
