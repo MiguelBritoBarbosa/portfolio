@@ -512,6 +512,12 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     releasedAt: Attribute.DateTime;
+    scheduledAt: Attribute.DateTime;
+    timezone: Attribute.String;
+    status: Attribute.Enumeration<
+      ['ready', 'blocked', 'failed', 'done', 'empty']
+    > &
+      Attribute.Required;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -566,6 +572,7 @@ export interface PluginContentReleasesReleaseAction
       'manyToOne',
       'plugin::content-releases.release'
     >;
+    isEntryValid: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -799,7 +806,7 @@ export interface ApiAutorAutor extends Schema.CollectionType {
   };
   attributes: {
     nome: Attribute.String & Attribute.Required;
-    foto: Attribute.Media;
+    foto: Attribute.Media<'images'>;
     apresentacao: Attribute.Blocks;
     github: Attribute.Text;
     linkedin: Attribute.Text;
@@ -881,7 +888,7 @@ export interface ApiBancoDeDadosBancoDeDados extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    icon: Attribute.Media &
+    icon: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -961,7 +968,7 @@ export interface ApiCertificadoCertificado extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    documento: Attribute.Media &
+    documento: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1022,7 +1029,7 @@ export interface ApiCurriculoCurriculo extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    documento: Attribute.Media & Attribute.Required;
+    documento: Attribute.Media<'images' | 'files'> & Attribute.Required;
     autor: Attribute.Relation<
       'api::curriculo.curriculo',
       'manyToOne',
@@ -1167,7 +1174,7 @@ export interface ApiPostPost extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    thumbnail: Attribute.Media &
+    thumbnail: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1245,7 +1252,7 @@ export interface ApiPremioPremio extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    cover: Attribute.Media &
+    cover: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1307,7 +1314,7 @@ export interface ApiProjetoProjeto extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    cover: Attribute.Media &
+    cover: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1438,7 +1445,7 @@ export interface ApiTecnologiaTecnologia extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    icon: Attribute.Media &
+    icon: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

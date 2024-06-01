@@ -121,7 +121,7 @@
       "target": "api::tecnologia.tecnologia",
       "inversedBy": "projetos"
     },
-    "banco_de_dados": {
+    "bancoDeDados": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::banco-de-dados.banco-de-dados",

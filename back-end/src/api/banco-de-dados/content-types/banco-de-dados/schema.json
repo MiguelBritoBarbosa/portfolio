@@ -72,7 +72,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::projeto.projeto",
-      "mappedBy": "banco_de_dados"
+      "mappedBy": "bancoDeDados"
     }
   }
 }
