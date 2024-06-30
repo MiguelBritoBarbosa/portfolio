@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_footer_redes_sociais",
+  "info": {
+    "displayName": "Redes Sociais",
+    "icon": "twitter"
+  },
+  "options": {},
+  "attributes": {
+    "linkedin": {
+      "type": "string"
+    },
+    "github": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "twitterX": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    }
+  }
+}

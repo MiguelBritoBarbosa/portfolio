@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_menu_menu_links",
+  "info": {
+    "displayName": "Menu Links",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "text",
+      "required": true
+    },
+    "rotulo": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

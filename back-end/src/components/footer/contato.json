@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_footer_contatoes",
+  "info": {
+    "displayName": "Contato",
+    "icon": "phone",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "endereco": {
+      "type": "string",
+      "required": true
+    },
+    "emailDeContato": {
+      "type": "email",
+      "required": true
+    },
+    "telefone": {
+      "type": "string"
+    }
+  }
+}

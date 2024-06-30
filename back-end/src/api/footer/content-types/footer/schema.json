@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "paragrafo": {
+        "displayName": "Paragrafo",
+        "type": "component",
+        "repeatable": false,
+        "component": "footer.paragrafo"
+      },
+      "conteudo": {
+        "displayName": "Conteúdo",
+        "type": "component",
+        "repeatable": false,
+        "component": "footer.conteudo"
+      },
+      "paginas": {
+        "displayName": "Páginas",
+        "type": "component",
+        "repeatable": false,
+        "component": "footer.paginas"
+      },
+      "contato": {
+          "displayName": "Contato",
+          "type": "component",
+          "repeatable": false,
+          "component": "footer.contato"
+      },
+      "redesSociais": {
+          "displayName": "Redes Sociais",
+          "type": "component",
+          "repeatable": false,
+          "component": "footer.redes-sociais"
+      }
+  }
+}

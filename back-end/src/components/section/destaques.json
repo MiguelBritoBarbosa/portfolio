@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_section_destaques",
+  "info": {
+    "displayName": "Destaques",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Metadados": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.metadados-da-secao",
+      "required": true
+    },
+    "autorDestaque": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::autor.autor"
+    },
+    "autorTitulo": {
+      "type": "string",
+      "default": "Autor"
+    },
+    "destaquesTitulo": {
+      "type": "string",
+      "default": "Destaques"
+    }
+  }
+}

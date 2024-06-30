@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_section_projetos_carrossels",
+  "info": {
+    "displayName": "Projetos Carrossel",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "metadados": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.metadados-da-secao"
+    }
+  }
+}

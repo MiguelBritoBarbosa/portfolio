@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_certificados_carrossels",
+  "info": {
+    "displayName": "Certificados Carrossel",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metadados": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.metadados-da-secao"
+    }
+  }
+}

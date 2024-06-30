@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_menu_menu_fixos",
+  "info": {
+    "displayName": "Menu Fixo",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 60
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-links",
+      "min": 1,
+      "max": 10
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_footer_conteudos",
+  "info": {
+    "displayName": "Conteúdo",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-links",
+      "min": 1,
+      "max": 10,
+      "required": true
+    }
+  }
+}

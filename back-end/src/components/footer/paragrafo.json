@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_footer_paragrafos",
+  "info": {
+    "displayName": "Paragrafo",
+    "icon": "pencil"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "text",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 450
+    }
+  }
+}

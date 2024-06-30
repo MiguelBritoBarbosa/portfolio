@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_section_premios_sliders",
+  "info": {
+    "displayName": "Prêmios Slider",
+    "icon": "crown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Metadados": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.metadados-da-secao",
+      "required": true
+    }
+  }
+}
