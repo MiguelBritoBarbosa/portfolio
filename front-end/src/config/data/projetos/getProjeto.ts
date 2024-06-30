@@ -4,7 +4,7 @@ import { fetchJson } from '@/utils/fetchJson';
 
 export async function getProjeto(slug: string | string[]): Promise<ProjetoData> {
     const locale = 'pt-BR';
-    const url = `${PROJETOS_URL}/locale=${locale}&filters[slug][$eq]=${slug}`;
+    const url = `${PROJETOS_URL}&locale=${locale}&filters[slug][$eq]=${slug}`;
     const projeto: ProjetoData = await fetchJson(url);
     return projeto;
 }

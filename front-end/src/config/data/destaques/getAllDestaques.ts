@@ -5,7 +5,7 @@ import { fetchJson } from '@/utils/fetchJson';
 
 export async function getAllDestaques(query = ''): Promise<ProjetoData[] | DataUndefined> {
     const locale = 'pt-BR';
-    const url = `${DESTAQUES_URL}/locale=${locale}&${query}`;
+    const url = `${DESTAQUES_URL}&locale=${locale}&${query}`;
     const destaques: ProjetoData[] = await fetchJson(url);
     return destaques ? destaques : { data: [undefined] };
 }

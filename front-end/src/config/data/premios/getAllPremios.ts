@@ -5,7 +5,7 @@ import { fetchJson } from '@/utils/fetchJson';
 
 export async function getAllPremios(query = ''): Promise<ProjetoData[] | DataUndefined> {
     const locale = 'pt-BR';
-    const url = `${PREMIOS_URL}/locale=${locale}&${query}`;
+    const url = `${PREMIOS_URL}&locale=${locale}&${query}`;
     const premios: ProjetoData[] = await fetchJson(url);
     return premios ? premios : { data: [undefined] };
 }
