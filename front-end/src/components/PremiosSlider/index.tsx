@@ -5,16 +5,18 @@ import { PremioData } from '@/config/domain/premios/premios';
 import { API_ROOT } from '@/config/siteConfig';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { rgbDataURL } from '@/utils/rgbDataUrl';
 
 interface PremiosSliderProps {
     premios: PremioData[];
+    predominantColors: [number[]];
 }
 
-export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
-    const [backgroundImage, setBackgroundImage] = useState(
-        premios[0].attributes.cover.data.attributes.formats.large.url,
-    );
+export const PremiosSlider = ({ premios, predominantColors }: PremiosSliderProps) => {
+    const url = premios[0].attributes.cover.data.attributes.formats.large
+        ? premios[0].attributes.cover.data.attributes.formats.large.url
+        : premios[0].attributes.cover.data.attributes.url;
+    const [backgroundImage, setBackgroundImage] = useState(url);
     const [carouselItens]: any = useState([]);
     useEffect(() => {
         carouselItens.map((item: any) => {
@@ -24,18 +26,21 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                 if (target.classList.contains('active')) {
                     premios.map((premio) => {
                         if (premio.attributes.slug === target.id) {
-                            setBackgroundImage(premio.attributes.cover.data.attributes.formats.large.url);
+                            const url = premios[0].attributes.cover.data.attributes.formats.large
+                                ? premios[0].attributes.cover.data.attributes.formats.large.url
+                                : premios[0].attributes.cover.data.attributes.url;
+                            setBackgroundImage(url);
                         }
                     });
                 }
             });
             observer.observe(div, { attributes: true });
         });
-    }, [carouselItens, premios]);
+    });
 
     return (
         <Container
-            className="rounded my-5"
+            className="row my-5"
             style={{
                 backgroundImage: `url(${API_ROOT}${backgroundImage})`,
                 backgroundSize: 'cover',
@@ -46,7 +51,7 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
         >
             <div
                 id="carousel-container"
-                className=" mb-5 d-flex justify-content-center p-4"
+                className=" d-flex justify-content-center p-4"
                 style={{ backdropFilter: 'blur(10px)' }}
             >
                 <div id="carousel" className=" carousel slide carousel-dark" data-bs-ride="carousel">
@@ -67,6 +72,15 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                     </div>
                     <div className="carousel-inner rounded-3">
                         {premios.map((premio, index) => {
+                            const description: any = premio.attributes.descricao[0].children[0];
+                            const url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats.medium ? premio.attributes.cover.data.attributes.formats.medium.url : premio.attributes.cover.data.attributes.url}`;
+                            const predominantColor: number[] = predominantColors[index];
+                            const width = premio.attributes.cover.data.attributes.formats.medium
+                                ? premio.attributes.cover.data.attributes.formats.medium.width
+                                : premio.attributes.cover.data.attributes.width;
+                            const height = premio.attributes.cover.data.attributes.formats.medium
+                                ? premio.attributes.cover.data.attributes.formats.medium.height
+                                : premio.attributes.cover.data.attributes.height;
                             const slide = (
                                 <div
                                     key={premio.attributes.slug}
@@ -75,21 +89,27 @@ export const PremiosSlider = ({ premios }: PremiosSliderProps) => {
                                 >
                                     <Image
                                         className="d-md-block img-fluid"
-                                        src={`${API_ROOT}${premio.attributes.cover.data.attributes.formats.medium.url}`}
+                                        src={url}
+                                        placeholder="blur"
+                                        blurDataURL={rgbDataURL(
+                                            predominantColor[0],
+                                            predominantColor[1],
+                                            predominantColor[2],
+                                        )}
                                         alt={premio.attributes.slug}
-                                        width={premio.attributes.cover.data.attributes.formats.medium.width}
-                                        height={premio.attributes.cover.data.attributes.formats.medium.height}
+                                        width={width}
+                                        height={height}
                                     />
                                     <div className="bg-light rounded carousel-caption d-none d-md-block">
-                                        <h5 className="fs-5">{premio.attributes.Titulo}</h5>
-                                        <p className="fw-bold">
+                                        <h5 className="fs-5">{premio.attributes.titulo}</h5>
+                                        <div className="fw-bold mb-3">
                                             <div className="d-flex px-1">
-                                                <span className="d-block text-truncate tw-text-justify">
-                                                    <BlocksRenderer content={premio.attributes.Descricao} />
+                                                <span className="d-block tw-text-justify">
+                                                    {description.text.split(' ').splice(0, 15).join(' ')}
+                                                    {description.text.split(' ').length > 15 ? <>...</> : <></>}
                                                 </span>
-                                                <span className="d-flex align-items-end">...</span>
                                             </div>
-                                        </p>
+                                        </div>
                                         <Link href={`/premios/${premio.attributes.slug}`} className="btn btn-primary">
                                             Veja Mais
                                         </Link>

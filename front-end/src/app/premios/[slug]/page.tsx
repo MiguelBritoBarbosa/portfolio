@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const premio: any = await getPremio(params.slug);
     return {
         title: premio.data[0].attributes.Titulo,
-        description: premio.data[0].attributes.Descricao[0].children[0].text.slice(0, 100),
+        description: premio.data[0].attributes.descricao[0].children[0].text.slice(0, 100),
     };
 }
 

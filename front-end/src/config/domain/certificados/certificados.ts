@@ -1,13 +1,13 @@
 import { AutorData } from '../autores/autores';
-import { StrapiImageFile } from '../strapiImageFiles/strapiFiles';
+import { StrapiFiles } from '../StrapiFiles/strapifiles';
 
 export type CertificadoId = number;
 
 export interface CertificadoData {
     id: CertificadoId;
     attributes: {
-        Titulo: string;
-        Descricao: string;
+        titulo: string;
+        descricao: string;
         credencial: string;
         slug: string;
         createdAt: string;
@@ -15,6 +15,6 @@ export interface CertificadoData {
         publishedAt: string;
         locale: string;
         autor: { data: AutorData };
-        documento: StrapiImageFile;
+        documento: StrapiFiles;
     };
 }

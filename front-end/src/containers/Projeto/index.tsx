@@ -11,11 +11,11 @@ export interface ProjetoProps {
 
 export default function Projeto({ projeto }: ProjetoProps) {
     return (
-        <Container id={projeto.attributes.slug} className="container mt-3 p-5">
-            <Heading>{projeto.attributes.Titulo}</Heading>
+        <Container id={projeto.attributes.slug} className="container mt-3 p-md-5">
+            <Heading>{projeto.attributes.titulo}</Heading>
             <ProjetoContainer
-                content={projeto.attributes.Descricao}
-                titulo={projeto.attributes.Titulo}
+                content={projeto.attributes.descricao}
+                titulo={projeto.attributes.titulo}
                 url={`${API_ROOT}${projeto.attributes.cover.data.attributes.url}`}
                 width={projeto.attributes.cover.data.attributes.formats.medium.width}
                 height={projeto.attributes.cover.data.attributes.formats.medium.height}
@@ -25,10 +25,10 @@ export default function Projeto({ projeto }: ProjetoProps) {
             <ProjetoDetails
                 date={projeto.attributes.createdAt}
                 autores={projeto.attributes.autores.data}
-                tipoProjeto={projeto.attributes.TipoProjeto}
-                link={projeto.attributes.Link}
-                repositorio={projeto.attributes.Repositorio}
-                visibilidade={projeto.attributes.Visibilidade}
+                tipoProjeto={projeto.attributes.tipoProjeto}
+                link={projeto.attributes.link}
+                repositorio={projeto.attributes.repositorio}
+                visibilidade={projeto.attributes.visibilidade}
             />
         </Container>
     );

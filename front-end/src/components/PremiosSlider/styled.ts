@@ -17,12 +17,6 @@ export const Container = styled.section`
         background-color: ${theme.colors.secondary};
         border-color: ${theme.colors.secondary};
     }
-    .text-truncate {
-        height: 75px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: pre-line;
-    }
     .ver-mais {
         color: ${theme.colors.primary};
     }

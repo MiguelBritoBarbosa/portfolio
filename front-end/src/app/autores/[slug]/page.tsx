@@ -4,8 +4,8 @@ import Autor from '@/containers/Autor';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const autor: any = await getAutor(params.slug);
     let description: string = '';
-    if (autor.data[0].attributes.Apresentacao) {
-        description = autor.data[0].attributes.Apresentacao[0].children[0].text.slice(0, 100);
+    if (autor.data[0].attributes.apresentacao) {
+        description = autor.data[0].attributes.apresentacao[0].children[0].text.slice(0, 100);
     }
     return {
         title: autor.data[0].attributes.Titulo,

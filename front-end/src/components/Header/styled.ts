@@ -13,18 +13,7 @@ export const ContainerHeader = styled.header`
     }
 `;
 
-export const HeaderTop = styled.section`
+export const HeaderTopContainer = styled.section`
     position: fixed;
     z-index: 1;
-    background-color: ${theme.backgroundDark};
-    .buttons {
-        background-color: ${theme.backgroundDark};
-        transition: 0.25s;
-        height: 45px;
-        &:hover {
-            color: ${theme.colors.primary};
-            background-color: ${theme.backgroundDarker};
-            transition: 0.25s;
-        }
-    }
 `;

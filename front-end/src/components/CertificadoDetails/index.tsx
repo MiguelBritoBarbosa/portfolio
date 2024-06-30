@@ -13,18 +13,18 @@ export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetai
     return (
         <Container className="rounded p-3 d-flex align-items-center">
             <div className="fs-5 text-white font-bold ">
-                <p>
-                    Publicado em <DateFormat date={date} /> por:{' '}
+                <div className="mb-4 text-break">
                     <span>
-                        <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
-                            {autor.attributes.Nome}
-                        </Link>
+                        Publicado em <DateFormat date={date} /> por:{' '}
                     </span>
-                </p>
-                <p>
-                    Credencial:{' '}
+                    <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
+                        {autor.attributes.nome}
+                    </Link>
+                </div>
+                <div className="mb-4 text-break">
+                    <span>Credencial: </span>
                     {credencial !== null ? (
-                        <a href={credencial} target="_blank">
+                        <a className="purple-color" href={credencial} target="_blank">
                             {credencial}
                         </a>
                     ) : (
@@ -32,7 +32,7 @@ export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetai
                             <span className="text-purple">...</span>
                         </>
                     )}
-                </p>
+                </div>
             </div>
         </Container>
     );

@@ -1,13 +1,15 @@
-import { Container } from './styled';
+import * as Styled from './styled';
 
 export interface HeadingProps {
     children: React.ReactNode;
+    textClass?: string;
+    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
-export const Heading = ({ children }: HeadingProps) => {
+export const Heading = ({ children, as = 'h2', textClass = 'text-4xl' }: HeadingProps) => {
     return (
-        <Container id="heading" className="display-4 text-center">
+        <Styled.Title as={as} className={`${textClass} text-center m-0`}>
             {children}
-        </Container>
+        </Styled.Title>
     );
 };

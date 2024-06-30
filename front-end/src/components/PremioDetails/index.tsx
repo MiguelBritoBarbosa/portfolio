@@ -15,7 +15,7 @@ export const PremioDetails = ({ date, autor }: PremioDetailsProps) => {
                 Publicado em <DateFormat date={date} /> por:{' '}
                 <span>
                     <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
-                        {autor.attributes.Nome}
+                        {autor.attributes.nome}
                     </Link>
                 </span>
             </div>

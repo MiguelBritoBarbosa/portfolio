@@ -12,10 +12,10 @@ export interface PremioProps {
 export default function Premio({ premio }: PremioProps) {
     return (
         <Container id={premio.attributes.slug} className="container mt-3 p-5">
-            <Heading>{premio.attributes.Titulo}</Heading>
+            <Heading>{premio.attributes.titulo}</Heading>
             <PremioContainer
-                content={premio.attributes.Descricao}
-                titulo={premio.attributes.Titulo}
+                content={premio.attributes.descricao}
+                titulo={premio.attributes.titulo}
                 url={`${API_ROOT}${premio.attributes.cover.data.attributes.url}`}
                 width={premio.attributes.cover.data.attributes.formats.medium.width}
                 height={premio.attributes.cover.data.attributes.formats.medium.height}

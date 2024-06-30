@@ -1,31 +1,28 @@
-// import { theme } from '@/styles/theme';
-import { ContainerHeader, HeaderTop } from './styled';
+'use client';
+import { headerData } from '@/config/domain/header/header';
+import { ContainerHeader } from './styled';
 import Link from 'next/link';
-// import Image from 'next/image';
-export const Header = () => {
+import { usePathname } from 'next/navigation';
+import { HeaderTop } from './headerTop';
+
+interface headerProps {
+    headerData: headerData | null;
+}
+
+export const Header = ({ headerData }: headerProps) => {
+    const pathname = usePathname();
+    const isHome = pathname === '/';
     return (
-        <ContainerHeader className="container-fluid ">
-            <div className="row d-flex justify-content-center">
-                <HeaderTop>
-                    <div className="d-flex justify-content-end">
-                        {/* <ul id="language" className="nav nav-tabs font-bold ">
-                            <li className="nav-item">
-                                <button className="nav-link buttons">En</button>
-                            </li>
-                            <li className="nav-item">
-                                <button className="nav-link buttons active">Pt-BR</button>
-                            </li>
-                        </ul> */}
-                        <div className="d-flex align-items-center px-2 fw-bold buttons">
-                            <Link className="nav-link" href="/contato">
-                                Contato
-                            </Link>
-                        </div>
-                    </div>
-                </HeaderTop>
-                <Link id="menu" href="/">
-                    <div id="banner" className="text-center mt-5"></div>
-                </Link>
+        <ContainerHeader className="container mx-auto max-w-full">
+            <div className="flex flex-wrap justify-center">
+                <HeaderTop headerData={headerData} />
+                {!isHome ? (
+                    <Link className="w-full" id="menu" href="/">
+                        <div id="banner" className="text-center mt-5"></div>
+                    </Link>
+                ) : (
+                    <div id="banner" className="w-full text-center mt-5"></div>
+                )}
             </div>
         </ContainerHeader>
     );

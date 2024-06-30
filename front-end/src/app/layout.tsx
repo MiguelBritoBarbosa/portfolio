@@ -2,32 +2,51 @@ import '@/styles/globals.css';
 import StyledComponentsRegistry from './registry';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import Bootstrap from '@/config/bootstrap';
 import NprogressComponent from '@/config/nprogress';
 import '@/styles/nprogress.css';
-import { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800', '900'] });
+import { getHeader } from '@/config/data/header/getHeader';
+import { ThemeProvider } from './providers/theme-provider';
+import { Theme } from '@radix-ui/themes';
 
-export const metadata: Metadata = {
-    title: 'Miguel Brito Barbosa',
-    description:
-        'Meu site pessoal com meu portfólio demonstrando todos os projetos que já participei, sendo profissionais, pessoais ou até mesmo de estudo.',
-};
+export async function generateMetadata() {
+    const header: { data: headerData } | undefined = await getHeader();
+    if (header !== undefined) {
+        return {
+            title: header.data.attributes.menuFixo.titulo,
+            description: header.data.attributes.descricao,
+        };
+    }
+    return {
+        title: '',
+        description: '',
+    };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import { headerData } from '@/config/domain/header/header';
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const header: { data: headerData } | undefined = await getHeader();
     return (
         <html lang="pt-br">
             <body className={montserrat.className}>
-                <Bootstrap />
-                <NprogressComponent />
-                <Header />
-                <Navbar />
-                <StyledComponentsRegistry>
-                    <main>{children}</main>
-                </StyledComponentsRegistry>
-                <Footer />
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                    <StyledComponentsRegistry>
+                        <Theme accentColor="violet">
+                            <NprogressComponent />
+                            <Header headerData={header !== undefined ? header.data : null} />
+                            <Navbar />
+                            <main>{children}</main>
+                            <Footer />
+                        </Theme>
+                    </StyledComponentsRegistry>
+                </ThemeProvider>
             </body>
         </html>
     );

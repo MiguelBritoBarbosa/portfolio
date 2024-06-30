@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import { GlobalStyles } from '@/styles/global-styles';
 
 export default function StyledComponentsRegistry({ children }: { children: React.ReactNode }) {
     // Only create stylesheet once with lazy initial state
@@ -18,7 +19,7 @@ export default function StyledComponentsRegistry({ children }: { children: React
 
     return (
         <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-            {children as React.ReactChild}
+            <GlobalStyles>{children as React.ReactChild}</GlobalStyles>
         </StyleSheetManager>
     );
 }

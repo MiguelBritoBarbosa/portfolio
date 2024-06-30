@@ -11,11 +11,11 @@ export interface CertificadoProps {
 
 export default function Certificado({ certificado }: CertificadoProps) {
     return (
-        <Container id={certificado.attributes.slug} className="container mt-3 p-5">
-            <Heading>{certificado.attributes.Titulo}</Heading>
+        <Container id={certificado.attributes.slug} className="container mt-3 p-md-5">
+            <Heading textClass="display-6">{certificado.attributes.titulo}</Heading>
             <CertificadoContainer
-                content={certificado.attributes.Descricao}
-                titulo={certificado.attributes.Titulo}
+                content={certificado.attributes.descricao}
+                titulo={certificado.attributes.titulo}
                 url={`${API_ROOT}${certificado.attributes.documento.data.attributes.url}`}
                 width={certificado.attributes.documento.data.attributes.formats.medium.width}
                 height={certificado.attributes.documento.data.attributes.formats.medium.height}

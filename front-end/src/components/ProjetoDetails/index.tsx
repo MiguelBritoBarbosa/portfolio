@@ -25,15 +25,13 @@ export const ProjetoDetails = ({
         <Container className="rounded p-3">
             <p className="fs-5 text-white font-bold">
                 Publicado em <DateFormat date={date} /> por:{' '}
-                {autores.map((autor) => {
+                {autores.map((autor, index) => {
                     return (
                         <span key={`${autor.attributes.slug}`}>
-                            <span>
-                                <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
-                                    {autor.attributes.Nome}
-                                </Link>
-                            </span>
-                            {' | '}
+                            <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
+                                {autor.attributes.nome}
+                            </Link>
+                            {index !== autores.length - 1 ? <> | </> : <></>}
                         </span>
                     );
                 })}
@@ -57,7 +55,7 @@ export const ProjetoDetails = ({
             <p className="fs-5 text-white font-bold">
                 Link do repositório:{' '}
                 {repositorio !== null ? (
-                    <a className="purple-color" href={repositorio} target="_blank">
+                    <a className="purple-color tw-break-words" href={repositorio} target="_blank">
                         {repositorio}
                     </a>
                 ) : (
