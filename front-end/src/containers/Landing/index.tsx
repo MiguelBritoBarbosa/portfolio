@@ -28,7 +28,7 @@ export default async function Landing({ certificados, destaques, premios, projet
     //     (predominantColor) => predominantColor,
     // );
     return (
-        <Container className="container-fluid">
+        <Container className="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
             teste
             {/* <div className="row p-3">
                 <div className="col-12 col-lg-8 mt-2 order-2 order-lg-1">

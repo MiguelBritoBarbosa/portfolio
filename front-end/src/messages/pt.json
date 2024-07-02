@@ -1,1 +1,9 @@
-{}
+{
+    "HeaderTop": {
+        "Theme": {
+            "Dark": "Escuro",
+            "Light": "Claro",
+            "System": "Sistema"
+        }
+    }
+}

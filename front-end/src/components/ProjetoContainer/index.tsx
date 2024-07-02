@@ -20,7 +20,7 @@ export const ProjetoContainer = async ({ content, titulo, url, width, height, de
     return (
         <Container className="rounded bg-white p-3">
             {destaque === true && (
-                <div className="container-fluid mb-2 ">
+                <div className="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4 mb-2 ">
                     <span className="d-flex justify-content-end ">
                         <div className="gold rounded-pill">⭐Projeto Destaque⭐</div>
                     </span>

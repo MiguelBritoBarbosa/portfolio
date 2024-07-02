@@ -61,7 +61,6 @@ export default async function RootLayout({ children, params: { locale } }: Props
                             <Theme accentColor="violet">
                                 <NprogressComponent />
                                 <Header headerData={header !== undefined ? header.data : null} />
-                                <Navbar />
                                 <main>{children}</main>
                                 <Footer />
                             </Theme>

@@ -16,7 +16,7 @@ export const CarrosselCertificados = async ({ certificados }: CarrosselCertifica
     predominantColors = await Promise.all(predominantColors).then((predominantColor) => predominantColor);
     return (
         <Container className="row d-flex my-3">
-            <div className="container-fluid">
+            <div className="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
                 <Carrossel certificados={certificados} predominantColors={predominantColors} />
             </div>
         </Container>

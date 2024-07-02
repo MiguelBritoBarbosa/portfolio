@@ -1,1 +1,9 @@
-{}
+{
+    "HeaderTop": {
+        "Theme": {
+            "Dark": "Dark",
+            "Light": "Light",
+            "System": "System"
+        }
+    }
+}
