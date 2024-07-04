@@ -26,7 +26,11 @@ export const Footer = ({ footerData }: footerProps) => {
                             <BlocksRenderer
                                 blocks={{
                                     link: ({ children, url }) => (
-                                        <a target="_new" href={url}>
+                                        <a
+                                            className="underline hover:text-[--accent-a9] transition"
+                                            target="_new"
+                                            href={url}
+                                        >
                                             {children}
                                         </a>
                                     ),
@@ -90,7 +94,7 @@ export const Footer = ({ footerData }: footerProps) => {
                     )}
                 </section>
             )}
-            <hr className="mb-4" />
+            <hr className="mb-4 border-gray-300" />
             {footerData !== null && footerData.attributes.redesSociais !== null && (
                 <section className="flex justify-center items-center gap-x-2 py-3 bg-[--accent-a9]">
                     {footerData.attributes.redesSociais.map((redeSocial) => (
