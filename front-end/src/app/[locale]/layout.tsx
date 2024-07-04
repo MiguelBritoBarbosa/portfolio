@@ -5,7 +5,6 @@ import { Footer } from '@/components/Footer';
 import NprogressComponent from '@/config/nprogress';
 import '@/styles/nprogress.css';
 import { Montserrat } from 'next/font/google';
-import { Navbar } from '@/components/Navbar';
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800', '900'] });
 import { getHeader } from '@/config/data/header/getHeader';
 import { ThemeProvider } from '../providers/theme-provider';
@@ -32,6 +31,8 @@ import 'swiper/css/pagination';
 import { headerData } from '@/config/domain/header/header';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
+import { getPredominantColor } from '@/utils/getPredominantColor';
+import { API_ROOT } from '@/config/siteConfig';
 
 export function generateStaticParams() {
     return [{ locale: 'en' }, { locale: 'pt' }];
@@ -52,6 +53,10 @@ export default async function RootLayout({ children, params: { locale } }: Props
     }
 
     const header: { data: headerData } | undefined = await getHeader();
+    const predominantColor = await getPredominantColor(
+        `${API_ROOT}${header?.data.attributes.banner.data.attributes.url}`,
+    );
+
     return (
         <html lang={locale}>
             <body className={montserrat.className}>
@@ -60,7 +65,10 @@ export default async function RootLayout({ children, params: { locale } }: Props
                         <StyledComponentsRegistry>
                             <Theme accentColor="violet">
                                 <NprogressComponent />
-                                <Header headerData={header !== undefined ? header.data : null} />
+                                <Header
+                                    headerData={header !== undefined ? header.data : null}
+                                    bannerColor={predominantColor}
+                                />
                                 <main>{children}</main>
                                 <Footer />
                             </Theme>

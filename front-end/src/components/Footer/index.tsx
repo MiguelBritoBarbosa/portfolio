@@ -4,7 +4,7 @@ import { ContainerFooter, LineTopic } from './styled';
 export const Footer = () => {
     return (
         <ContainerFooter className="text-center text-lg-start">
-            <section className="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4 text-md-start mt-5 p-5">
+            <section className="container mx-auto sm:px-4 max-w-full text-md-start mt-5 p-5">
                 <div className="row mt-3 d-flex justify-content-between">
                     <div className="col-12 col-md-6 col-lg-4 mb-4">
                         <h6 className="text-uppercase fw-bold">Portfólio</h6>
