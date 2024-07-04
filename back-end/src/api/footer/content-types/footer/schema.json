@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "Footer"
+    "displayName": "Footer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,34 +17,39 @@
   },
   "attributes": {
     "paragrafo": {
-        "displayName": "Paragrafo",
-        "type": "component",
-        "repeatable": false,
-        "component": "footer.paragrafo"
+      "displayName": "Paragrafo",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer.paragrafo"
+    },
+    "conteudo": {
+      "displayName": "Conteúdo",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer.conteudo"
+    },
+    "paginas": {
+      "displayName": "Páginas",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer.paginas"
+    },
+    "contato": {
+      "displayName": "Contato",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer.contato"
+    },
+    "redesSociais": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
       },
-      "conteudo": {
-        "displayName": "Conteúdo",
-        "type": "component",
-        "repeatable": false,
-        "component": "footer.conteudo"
-      },
-      "paginas": {
-        "displayName": "Páginas",
-        "type": "component",
-        "repeatable": false,
-        "component": "footer.paginas"
-      },
-      "contato": {
-          "displayName": "Contato",
-          "type": "component",
-          "repeatable": false,
-          "component": "footer.contato"
-      },
-      "redesSociais": {
-          "displayName": "Redes Sociais",
-          "type": "component",
-          "repeatable": false,
-          "component": "footer.redes-sociais"
-      }
+      "component": "footer.redes-sociais",
+      "min": 1
+    }
   }
 }
