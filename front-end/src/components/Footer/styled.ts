@@ -9,5 +9,6 @@ export const ContainerFooter = styled.footer`
 export const LineTopic = styled.hr`
     width: 60px;
     background-color: ${theme.colors.primary};
-    height: 2px;
+    height: 3px;
+    border: none;
 `;

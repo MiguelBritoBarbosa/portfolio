@@ -2,9 +2,8 @@ import { menuFixoData } from '../menu/menuFixo';
 import { menuLinksData } from '../menu/menuLinks';
 import { StrapiFiles } from '../StrapiFiles/strapifiles';
 
-export type headerID = number;
 export interface headerData {
-    id: headerID;
+    id: number;
     attributes: {
         menuFixo: menuFixoData;
         descricao: string;

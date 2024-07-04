@@ -5,5 +5,8 @@
             "Light": "Light",
             "System": "System"
         }
+    },
+    "Footer": {
+        "Contact": "Contact"
     }
 }

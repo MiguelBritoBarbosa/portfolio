@@ -5,7 +5,11 @@ import { Footer } from '@/components/Footer';
 import NprogressComponent from '@/config/nprogress';
 import '@/styles/nprogress.css';
 import { Montserrat } from 'next/font/google';
-const montserrat = Montserrat({ subsets: ['latin'], weight: ['600', '700', '800', '900'] });
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    weight: ['500', '600', '700', '800', '900'],
+    variable: '--font-montserrat',
+});
 import { getHeader } from '@/config/data/header/getHeader';
 import { ThemeProvider } from '../providers/theme-provider';
 import { Theme } from '@radix-ui/themes';
@@ -33,6 +37,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { API_ROOT } from '@/config/siteConfig';
+import { footerData } from '@/config/domain/footer/footer';
+import { getFooter } from '@/config/data/footer/getFooter';
 
 export function generateStaticParams() {
     return [{ locale: 'en' }, { locale: 'pt' }];
@@ -56,6 +62,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
     const predominantColor = await getPredominantColor(
         `${API_ROOT}${header?.data.attributes.banner.data.attributes.url}`,
     );
+    const footer: { data: footerData } | undefined = await getFooter();
 
     return (
         <html lang={locale}>
@@ -70,7 +77,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
                                     bannerColor={predominantColor}
                                 />
                                 <main>{children}</main>
-                                <Footer />
+                                <Footer footerData={footer !== undefined ? footer.data : null} />
                             </Theme>
                         </StyledComponentsRegistry>
                     </ThemeProvider>

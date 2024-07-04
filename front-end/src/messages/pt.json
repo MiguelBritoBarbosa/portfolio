@@ -5,5 +5,8 @@
             "Light": "Claro",
             "System": "Sistema"
         }
+    },
+    "Footer": {
+        "Contact": "Contato"
     }
 }

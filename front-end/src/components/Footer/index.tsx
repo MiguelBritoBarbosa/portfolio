@@ -1,127 +1,121 @@
+'use client';
 import Link from 'next/link';
 import { ContainerFooter, LineTopic } from './styled';
+import { Heading, IconButton } from '@radix-ui/themes';
+import { footerData } from '@/config/domain/footer/footer';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useTranslations } from 'next-intl';
 
-export const Footer = () => {
+interface footerProps {
+    footerData: footerData | null;
+}
+
+export const Footer = ({ footerData }: footerProps) => {
+    const t = useTranslations('Footer');
+    console.log(footerData);
     return (
-        <ContainerFooter className="text-center text-lg-start">
-            <section className="container mx-auto sm:px-4 max-w-full text-md-start mt-5 p-5">
-                <div className="row mt-3 d-flex justify-content-between">
-                    <div className="col-12 col-md-6 col-lg-4 mb-4">
-                        <h6 className="text-uppercase fw-bold">Portfólio</h6>
-                        <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
-                        <p>
-                            Seja bem-vindo ao meu Site! Sou um programador resiliente apaixonado pela área e um
-                            estudante entusiasta na area de engenharia de software. Aqui, você encontrará meu portfólio
-                            repleto de projetos que participei, seja em âmbito profissional, pessoal ou para estudo.
-                            Sinta-se a vontade de explorar e descubra como minha curiosidade e vontade de aprender
-                            moldam minhas linhas de código. Aqui está o link para o repositório desse projeto:{' '}
-                            <a href="https://github.com/MiguelBritoBarbosa/portfolio" target="_blank">
-                                Portfólio
-                            </a>
-                        </p>
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-2 mb-4">
-                        <h6 className="text-uppercase fw-bold">Products</h6>
-                        <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
-                        <p>
-                            <Link href="#!" className="">
-                                Projetos
-                            </Link>
-                        </p>
-                        <p>
-                            <Link href="#!" className="">
-                                Certificados
-                            </Link>
-                        </p>
-                        <p>
-                            <Link href="#!" className="">
-                                Prêmios
-                            </Link>
-                        </p>
-                        <p>
-                            <Link href="#!" className="">
-                                Destaques
-                            </Link>
-                        </p>
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-2 mb-4">
-                        <h6 className="text-uppercase fw-bold">Useful links</h6>
-                        <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
-                        <p>
-                            <Link href="/" className="">
-                                Home
-                            </Link>
-                        </p>
-                        <p>
-                            <Link href="/contato" className="">
-                                Contato
-                            </Link>
-                        </p>
-                        <p>
-                            <Link href="/curriculo" className="">
-                                Currículo
-                            </Link>
-                        </p>
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-4 mb-md-0 mb-4">
-                        <h6 className="text-uppercase fw-bold">Contact</h6>
-                        <LineTopic className="mb-4 mt-0 d-inline-block mx-auto" />
-                        <p>
-                            <i className="bi bi-buildings"></i> São José dos Campos, SP - Brasil
-                        </p>
-                        <p>
-                            <i className="bi bi-envelope mr-3"></i> miguelbrito2005@gmail.com
-                        </p>
-                        <p>
-                            <i className="bi bi-phone mr-3"></i>+55 (12) 98193-7459
-                        </p>
-                    </div>
-                </div>
-            </section>
-
+        <ContainerFooter className="text-center bg-gray-200 dark:bg-gray-800">
+            {footerData !== null && (
+                <section className="grid md:grid-cols-2 lg:grid-cols-[2fr,1fr,1fr,2fr] gap-x-20 mx-auto sm:p-4 max-w-full md:text-start mt-5">
+                    {footerData.attributes.paragrafo !== null && (
+                        <div className="mb-4">
+                            <Heading as="h3" size="3" className="uppercase font-[600]">
+                                {footerData.attributes.paragrafo.titulo}
+                            </Heading>
+                            <LineTopic className="mb-4 mt-0 mx-auto md:mx-0" />
+                            <BlocksRenderer
+                                blocks={{
+                                    link: ({ children, url }) => (
+                                        <a target="_new" href={url}>
+                                            {children}
+                                        </a>
+                                    ),
+                                }}
+                                content={footerData.attributes.paragrafo.descricao}
+                            />
+                        </div>
+                    )}
+                    {footerData.attributes.conteudo !== null && (
+                        <div className="mb-4">
+                            <Heading as="h3" size="3" className="uppercase font-[600]">
+                                {footerData.attributes.conteudo.titulo}
+                            </Heading>
+                            <LineTopic className="mb-4 mt-0 mx-auto md:mx-0" />
+                            {footerData.attributes.conteudo.links.map((link) => (
+                                <p key={link.id} className="mb-1">
+                                    <Link href={link.url} className="hover:underline">
+                                        {link.rotulo}
+                                    </Link>
+                                </p>
+                            ))}
+                        </div>
+                    )}
+                    {footerData.attributes.paginas !== null && (
+                        <div className="mb-4">
+                            <Heading as="h3" size="3" className="uppercase font-[600]">
+                                {footerData.attributes.paginas.titulo}
+                            </Heading>
+                            <LineTopic className="mb-4 mt-0 mx-auto md:mx-0" />
+                            {footerData.attributes.paginas.links.map((link) => (
+                                <p key={link.id} className="mb-1">
+                                    <Link href={link.url} className="hover:underline">
+                                        {link.rotulo}
+                                    </Link>
+                                </p>
+                            ))}
+                        </div>
+                    )}
+                    {footerData.attributes.contato !== null && (
+                        <div className="mb-md-0 mb-4">
+                            <Heading as="h3" size="3" className="uppercase font-[600]">
+                                {t('Contact')}
+                            </Heading>
+                            <LineTopic className="mb-4 mt-0 mx-auto md:mx-0" />
+                            {footerData.attributes.contato.endereco !== null && (
+                                <p className="mb-1">
+                                    <i className="bi bi-buildings"></i> {footerData.attributes.contato.endereco}
+                                </p>
+                            )}
+                            {footerData.attributes.contato.emailDeContato !== null && (
+                                <p className="mb-1">
+                                    <i className="bi bi-envelope"></i> {footerData.attributes.contato.emailDeContato}
+                                </p>
+                            )}
+                            {footerData.attributes.contato.telefone !== null && (
+                                <p className="mb-1">
+                                    <i className="bi bi-phone"></i> {footerData.attributes.contato.telefone}
+                                </p>
+                            )}
+                        </div>
+                    )}
+                </section>
+            )}
             <hr className="mb-4" />
-            <section className=" text-center py-3" style={{ backgroundColor: '#6351ce' }}>
-                <a
-                    className="btn btn-outline-light btn-floating m-1"
-                    href="https://www.linkedin.com/in/miguelbritobarbosa"
-                    role="button"
-                >
-                    <i className="bi bi-linkedin"></i>
-                </a>
-                <a
-                    className="btn btn-outline-light btn-floating m-1"
-                    href="https://github.com/MiguelBritoBarbosa"
-                    role="button"
-                >
-                    <i className="bi bi-github"></i>
-                </a>
-                <a
-                    className="btn btn-outline-light btn-floating m-1"
-                    href="https://www.instagram.com/itz_.preto/"
-                    role="button"
-                >
-                    <i className="bi bi-instagram"></i>
-                </a>
-                <a
-                    className="btn btn-outline-light btn-floating m-1"
-                    href="https://twitter.com/mbb_black"
-                    role="button"
-                >
-                    <i className="bi bi-twitter"></i>
-                </a>
-            </section>
-
-            {/* <hr className="mt-2" /> */}
-
-            <div className="text-center py-3" style={{ backgroundColor: '#bdbfc1' }}>
-                <i className="bi bi-c-circle"></i> 2023 Copyright:{' '}
-                <a className="" href="https://miguelbritobarbosa.com/">
+            {footerData !== null && footerData.attributes.redesSociais !== null && (
+                <section className="flex justify-center items-center gap-x-2 py-3 bg-[--accent-a9]">
+                    {footerData.attributes.redesSociais.map((redeSocial) => (
+                        <IconButton
+                            key={redeSocial.id}
+                            className="cursor-pointer text-lg hover:text-[--accent-surface] hover:bg-[--accent-12] transition dark:hover:text-[--violet-4]"
+                            variant="surface"
+                            color="gray"
+                            highContrast
+                            radius="small"
+                            size="3"
+                        >
+                            <a href={redeSocial.link} role="button">
+                                <i className={`bi bi-${redeSocial.rede}`}></i>
+                            </a>
+                        </IconButton>
+                    ))}
+                </section>
+            )}
+            <section className="text-center py-3 bg-gray-200 dark:bg-gray-800">
+                <i className="bi bi-c-circle"></i> {new Date().getFullYear()} Copyright:{' '}
+                <a className="hover:underline" href="https://miguelbritobarbosa.com/">
                     Miguel Brito Barbosa
                 </a>
-            </div>
+            </section>
         </ContainerFooter>
     );
 };

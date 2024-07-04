@@ -4,6 +4,9 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 20px;
     }
 
+    .radix-themes {
+    --default-font-family: var(--font-montserrat);
+    }
     :root, .light, .light-theme {
   --violet-1: #fbfbfe;
   --violet-2: #f7f7ff;
