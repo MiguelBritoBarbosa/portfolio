@@ -39,6 +39,7 @@ import { getPredominantColor } from '@/utils/getPredominantColor';
 import { API_ROOT } from '@/config/siteConfig';
 import { footerData } from '@/config/domain/footer/footer';
 import { getFooter } from '@/config/data/footer/getFooter';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
     return [{ locale: 'en' }, { locale: 'pt' }];
@@ -57,6 +58,8 @@ export default async function RootLayout({ children, params: { locale } }: Props
     } catch (error) {
         notFound();
     }
+
+    unstable_setRequestLocale(locale);
 
     const header: { data: headerData } | undefined = await getHeader();
     const predominantColor = await getPredominantColor(
