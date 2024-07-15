@@ -19,7 +19,8 @@ export default function StyledComponentsRegistry({ children }: { children: React
 
     return (
         <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-            <GlobalStyles>{children as React.ReactChild}</GlobalStyles>
+            <GlobalStyles />
+            {children as React.ReactChild}
         </StyleSheetManager>
     );
 }
