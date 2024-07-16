@@ -19,7 +19,6 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
     const locale = useLocale();
     const pathname = usePathname();
     const isHome = pathname === `/${locale}`;
-    console.log(`${API_ROOT}${headerData?.attributes.banner.data.attributes.url}`);
     return (
         <ContainerHeader className="container mx-auto max-w-full">
             <div className="flex flex-wrap justify-center">
