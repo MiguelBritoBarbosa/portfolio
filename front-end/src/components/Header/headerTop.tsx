@@ -17,13 +17,13 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
     const isHome = pathname === `/${locale}`;
     return (
         <HeaderTopContainer className="w-full flex justify-between items-center z-10 position-fixed px-4 bg-gray-200 dark:bg-gray-800">
-            <Heading color="violet">
-                {!isHome ? (
-                    <Link href="/">{headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}</Link>
-                ) : (
-                    <>{headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}</>
-                )}
-            </Heading>
+            {!isHome ? (
+                <Link href="/">{headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}</Link>
+            ) : (
+                <Heading color="violet">
+                    {headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}
+                </Heading>
+            )}
             <div className="flex gap-x-2">
                 <div className="flex items-center px-2 gap-x-2">
                     {headerData !== null ? (
