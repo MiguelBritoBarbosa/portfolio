@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
+import { Disclosure, DisclosureButton } from '@headlessui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { menuLinksData } from '@/config/domain/menu/menuLinks';
 
