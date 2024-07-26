@@ -12,11 +12,10 @@ interface footerProps {
 
 export const Footer = ({ footerData }: footerProps) => {
     const t = useTranslations('Footer');
-    console.log(footerData);
     return (
         <ContainerFooter className="text-center bg-gray-200 dark:bg-gray-800">
             {footerData !== null && (
-                <section className="grid md:grid-cols-2 lg:grid-cols-[2fr,1fr,1fr,2fr] gap-x-20 mx-auto sm:p-4 max-w-full md:text-start mt-5">
+                <section className="grid md:grid-cols-2 lg:grid-cols-[2fr,1fr,1fr,2fr] gap-x-20 mx-auto p-2 sm:p-4 max-w-full md:text-start mt-5">
                     {footerData.attributes.paragrafo !== null && (
                         <div className="mb-4">
                             <Heading as="h3" size="3" className="uppercase font-[600]">
