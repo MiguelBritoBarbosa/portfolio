@@ -7,30 +7,33 @@ import { rgbDataURL } from '@/utils/rgbDataUrl';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { fetchJson } from '@/utils/fetchJson';
 import { TecnologiasData } from '@/config/domain/tecnologias/tecnologias';
+import { Heading, Text } from '@radix-ui/themes';
+import { getTranslations } from 'next-intl/server';
+import { SVGContainer } from '../SVGContainer';
 
 interface ProjetosDestaqueProps {
     destaques: ProjetoData[];
 }
 
 export const ProjetosDestaque = async ({ destaques }: ProjetosDestaqueProps) => {
-    return (
-        <Container className="row p-3 d-flex justify-content-between rounded">
-            {destaques.map(async (destaque) => {
-                const url = `${API_ROOT}${destaque.attributes.cover.data.attributes.formats.small.url}`;
-                const width = destaque.attributes.cover.data.attributes.formats.small.width;
-                const height = destaque.attributes.cover.data.attributes.formats.small.height;
-                const description: any = destaque.attributes.descricao[0].children[0];
+    if (destaques) {
+        const t = await getTranslations('Sections.Highlights');
+        return (
+            <Container className="grid md:grid-cols-2 p-2 sm:p-4 gap-4 rounded bg-gray-200 dark:bg-gray-800">
+                {destaques.map(async (destaque) => {
+                    const url = `${API_ROOT}${destaque.attributes.cover.data.attributes.formats.small.url}`;
+                    const width = destaque.attributes.cover.data.attributes.formats.small.width;
+                    const height = destaque.attributes.cover.data.attributes.formats.small.height;
+                    const description: any = destaque.attributes.descricao[0].children[0];
 
-                const predominantColor = await getPredominantColor(url);
+                    const predominantColor = await getPredominantColor(url);
 
-                return (
-                    <div
-                        key={`projetoDestaque:${destaque.attributes.slug}`}
-                        className="d-flex col-12 col-lg-6 align-items-stretch"
-                    >
-                        <div className="container p-3 shadow rounded mt-2 mb-2 bg-white">
-                            <h3 className="text-center">{destaque.attributes.titulo}</h3>
-                            <div className="d-flex justify-content-center">
+                    return (
+                        <div key={destaque.id} className="grid p-2 sm:p-4 shadow rounded bg-white dark:bg-gray-950">
+                            <Heading as="h4" size="3" className="text-center hover:text-[--accent-a9] transition">
+                                <Link href={`/${destaque.attributes.slug}`}>{destaque.attributes.titulo}</Link>
+                            </Heading>
+                            <Link href={`/${destaque.attributes.slug}`}>
                                 <Image
                                     placeholder="blur"
                                     blurDataURL={rgbDataURL(
@@ -38,59 +41,79 @@ export const ProjetosDestaque = async ({ destaques }: ProjetosDestaqueProps) => 
                                         predominantColor[1],
                                         predominantColor[2],
                                     )}
-                                    className="img-thumbnail"
+                                    className="border-1 bg-gray-200 border-gray-200 dark:bg-gray-900 rounded p-1 hover:p-0 transition-all"
                                     src={url}
                                     alt={destaque.attributes.titulo}
                                     width={width}
                                     height={height}
                                 />
-                            </div>
+                            </Link>
                             <div className="mt-1 mb-3">
-                                <div className="d-block tw-text-justify">
-                                    <p className="m-0 tw-leading-6 ">
-                                        {description.text.split(' ').splice(0, 42).join(' ')}
-                                        {description.text.split(' ').length > 42 ? <>...</> : <></>}
-                                    </p>
-                                </div>
+                                <Text as="p">
+                                    {description.text.split(' ').splice(0, 42).join(' ')}
+                                    {description.text.split(' ').length > 42 ? <>...</> : <></>}
+                                </Text>
                                 <Link
-                                    className="text-decoration-underline ver-mais"
+                                    className="underline hover:text-[--accent-a9] transition"
                                     href={`/projetos/${destaque.attributes.slug}`}
                                 >
-                                    ver mais...
+                                    {t('see more')}
                                 </Link>
                             </div>
-                            <div className="mb-3">
-                                Autores:{' '}
+                            <Text as="p">
+                                {`${t('Authors')}: `}
                                 {destaque.attributes.autores.data.map((autor, index) => {
                                     return (
-                                        <span key={`${destaque.attributes.slug}autor:${autor.attributes.slug}${index}`}>
-                                            <Link href={`/autores/${autor.attributes.slug}`}>
-                                                {autor.attributes.nome}
+                                        <>
+                                            <Link
+                                                key={`${destaque.attributes.slug}autor:${autor.attributes.slug}${index}`}
+                                                href={`/autores/${autor.attributes.slug}`}
+                                            >
+                                                <Text color="violet" className="hover:text-[--accent-a12] transition">
+                                                    {autor.attributes.nome}
+                                                </Text>
                                             </Link>
                                             {index !== destaque.attributes.autores.data.length - 1 ? <> | </> : <></>}
-                                        </span>
+                                        </>
                                     );
                                 })}
-                            </div>
-                            <p>
-                                Âmbito: {destaque.attributes.tipoProjeto} | Visibilidade:{' '}
-                                {destaque.attributes.visibilidade}
-                            </p>
-                            <p>
+                            </Text>
+                            <Text as="p">
+                                {`${t('Scope')}:`} <Text color="violet">{destaque.attributes.tipoProjeto}</Text>
+                                {' | '}
+                                {`${t('Visibility')}:`} <Text color="violet">{destaque.attributes.visibilidade}</Text>
+                            </Text>
+                            <Text as="p">
                                 {destaque.attributes.repositorio !== null && (
-                                    <>Repositório: {destaque.attributes.repositorio} | </>
+                                    <Text>
+                                        {`${t('Repository')}: `}
+                                        <a
+                                            className="underline hover:text-[--accent-a9] transition"
+                                            href={destaque.attributes.link}
+                                            target=" _blank"
+                                        >
+                                            {destaque.attributes.repositorio}
+                                        </a>
+                                    </Text>
+                                )}
+                                {destaque.attributes.repositorio !== null && destaque.attributes.link !== null && (
+                                    <> | </>
                                 )}
                                 {destaque.attributes.link !== null && (
-                                    <>
+                                    <Text>
                                         Link:{' '}
-                                        <a href={destaque.attributes.link} target=" _blank">
-                                            {destaque.attributes.link}{' '}
+                                        <a
+                                            className="underline hover:text-[--accent-a9] transition"
+                                            href={destaque.attributes.link}
+                                            target=" _blank"
+                                        >
+                                            {destaque.attributes.link}
                                         </a>
-                                    </>
+                                    </Text>
                                 )}
-                            </p>
-                            <div className="d-flex gap-3">
-                                <span>Tecnologias: </span>
+                            </Text>
+                            <Text as="p" className="flex flex-wrap items-center gap-2">
+                                <Text>{`${t('Technologies')}: `}</Text>
                                 {destaque.attributes.tecnologias.data.map(async (tecnologia) => {
                                     const tecnologiaIcon: { data: TecnologiasData } = await fetchJson(
                                         `${API_URL}/tecnologias/${tecnologia.id}?populate=icon&`,
@@ -101,21 +124,30 @@ export const ProjetosDestaque = async ({ destaques }: ProjetosDestaqueProps) => 
                                             key={`destaque${destaque.id}tecnologia${tecnologia.id}`}
                                             href={`/tecnologias/${tecnologia.attributes.slug}`}
                                         >
-                                            <Image
-                                                className="img-fluid"
-                                                src={iconUrl}
-                                                alt={tecnologia.attributes.nome}
-                                                width={20}
-                                                height={20}
-                                            />
+                                            {tecnologiaIcon.data.attributes.icon.data.attributes.ext === '.svg' ? (
+                                                <SVGContainer
+                                                    className="w-8 h-8 hover:text-[--accent-a9] transition"
+                                                    svgUrl={iconUrl}
+                                                />
+                                            ) : (
+                                                <Image
+                                                    className="max-w-full h-auto"
+                                                    src={iconUrl}
+                                                    alt={tecnologia.attributes.nome}
+                                                    width={20}
+                                                    height={20}
+                                                />
+                                            )}
                                         </Link>
                                     );
                                 })}
-                            </div>
+                            </Text>
                         </div>
-                    </div>
-                );
-            })}
-        </Container>
-    );
+                    );
+                })}
+            </Container>
+        );
+    } else {
+        return <></>;
+    }
 };
