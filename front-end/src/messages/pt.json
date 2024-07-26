@@ -8,5 +8,25 @@
     },
     "Footer": {
         "Contact": "Contato"
+    },
+    "Pages": {
+        "Page not found!": "Página não encontrada",
+        "No sections found!": "Nenhuma seção encontrada!",
+        "No awards found!": "Nenhum prêmio encontrado!",
+        "Return to Home": "Retornar para Home"
+    },
+    "Sections": {
+        "Highlights": {
+            "See my profile": "Veja meu perfil",
+            "see more": "ver mais...",
+            "Authors": "Autores",
+            "Scope": "Âmbito",
+            "Visibility": "Visibilidade",
+            "Repository": "Repositório",
+            "Technologies": "Tecnologias"
+        },
+        "Awards": {
+            "See more": "Veja mais"
+        }
     }
 }

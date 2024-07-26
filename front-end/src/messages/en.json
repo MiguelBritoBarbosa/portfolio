@@ -8,5 +8,25 @@
     },
     "Footer": {
         "Contact": "Contact"
+    },
+    "Pages": {
+        "Page not found!": "Page not found!",
+        "No sections found!": "No sections found!",
+        "No awards found!": "No awards found!",
+        "Return to Home": "Return to Home"
+    },
+    "Sections": {
+        "Highlights": {
+            "See my profile": "See my profile",
+            "see more": "see more...",
+            "Authors": "Authors",
+            "Scope": "Scope",
+            "Visibility": "Visibility",
+            "Repository": "Repository",
+            "Technologies": "Technologies"
+        },
+        "Awards": {
+            "See more": "See more"
+        }
     }
 }
