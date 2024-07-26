@@ -9,7 +9,14 @@ const nextConfig = {
         styledComponents: true,
     },
     images: {
-        domains: ['localhost'],
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '1337',
+                pathname: '/uploads/**',
+            },
+        ],
     },
     reactStrictMode: false,
 };
