@@ -1,9 +1,10 @@
 import { PremioData } from '@/config/domain/premios/premios';
 import { PREMIOS_URL } from '@/config/siteConfig';
 import { fetchJson } from '@/utils/fetchJson';
+import { getLocale } from 'next-intl/server';
 
 export async function getPremio(slug: string | string[]): Promise<PremioData> {
-    const locale = 'pt-BR';
+    const locale = await getLocale();
     const url = `${PREMIOS_URL}&locale=${locale}&filters[slug][$eq]=${slug}`;
     const premio: PremioData = await fetchJson(url);
     return premio;
