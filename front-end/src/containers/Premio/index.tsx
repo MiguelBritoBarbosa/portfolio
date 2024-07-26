@@ -1,9 +1,9 @@
 import { PremioData } from '@/config/domain/premios/premios';
 import { Container } from './styles';
-import { Heading } from '@/components/Heading';
 import { PremioContainer } from '@/components/PremioContainer';
 import { API_ROOT } from '@/config/siteConfig';
 import { PremioDetails } from '@/components/PremioDetails';
+import { Heading } from '@radix-ui/themes';
 
 export interface PremioProps {
     premio: PremioData;

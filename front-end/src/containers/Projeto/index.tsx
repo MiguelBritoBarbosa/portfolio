@@ -1,9 +1,9 @@
 import { ProjetoData } from '@/config/domain/projetos/projetos';
 import { Container } from './styles';
-import { Heading } from '@/components/Heading';
 import { ProjetoContainer } from '@/components/ProjetoContainer';
 import { API_ROOT } from '@/config/siteConfig';
 import { ProjetoDetails } from '@/components/ProjetoDetails';
+import { Heading } from '@radix-ui/themes';
 
 export interface ProjetoProps {
     projeto: ProjetoData;

@@ -1,10 +1,10 @@
 import { AutorData } from '@/config/domain/autores/autores';
 import { Container } from './styles';
-import { Heading } from '@/components/Heading';
 import { API_ROOT } from '@/config/siteConfig';
 import { AutorContainer } from '@/components/AutorContainer';
 import { AutorDetails } from '@/components/AutorDetails';
 import { ProjetosCarrossel } from '@/components/ProjetosCarrossel';
+import { Heading } from '@radix-ui/themes';
 
 export interface AutorProps {
     autor: AutorData;
