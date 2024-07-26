@@ -4,7 +4,6 @@ import { ContainerHeader } from './styled';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { HeaderTop } from './headerTop';
-import { useLocale } from 'next-intl';
 import { Navbar } from '../Navbar';
 import { API_ROOT } from '@/config/siteConfig';
 import Image from 'next/image';
@@ -16,16 +15,16 @@ interface headerProps {
 }
 
 export const Header = ({ headerData, bannerColor }: headerProps) => {
-    const locale = useLocale();
     const pathname = usePathname();
-    const isHome = pathname === `/${locale}`;
+    const isHome = pathname === '/';
     return (
-        <ContainerHeader className="container mx-auto max-w-full">
+        <ContainerHeader className="header max-w-full">
             <div className="flex flex-wrap justify-center">
                 <HeaderTop headerData={headerData} />
                 {!isHome ? (
-                    <Link className="w-full mt-10" id="menu" href="/">
+                    <Link className="w-full mt-12" id="menu" href="/">
                         <Image
+                            className="w-full"
                             placeholder="blur"
                             blurDataURL={rgbDataURL(bannerColor[0], bannerColor[1], bannerColor[2])}
                             src={`${API_ROOT}${headerData?.attributes.banner.data.attributes.url}`}
@@ -36,7 +35,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
                     </Link>
                 ) : (
                     <Image
-                        className="w-full mt-10"
+                        className="w-full mt-12"
                         placeholder="blur"
                         blurDataURL={rgbDataURL(bannerColor[0], bannerColor[1], bannerColor[2])}
                         src={`${API_ROOT}${headerData?.attributes.banner.data.attributes.url}`}
