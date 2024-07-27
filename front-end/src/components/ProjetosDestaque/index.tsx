@@ -33,7 +33,7 @@ export const ProjetosDestaque = async ({ destaques }: ProjetosDestaqueProps) => 
                             <Heading as="h4" size="3" className="text-center hover:text-[--accent-a9] transition">
                                 <Link href={`/${destaque.attributes.slug}`}>{destaque.attributes.titulo}</Link>
                             </Heading>
-                            <Link href={`/${destaque.attributes.slug}`}>
+                            <Link className="flex justify-center items-center" href={`/${destaque.attributes.slug}`}>
                                 <Image
                                     placeholder="blur"
                                     blurDataURL={rgbDataURL(
