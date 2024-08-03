@@ -49,6 +49,7 @@ export const PremiosSlider = ({ premios, predominantColors, sectionData }: Premi
             <div className="py-8 backdrop-blur-md">
                 <Heading
                     as="h2"
+                    size={{ initial: '6', md: '7', lg: '8' }}
                     color="violet"
                     className="mb-4 text-center bg-gray-200 dark:bg-gray-800 rounded mx-auto w-min p-1"
                 >

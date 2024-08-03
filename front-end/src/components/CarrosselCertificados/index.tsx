@@ -22,7 +22,7 @@ interface CarrosselCertificadosProps {
 export const CarrosselCertificados = ({ certificados, sectionData, predominantColors }: CarrosselCertificadosProps) => {
     return (
         <Container className="py-8">
-            <Heading as="h2" className="mb-4 text-center">
+            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', md: '7', lg: '8' }}>
                 {sectionData.metadados.nome}
             </Heading>
             <Swiper
