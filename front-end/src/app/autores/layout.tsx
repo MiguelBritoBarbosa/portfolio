@@ -1,9 +1,13 @@
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-    title: 'Autores',
-    description: 'Autores de projetos',
-};
+export async function generateMetadata() {
+    const t = await getTranslations('Pages.Authors');
+
+    return {
+        title: t('Authors'),
+        description: t('Authors who have participated in projects with me'),
+    };
+}
 
 export default function AutoresLayout({
     children, // will be a page or nested layout
