@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_ultimas_postagens",
+  "info": {
+    "displayName": "Últimas Postagens",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metadados": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.metadados-da-secao"
+    }
+  }
+}
