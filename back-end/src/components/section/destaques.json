@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "Metadados": {
+    "metadados": {
       "type": "component",
       "repeatable": false,
       "component": "section.metadados-da-secao",
@@ -25,6 +25,11 @@
     "destaquesTitulo": {
       "type": "string",
       "default": "Destaques"
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projeto.projeto"
     }
   }
 }

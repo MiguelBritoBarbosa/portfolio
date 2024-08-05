@@ -26,6 +26,15 @@
       "relation": "manyToOne",
       "target": "api::autor.autor",
       "inversedBy": "curriculos"
+    },
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "nome",
+      "required": true
     }
   }
 }

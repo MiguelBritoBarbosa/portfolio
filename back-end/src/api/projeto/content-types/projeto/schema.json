@@ -1,4 +1,4 @@
- {
+{
   "kind": "collectionType",
   "collectionName": "projetos",
   "info": {
@@ -121,7 +121,7 @@
       "target": "api::tecnologia.tecnologia",
       "inversedBy": "projetos"
     },
-    "bancoDeDados": {
+    "bancosDeDados": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::banco-de-dados.banco-de-dados",

@@ -71,9 +71,9 @@
       "target": "api::experiencia.experiencia",
       "mappedBy": "autor"
     },
-    "post": {
+    "posts": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::post.post",
       "inversedBy": "autores"
     }

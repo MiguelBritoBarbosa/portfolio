@@ -57,9 +57,9 @@
     },
     "autores": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::autor.autor",
-      "mappedBy": "post"
+      "mappedBy": "posts"
     },
     "slug": {
       "pluginOptions": {

@@ -7,7 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "Metadados": {
+    "metadados": {
       "type": "component",
       "repeatable": false,
       "component": "section.metadados-da-secao",

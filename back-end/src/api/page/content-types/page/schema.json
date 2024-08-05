@@ -43,7 +43,10 @@
       "type": "dynamiczone",
       "components": [
         "section.destaques",
-        "section.premios-slider"
+        "section.premios-slider",
+        "section.certificados-carrossel",
+        "section.projetos-carrossel",
+        "section.ultimas-postagens"
       ],
       "required": true,
       "min": 1
