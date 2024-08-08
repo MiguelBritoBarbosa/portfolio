@@ -14,5 +14,5 @@ export default function AutoresLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <section>{children}</section>;
+    return children;
 }

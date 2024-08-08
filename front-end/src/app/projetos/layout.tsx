@@ -13,5 +13,5 @@ export default function ProjetosLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <section>{children}</section>;
+    return children;
 }

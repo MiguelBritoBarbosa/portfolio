@@ -14,5 +14,5 @@ export default function CertificadosLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <section>{children}</section>;
+    return children;
 }
