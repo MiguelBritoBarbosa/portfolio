@@ -9,7 +9,6 @@ export interface PremioData {
     attributes: {
         titulo: string;
         descricao: RootNode[];
-        credencial: string;
         slug: string;
         createdAt: string;
         updatedAt: string;

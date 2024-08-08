@@ -3,7 +3,7 @@ import { Container } from './styles';
 import { API_ROOT } from '@/config/siteConfig';
 import { AutorContainer } from '@/components/AutorContainer';
 import { AutorDetails } from '@/components/AutorDetails';
-import { ProjetosCarrossel } from '@/components/ProjetosCarrossel';
+// import { ProjetosCarrossel } from '@/components/ProjetosCarrossel';
 import { Heading } from '@radix-ui/themes';
 
 export interface AutorProps {
@@ -28,7 +28,7 @@ export default function Autor({ autor }: AutorProps) {
                 site={autor.attributes.site}
             />
             <hr />
-            <ProjetosCarrossel projetos={autor.attributes.projetos.data} />
+            {/* <ProjetosCarrossel projetos={autor.attributes.projetos.data} /> */}
         </Container>
     );
 }

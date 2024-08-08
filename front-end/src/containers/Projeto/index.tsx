@@ -19,7 +19,7 @@ export default function Projeto({ projeto }: ProjetoProps) {
                 url={`${API_ROOT}${projeto.attributes.cover.data.attributes.url}`}
                 width={projeto.attributes.cover.data.attributes.formats.medium.width}
                 height={projeto.attributes.cover.data.attributes.formats.medium.height}
-                destaque={projeto.attributes.Destaque}
+                destaque={projeto.attributes.destaque}
             />
             <hr />
             <ProjetoDetails

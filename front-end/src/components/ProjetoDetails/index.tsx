@@ -43,7 +43,7 @@ export const ProjetoDetails = ({
             <p className="fs-5 text-white font-bold">
                 Link:{' '}
                 {link !== null ? (
-                    <a className="purple-color" href={link} target="_blank">
+                    <a className="purple-color" href={link} target="_new">
                         {link}
                     </a>
                 ) : (
@@ -55,7 +55,7 @@ export const ProjetoDetails = ({
             <p className="fs-5 text-white font-bold">
                 Link do repositório:{' '}
                 {repositorio !== null ? (
-                    <a className="purple-color tw-break-words" href={repositorio} target="_blank">
+                    <a className="purple-color tw-break-words" href={repositorio} target="_new">
                         {repositorio}
                     </a>
                 ) : (

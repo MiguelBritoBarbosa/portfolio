@@ -22,20 +22,26 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
     const t = useTranslations('Sections.LastPosts');
     return (
         <Container className="py-8">
-            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', md: '7', lg: '8' }}>
+            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', sm: '7', md: '8' }}>
                 {sectionData.metadados.nome}
             </Heading>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={20}
                 breakpoints={{
+                    420: {
+                        slidesPerView: 1.2,
+                    },
                     640: {
                         slidesPerView: 2,
                     },
                     768: {
-                        slidesPerView: 3,
+                        slidesPerView: 2.3,
                     },
                     1024: {
+                        slidesPerView: 3.3,
+                    },
+                    1280: {
                         slidesPerView: 4,
                     },
                 }}
@@ -59,7 +65,11 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
                     return (
                         <SwiperSlide key={`post-${post.attributes.slug}`}>
                             <div className="grid gap-1 items-start">
-                                <Link className="block aspect-video" href={`/posts/${post.attributes.slug}`}>
+                                <Link
+                                    className="block aspect-video"
+                                    href={`/posts/${post.attributes.slug}`}
+                                    title={post.attributes.titulo}
+                                >
                                     <Image
                                         placeholder="blur"
                                         blurDataURL={rgbDataURL(
@@ -87,6 +97,7 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
                                                         key={`last-posts-authors-${autor.attributes.slug}`}
                                                         color="violet"
                                                         className="hover:text-[--accent-a12] transition"
+                                                        title={autor.attributes.nome}
                                                     >
                                                         <Link href={`/autores/${autor.attributes.slug}`}>
                                                             {autor.attributes.nome}{' '}
@@ -96,7 +107,15 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
                                             })}
                                         </Text>
                                     </div>
-                                    <Heading as="h3">{post.attributes.titulo}</Heading>
+                                    <Heading as="h3">
+                                        <Link
+                                            className="hover:text-[--accent-a9] transition"
+                                            href={`/posts/${post.attributes.slug}`}
+                                            title={post.attributes.titulo}
+                                        >
+                                            {post.attributes.titulo}
+                                        </Link>
+                                    </Heading>
                                     <Text as="p" size={'3'}>
                                         {content}
                                     </Text>

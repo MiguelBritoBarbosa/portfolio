@@ -14,7 +14,7 @@ export const AutorDetails = ({ gitHub, linkedin, site }: AutorDetailsProps) => {
                 <div className="mb-4 text-brek">
                     <span>GitHub: </span>
                     {gitHub !== null ? (
-                        <a className="purple-color" href={gitHub} target="_blank">
+                        <a className="purple-color" href={gitHub} target="_new">
                             {gitHub}
                         </a>
                     ) : (

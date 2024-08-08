@@ -16,5 +16,6 @@ export interface CertificadoData {
         locale: string;
         autor: { data: AutorData };
         documento: StrapiFiles;
+        cover: StrapiFiles;
     };
 }

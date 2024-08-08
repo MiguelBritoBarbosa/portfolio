@@ -1,6 +1,6 @@
 import { PremioData } from '@/config/domain/premios/premios';
 import { Container } from './styles';
-import { PremioContainer } from '@/components/PremioContainer';
+import { CardPremio } from '@/components/CardPremio_old';
 import { API_ROOT } from '@/config/siteConfig';
 import { PremioDetails } from '@/components/PremioDetails';
 import { Heading } from '@radix-ui/themes';
@@ -13,7 +13,7 @@ export default function Premio({ premio }: PremioProps) {
     return (
         <Container id={premio.attributes.slug} className="container mt-3 p-5">
             <Heading>{premio.attributes.titulo}</Heading>
-            <PremioContainer
+            <CardPremio
                 content={premio.attributes.descricao}
                 titulo={premio.attributes.titulo}
                 url={`${API_ROOT}${premio.attributes.cover.data.attributes.url}`}

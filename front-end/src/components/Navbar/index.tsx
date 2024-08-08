@@ -32,7 +32,8 @@ export const Navbar = ({ links }: navbarTopProps) => {
                                                 <Link
                                                     key={link.id}
                                                     href={link.url}
-                                                    className="hover:bg-[#3700cdc3] text-violet-300 dark:text-[#3700cdc3] dark:hover:bg-violet-300 rounded-md px-3 py-2 font-bold"
+                                                    className="hover:bg-[#3700cdc3] text-violet-300 dark:text-[#3700cdc3] dark:hover:bg-violet-300 rounded-md px-3 py-2 font-bold transition"
+                                                    title={link.rotulo}
                                                 >
                                                     {link.rotulo}
                                                 </Link>
@@ -57,6 +58,7 @@ export const Navbar = ({ links }: navbarTopProps) => {
                                         key={link.id}
                                         href={link.url}
                                         className="hover:bg-[#3700cdc3] text-[#b6a2ff] dark:text-[#3700cdc3] dark:hover:bg-[#b6a2ff] rounded-md px-3 py-2 font-bold"
+                                        title={link.rotulo}
                                     >
                                         {link.rotulo}
                                     </Link>

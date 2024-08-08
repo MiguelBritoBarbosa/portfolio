@@ -1,4 +1,4 @@
-import { formatDate } from '@/utils/formatDate';
+import { FormatDate } from '@/utils/formatDate';
 import { Container } from './styled';
 
 export interface ProjetoDateProps {
@@ -6,5 +6,5 @@ export interface ProjetoDateProps {
 }
 
 export const DateFormat = ({ date }: ProjetoDateProps) => {
-    return <Container className="">{formatDate(date)}</Container>;
+    return <Container className="">{FormatDate(date)}</Container>;
 };

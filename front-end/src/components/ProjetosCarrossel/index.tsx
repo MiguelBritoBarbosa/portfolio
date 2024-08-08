@@ -16,10 +16,10 @@ interface ProjetosCarrosselProps {
     predominantColors: [number[]];
 }
 
-export const ProjetosCarrossel = async ({ projetos, sectionData, predominantColors }: ProjetosCarrosselProps) => {
+export const ProjetosCarrossel = ({ projetos, sectionData, predominantColors }: ProjetosCarrosselProps) => {
     return (
         <Container className="py-8">
-            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', md: '7', lg: '8' }}>
+            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', sm: '7', md: '8' }}>
                 {sectionData.metadados.nome}
             </Heading>
             <Swiper
@@ -50,16 +50,17 @@ export const ProjetosCarrossel = async ({ projetos, sectionData, predominantColo
                 className="ProjetosCarrosselSwiper bg-gray-200 dark:bg-gray-800 !py-10"
             >
                 {projetos.map((projeto, index) => {
-                    const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats.thumbnail.url}`;
-                    const width = projeto.attributes.cover.data.attributes.formats.thumbnail.width;
-                    const height = projeto.attributes.cover.data.attributes.formats.thumbnail.height;
+                    const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats.small.url}`;
+                    const width = projeto.attributes.cover.data.attributes.formats.small.width;
+                    const height = projeto.attributes.cover.data.attributes.formats.small.height;
                     const predominantColor: number[] = predominantColors[index];
                     return (
-                        <SwiperSlide key={`projeto:${projeto.attributes.slug}`}>
+                        <SwiperSlide key={`projeto-${projeto.attributes.slug}`}>
                             <div className="grid gap-3 items-start p-2 sm:p-3 rounded bg-white dark:bg-gray-950">
                                 <Link
                                     className="flex justify-center items-center"
                                     href={`/projetos/${projeto.attributes.slug}`}
+                                    title={projeto.attributes.titulo}
                                 >
                                     <Image
                                         placeholder="blur"
@@ -68,14 +69,22 @@ export const ProjetosCarrossel = async ({ projetos, sectionData, predominantColo
                                             predominantColor[1],
                                             predominantColor[2],
                                         )}
-                                        className="img-fluid img-thumbnail"
+                                        className="border-1 bg-gray-200 border-gray-200 dark:bg-gray-900 rounded p-1 hover:p-0 transition-all"
                                         src={url}
                                         alt={projeto.attributes.titulo}
                                         width={width}
                                         height={height}
                                     />
                                 </Link>
-                                <h3 className="text-center">{projeto.attributes.titulo}</h3>
+                                <Heading as="h3" className="text-center" size={'4'}>
+                                    <Link
+                                        className="hover:text-[--accent-a9] transition"
+                                        href={`/projetos/${projeto.attributes.slug}`}
+                                        title={projeto.attributes.titulo}
+                                    >
+                                        {projeto.attributes.titulo}
+                                    </Link>
+                                </Heading>
                                 {projeto.attributes.autores !== undefined ? (
                                     <div className="mb-3">
                                         Autores:{' '}

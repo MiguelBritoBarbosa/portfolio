@@ -6,13 +6,14 @@ export type curriculosID = number;
 export interface CurriculosData {
     id: curriculosID;
     attributes: {
+        nome: string;
         createdAt: string;
         updatedAt: string;
         publishedAt: string;
         documento: StrapiFiles;
 
         slug: string;
-        autores: { data: AutorData };
+        autor: { data: AutorData };
     };
 }
 

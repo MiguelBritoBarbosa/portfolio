@@ -22,7 +22,7 @@ interface CarrosselCertificadosProps {
 export const CarrosselCertificados = ({ certificados, sectionData, predominantColors }: CarrosselCertificadosProps) => {
     return (
         <Container className="py-8">
-            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', md: '7', lg: '8' }}>
+            <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', sm: '7', md: '8' }}>
                 {sectionData.metadados.nome}
             </Heading>
             <Swiper
@@ -53,13 +53,19 @@ export const CarrosselCertificados = ({ certificados, sectionData, predominantCo
                 className="certificadosCarouselSwiper bg-gray-200 dark:bg-gray-800"
             >
                 {certificados.map((certificado: CertificadoData, index) => {
-                    const url = `${API_ROOT}${certificado.attributes.documento.data.attributes.formats.small.url}`;
-                    const width = certificado.attributes.documento.data.attributes.formats.small.width;
-                    const height = certificado.attributes.documento.data.attributes.formats.small.height;
+                    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.small.url}`;
+                    const width = certificado.attributes.cover.data.attributes.formats.small.width;
+                    const height = certificado.attributes.cover.data.attributes.formats.small.height;
                     const predominantColor: number[] = predominantColors[index];
                     return (
-                        <SwiperSlide key={certificado.attributes.slug} className="p-2 flex justify-center items-center">
-                            <Link href={`/certificados/${certificado.attributes.slug}`}>
+                        <SwiperSlide
+                            key={certificado.attributes.slug}
+                            className="p-2 hover:p-0 flex justify-center items-center !transition-all"
+                        >
+                            <Link
+                                title={certificado.attributes.titulo}
+                                href={`/certificados/${certificado.attributes.slug}`}
+                            >
                                 <Image
                                     className="shadow"
                                     src={url}

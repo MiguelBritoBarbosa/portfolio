@@ -12,21 +12,57 @@
     "Pages": {
         "Page not found!": "Page not found!",
         "No sections found!": "No sections found!",
+        "No highlight projects found!": "No highlight projects found!",
+        "Highlight author not found!": "Highlight author not found!",
         "No awards found!": "No awards found!",
-        "Return to Home": "Return to Home"
+        "No certificates found!": "No certificates found!",
+        "No projects found!": "No projects found!",
+        "No posts found!": "No posts found!",
+        "Return to Home": "Return to Home",
+        "Projects": {
+            "Projects": "Projects",
+            "No projects found!": "No projects found!",
+            "Projects I participated in": "Projects I participated in"
+        },
+        "Awards": {
+            "Awards": "Awards",
+            "No Awards found!": "No Awards found!",
+            "Awards I have received throughout my career": "Awards I have received throughout my career"
+        },
+        "Certificates": {
+            "Certificates": "Certificates",
+            "No Certificates found!": "No Certificates found!",
+            "Certificates I have received": "Certificates I have received",
+            "Document": "Document",
+            "Download the certificate": "Download the certificate",
+            "Credential": "Credential",
+            "Link to credential": "Link to credential",
+            "Author": "Author"
+        },
+        "Authors": {
+            "Authors": "Authors",
+            "No authors found!": "No authors found!",
+            "Authors who have participated in projects with me": "Authors who have participated in projects with me"
+        }
     },
     "Sections": {
         "Highlights": {
             "See my profile": "See my profile",
             "see more": "see more...",
+            "see more about": "see more about",
+            "repository": "repository",
             "Authors": "Authors",
             "Scope": "Scope",
             "Visibility": "Visibility",
             "Repository": "Repository",
-            "Technologies": "Technologies"
+            "Technologies": "Technologies",
+            "Database": "Database"
         },
         "Awards": {
             "See more": "See more"
+        },
+        "LastPosts": {
+            "By": "By:"
         }
     }
 }

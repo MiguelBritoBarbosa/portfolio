@@ -24,7 +24,7 @@ export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetai
                 <div className="mb-4 text-break">
                     <span>Credencial: </span>
                     {credencial !== null ? (
-                        <a className="purple-color" href={credencial} target="_blank">
+                        <a className="purple-color" href={credencial} target="_new">
                             {credencial}
                         </a>
                     ) : (

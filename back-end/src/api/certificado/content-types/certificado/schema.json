@@ -37,12 +37,9 @@
     "documento": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ],
       "pluginOptions": {
         "i18n": {
@@ -74,17 +71,17 @@
       "target": "api::autor.autor"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     }
   }
 }

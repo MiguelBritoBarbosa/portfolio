@@ -2,6 +2,7 @@ import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 import { AutorData } from '../autores/autores';
 import { StrapiFiles } from '../StrapiFiles/strapifiles';
 import { TecnologiasData } from '../tecnologias/tecnologias';
+import { bancosDeDadosData } from '../bancos de dados/bancosDeDados';
 
 export type projetoID = number;
 
@@ -15,7 +16,7 @@ export interface ProjetoData {
         updatedAt: string;
         publishedAt: string;
         locale: string;
-        Destaque: boolean;
+        destaque: boolean;
         slug: string;
         link: string;
         repositorio: string;
@@ -23,6 +24,7 @@ export interface ProjetoData {
         cover: StrapiFiles;
         autores: { data: AutorData[] };
         tecnologias: { data: TecnologiasData[] };
+        bancosDeDados: { data: bancosDeDadosData[] };
     };
 }
 

@@ -19,18 +19,18 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
     return (
         <HeaderTopContainer className="w-full h-12 flex justify-between items-center z-10 fixed top-0 px-4 bg-gray-200 dark:bg-gray-800">
             {!isHome ? (
-                <Link href="/" className="leading-none">
+                <Link href="/" className="leading-none" title="Home">
                     <Text
                         className="leading-none"
                         color="violet"
-                        size={{ initial: '3', sm: '4', md: '5', lg: '6' }}
+                        size={{ initial: '3', xs: '4', sm: '5', md: '6' }}
                         weight="bold"
                     >
-                        {headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}{' '}
+                        {headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}
                     </Text>
                 </Link>
             ) : (
-                <Heading className="leading-none" color="violet" size={{ initial: '3', sm: '4', md: '5', lg: '6' }}>
+                <Heading className="leading-none" color="violet" size={{ initial: '3', xs: '4', sm: '5', md: '6' }}>
                     {headerData !== null ? headerData.attributes.menuFixo.titulo : 'Sem Titulo'}
                 </Heading>
             )}
@@ -43,10 +43,11 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                                     className="p-2 h-full transition hover:bg-[--accent-a4]"
                                     key={link.id}
                                     href={link.url}
+                                    title={link.rotulo}
                                 >
                                     <Text
                                         color="violet"
-                                        size={{ initial: '1', sm: '2', md: '3', lg: '4' }}
+                                        size={{ initial: '1', xs: '2', sm: '3', md: '4' }}
                                         weight="bold"
                                     >
                                         {link.rotulo}
@@ -60,10 +61,18 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                 </div>
                 <Tabs.Root defaultValue={locale}>
                     <Tabs.List size={{ initial: '1', sm: '2' }}>
-                        <Tabs.Trigger className="cursor-pointer" value="pt" onClick={() => setUserLocale('pt')}>
+                        <Tabs.Trigger
+                            className="cursor-pointer btn-transition"
+                            value="pt"
+                            onClick={() => setUserLocale('pt')}
+                        >
                             PT
                         </Tabs.Trigger>
-                        <Tabs.Trigger className="cursor-pointer" value="en" onClick={() => setUserLocale('en')}>
+                        <Tabs.Trigger
+                            className="cursor-pointer btn-transition"
+                            value="en"
+                            onClick={() => setUserLocale('en')}
+                        >
                             EN
                         </Tabs.Trigger>
                     </Tabs.List>

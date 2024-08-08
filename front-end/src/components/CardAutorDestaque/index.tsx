@@ -5,7 +5,7 @@ import { AutorData } from '@/config/domain/autores/autores';
 import { API_ROOT } from '@/config/siteConfig';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
 import { getPredominantColor } from '@/utils/getPredominantColor';
-import { Button, Text } from '@radix-ui/themes';
+import { Button, Heading, Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 
 interface CardAutorDestaqueProps {
@@ -17,7 +17,10 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
     let url;
     let width;
     let height;
-    if (autorDestaque.attributes.foto.data.attributes.formats.medium !== undefined) {
+    if (
+        autorDestaque.attributes.foto.data.attributes.formats !== null &&
+        autorDestaque.attributes.foto.data.attributes.formats.medium !== undefined
+    ) {
         url = `${API_ROOT}${autorDestaque.attributes.foto.data.attributes.formats.medium.url}`;
         width = autorDestaque.attributes.foto.data.attributes.formats.medium.width;
         height = autorDestaque.attributes.foto.data.attributes.formats.medium.height;
@@ -33,29 +36,35 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
     const predominantColor = await getPredominantColor(url);
 
     return (
-        <Container className="flex flex-col rounded break-words border bg-gray-200 dark:bg-gray-800 border-1 border-gray-300">
-            <Link href={`/autores/${autorDestaque.attributes.slug}`}>
+        <Container className="grid rounded overflow-hidden border bg-gray-200 dark:bg-gray-800 border-1 border-gray-400 justify-self-center">
+            <Link title={autorDestaque.attributes.nome} href={`/autores/${autorDestaque.attributes.slug}`}>
                 <Image
                     placeholder="blur"
                     blurDataURL={rgbDataURL(predominantColor[0], predominantColor[1], predominantColor[2])}
-                    className="rounded-t max-w-full h-auto"
                     src={url}
                     alt={autorDestaque.attributes.nome}
                     width={width}
                     height={height}
                 />
             </Link>
-
-            <div className="flex-auto p-4 md:p-6">
-                <h4 className="mb-3">{autorDestaque.attributes.nome}</h4>
-                <div className="mb-3">
-                    <Text as="p">
-                        {description.text.split(' ').splice(0, 24).join(' ')}
-                        {description.text.split(' ').length > 24 ? <>...</> : <></>}
-                    </Text>
-                </div>
-                <Button color="violet">
-                    <Link href={`/autores/${autorDestaque.attributes.slug}`}>{t('See my profile')}</Link>
+            <div className="p-4 md:p-6">
+                <Heading as="h3" size={'4'} className="mb-3">
+                    <Link
+                        className="hover:text-[--accent-a9] transition"
+                        href={`/autores/${autorDestaque.attributes.slug}`}
+                        title={autorDestaque.attributes.nome}
+                    >
+                        {autorDestaque.attributes.nome}
+                    </Link>
+                </Heading>
+                <Text as="p" className="mb-3">
+                    {description.text.split(' ').splice(0, 24).join(' ')}
+                    {description.text.split(' ').length > 24 ? <>...</> : <></>}
+                </Text>
+                <Button color="violet" className="transition">
+                    <Link title={t('See my profile')} href={`/autores/${autorDestaque.attributes.slug}`}>
+                        {t('See my profile')}
+                    </Link>
                 </Button>
             </div>
         </Container>

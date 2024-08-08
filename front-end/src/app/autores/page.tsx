@@ -14,7 +14,7 @@ export default async function AutoresPage() {
     }
     return (
         <div className="container mx-auto">
-            <Heading className="text-center mb-2" size={{ initial: '6', md: '7', lg: '8' }}>
+            <Heading className="text-center mb-2" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('No authors found!')}
             </Heading>
         </div>

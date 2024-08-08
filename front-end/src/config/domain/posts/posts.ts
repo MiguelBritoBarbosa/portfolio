@@ -4,7 +4,7 @@ import { StrapiFiles } from '../StrapiFiles/strapifiles';
 
 export type postsID = number;
 
-export interface PostsData {
+export interface PostData {
     id: postsID;
     attributes: {
         titulo: string;
@@ -16,6 +16,6 @@ export interface PostsData {
         publishedAt: string;
         locale: string;
         thumbnail: StrapiFiles;
-        autores: { data: AutorData };
+        autores: { data: AutorData[] };
     };
 }

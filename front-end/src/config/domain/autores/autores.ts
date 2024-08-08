@@ -17,6 +17,7 @@ export interface AutorData {
         createdAt: string;
         updatedAt: string;
         publishedAt: string;
+        locale: string;
         slug: string;
     };
 }

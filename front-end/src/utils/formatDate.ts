@@ -1,6 +1,15 @@
-export const formatDate = (date: string): string => {
+import { useLocale } from 'next-intl';
+
+export const FormatDate = (date: string): string => {
+    const locale = useLocale();
     const dateObj = new Date(date);
-    return dateObj.toLocaleDateString('pt-BR', {
-        timeZone: 'America/Sao_Paulo',
-    });
+    if (locale === 'pt') {
+        return dateObj.toLocaleDateString('pt-BR', {
+            timeZone: 'America/Sao_Paulo',
+        });
+    } else {
+        return dateObj.toLocaleDateString('en', {
+            timeZone: 'America/Sao_Paulo',
+        });
+    }
 };

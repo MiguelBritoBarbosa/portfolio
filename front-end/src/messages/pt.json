@@ -12,21 +12,57 @@
     "Pages": {
         "Page not found!": "Página não encontrada",
         "No sections found!": "Nenhuma seção encontrada!",
+        "No highlight projects found!": "Nenhum projeto destaque encontrado!",
+        "Highlight author not found!": "Autor destaque não encontrado!",
         "No awards found!": "Nenhum prêmio encontrado!",
-        "Return to Home": "Retornar para Home"
+        "No certificates found!": "Nenhum certificado encontrado!",
+        "No projects found!": "Nenhum projeto encontrado!",
+        "No posts found!": "Nenhum post encontrado!",
+        "Return to Home": "Retornar para Home",
+        "Projects": {
+            "Projects": "Projetos",
+            "No projects found!": "Nenhum projeto encontrado!",
+            "Projects I participated in": "Projetos que participei"
+        },
+        "Awards" : {
+            "Awards": "Prêmios",
+            "No Awards found!": "Nenhum prêmio encontrado!",
+            "Awards I have received throughout my career": "Prêmios que recebi ao longo da carreira"
+        },
+        "Certificates": {
+            "Certificates": "Certificados",
+            "No Certificates found!": "Nenhum certificado encontrado!",
+            "Certificates I have received": "Certificados que recebi",
+            "Document": "Documento",
+            "Download the certificate": "Faça o download do certificado",
+            "Credential": "Credencial",
+            "Link to credential": "Link para credencial",
+            "Author": "Autor"
+        },
+        "Authors": {
+            "Authors": "Autores",
+            "No authors found!": "Nenhum autor encontrado!",
+            "Authors who have participated in projects with me": "Autores que participaram de projetos comigo"
+        }
     },
     "Sections": {
         "Highlights": {
             "See my profile": "Veja meu perfil",
             "see more": "ver mais...",
+            "see more about": "veja mais sobre",
+            "repository": "repositório",
             "Authors": "Autores",
             "Scope": "Âmbito",
             "Visibility": "Visibilidade",
             "Repository": "Repositório",
-            "Technologies": "Tecnologias"
+            "Technologies": "Tecnologias",
+            "Database": "Banco de Dados"
         },
         "Awards": {
             "See more": "Veja mais"
+        },
+        "LastPosts": {
+            "By": "Por:"
         }
     }
 }

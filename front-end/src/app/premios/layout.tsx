@@ -1,9 +1,13 @@
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-    title: 'Prêmios',
-    description: 'Reconhecimentos que recebi',
-};
+export async function generateMetadata() {
+    const t = await getTranslations('Pages.Awards');
+
+    return {
+        title: t('Awards'),
+        description: t('Awards I have received throughout my career'),
+    };
+}
 
 export default function PremiosLayout({
     children, // will be a page or nested layout
