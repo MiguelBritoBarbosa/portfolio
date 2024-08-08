@@ -31,7 +31,7 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
             <Link
                 title={destaque.attributes.titulo}
                 className="flex justify-center items-center"
-                href={`/${destaque.attributes.slug}`}
+                href={`projetos/${destaque.attributes.slug}`}
             >
                 <Image
                     placeholder="blur"
