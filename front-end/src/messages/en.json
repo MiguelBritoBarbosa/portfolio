@@ -43,6 +43,10 @@
             "Authors": "Authors",
             "No authors found!": "No authors found!",
             "Authors who have participated in projects with me": "Authors who have participated in projects with me"
+        },
+        "Blog": {
+            "My personal blog": "My personal blog",
+            "No posts found": "No posts found"
         }
     },
     "Sections": {
