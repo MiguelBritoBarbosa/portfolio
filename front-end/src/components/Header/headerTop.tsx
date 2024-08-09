@@ -1,4 +1,3 @@
-'use client';
 import { headerData } from '@/config/domain/header/header';
 import { HeaderTopContainer } from './styled';
 import Link from 'next/link';
@@ -64,14 +63,42 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                         <Tabs.Trigger
                             className="cursor-pointer btn-transition"
                             value="pt"
-                            onClick={() => setUserLocale('pt')}
+                            onClick={() => {
+                                setUserLocale('pt').then(() => {
+                                    const currentPath = window.location.pathname;
+                                    const pathSegments = currentPath.split('/').filter(Boolean);
+
+                                    if (pathSegments.length > 1) {
+                                        const slug = pathSegments[pathSegments.length - 1];
+                                        if (slug.endsWith('-en')) {
+                                            const newSlug = slug.replace('-en', '');
+                                            const newPath = currentPath.replace(slug, newSlug);
+                                            window.location.pathname = newPath;
+                                        }
+                                    }
+                                });
+                            }}
                         >
                             PT
                         </Tabs.Trigger>
                         <Tabs.Trigger
                             className="cursor-pointer btn-transition"
                             value="en"
-                            onClick={() => setUserLocale('en')}
+                            onClick={() => {
+                                setUserLocale('en').then(() => {
+                                    const currentPath = window.location.pathname;
+                                    const pathSegments = currentPath.split('/').filter(Boolean);
+
+                                    if (pathSegments.length > 1) {
+                                        const slug = pathSegments[pathSegments.length - 1];
+                                        if (!slug.endsWith('-en')) {
+                                            const newSlug = `${slug}-en`;
+                                            const newPath = currentPath.replace(slug, newSlug);
+                                            window.location.pathname = newPath;
+                                        }
+                                    }
+                                });
+                            }}
                         >
                             EN
                         </Tabs.Trigger>
