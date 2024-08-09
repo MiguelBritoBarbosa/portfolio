@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server';
 
 export default async function PremiosPage() {
     const t = await getTranslations('Pages.Awards');
-    const premios: { data: PremioData[] } | undefined = await getAllPremios('populate=*&');
+    const premios: { data: PremioData[] } | undefined = await getAllPremios('sort[0]=createdAt:desc&populate=*&');
     if (premios !== undefined && premios.data.length > 0) {
         return <Premios premios={premios.data} />;
     }

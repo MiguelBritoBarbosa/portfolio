@@ -9,7 +9,7 @@ export const revalidate = 300;
 export default async function ProjetosPage() {
     const t = await getTranslations('Pages.Projects');
     const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(
-        '&populate[cover][fields][0]=*&populate[autores][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
+        'sort[0]=createdAt:desc&&populate[cover][fields][0]=*&populate[autores][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
     );
     if (projetos !== undefined && projetos.data.length > 0) {
         return <Projetos projetos={projetos.data} />;

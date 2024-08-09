@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server';
 
 export default async function BlogPage() {
     const t = await getTranslations('Pages.Blog');
-    const posts: { data: PostData[] } | undefined = await getAllPosts('populate=*&');
+    const posts: { data: PostData[] } | undefined = await getAllPosts('sort[0]=createdAt:desc&populate=*&');
     if (posts !== undefined && posts.data.length > 0) {
         return <Blog posts={posts.data} />;
     }
