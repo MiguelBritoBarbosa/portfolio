@@ -12,7 +12,7 @@ export default async function BlogPage() {
     }
     return (
         <div className="container mx-auto">
-            <Heading className="text-center mb-2" size={{ initial: '6', sm: '7', md: '8' }}>
+            <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('No posts found!')}
             </Heading>
         </div>

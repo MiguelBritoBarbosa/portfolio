@@ -12,7 +12,7 @@ export default async function CertificadosPage() {
     }
     return (
         <div className="container mx-auto">
-            <Heading className="text-center mb-2" size={{ initial: '6', sm: '7', md: '8' }}>
+            <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('No Certificates found!')}
             </Heading>
         </div>
