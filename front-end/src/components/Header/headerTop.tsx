@@ -1,9 +1,10 @@
+'use client';
 import { headerData } from '@/config/domain/header/header';
 import { HeaderTopContainer } from './styled';
 import Link from 'next/link';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import { Heading, Tabs, Text } from '@radix-ui/themes';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { setUserLocale } from '@/services/locale';
 
@@ -15,6 +16,7 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
     const locale = useLocale();
     const pathname = usePathname();
     const isHome = pathname === '/';
+    const router = useRouter();
     return (
         <HeaderTopContainer className="w-full h-12 flex justify-between items-center z-10 fixed top-0 px-4 bg-gray-200 dark:bg-gray-800">
             {!isHome ? (
@@ -65,15 +67,14 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                             value="pt"
                             onClick={() => {
                                 setUserLocale('pt').then(() => {
-                                    const currentPath = window.location.pathname;
-                                    const pathSegments = currentPath.split('/').filter(Boolean);
+                                    const pathSegments = pathname.split('/').filter(Boolean);
 
                                     if (pathSegments.length > 1) {
                                         const slug = pathSegments[pathSegments.length - 1];
                                         if (slug.endsWith('-en')) {
                                             const newSlug = slug.replace('-en', '');
-                                            const newPath = currentPath.replace(slug, newSlug);
-                                            window.location.pathname = newPath;
+                                            const newPath = pathname.replace(slug, newSlug);
+                                            router.push(newPath);
                                         }
                                     }
                                 });
@@ -86,15 +87,14 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                             value="en"
                             onClick={() => {
                                 setUserLocale('en').then(() => {
-                                    const currentPath = window.location.pathname;
-                                    const pathSegments = currentPath.split('/').filter(Boolean);
+                                    const pathSegments = pathname.split('/').filter(Boolean);
 
                                     if (pathSegments.length > 1) {
                                         const slug = pathSegments[pathSegments.length - 1];
                                         if (!slug.endsWith('-en')) {
                                             const newSlug = `${slug}-en`;
-                                            const newPath = currentPath.replace(slug, newSlug);
-                                            window.location.pathname = newPath;
+                                            const newPath = pathname.replace(slug, newSlug);
+                                            router.push(newPath);
                                         }
                                     }
                                 });
