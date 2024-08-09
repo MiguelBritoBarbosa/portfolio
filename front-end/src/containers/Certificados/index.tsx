@@ -19,7 +19,7 @@ export default async function Certificados({ certificados }: CertificadosProps) 
             <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('Certificates I have received')}
             </Heading>
-            <section className="container mx-auto py-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2 sm:px-4 gap-4 rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
+            <section className="container mx-auto py-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-2 sm:px-4 gap-4 sm:rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
                 {certificados.map(async (certificado) => {
                     let url;
                     let width;
@@ -44,7 +44,7 @@ export default async function Certificados({ certificados }: CertificadosProps) 
                         >
                             <Link
                                 className="flex justify-center items-center"
-                                href={`/projetos/${certificado.attributes.slug}`}
+                                href={`/certificados/${certificado.attributes.slug}`}
                                 title={certificado.attributes.titulo}
                             >
                                 <Image

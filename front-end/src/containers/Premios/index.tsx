@@ -17,7 +17,7 @@ export default async function Projetos({ premios }: PremiosProps) {
             <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('Awards I have received throughout my career')}
             </Heading>
-            <section className="container mx-auto py-8 grid md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-4 gap-4 rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
+            <section className="container mx-auto py-8 grid md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-4 gap-4 sm:rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
                 {premios.map(async (premio) => {
                     const url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats.medium ? premio.attributes.cover.data.attributes.formats.medium.url : premio.attributes.cover.data.attributes.url}`;
                     const predominantColor: number[] = await getPredominantColor(url);
