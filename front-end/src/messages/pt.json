@@ -47,6 +47,22 @@
         "Blog": {
             "My personal blog": "Meu blog pessoal",
             "No posts found": "Nenhuma postagem encontrada!"
+        },
+        "InternalPage": {
+            "Authors": "Autores",
+            "Published on": "Publicado em",
+            "Projects": {
+                "Project scope": "Escopo do projeto",
+                "Source code visibility": "Visibilidade do código fonte",
+                "Project repository": "Repositório do projeto",
+                "Link to the online project": "Link para o projeto online",
+                "Technologies used in the project": "Tecnologias utilizadas no projeto",
+                "Database used in the project": "Banco de Dados utilizado no projeto"
+            },
+            "Certificates": {
+                "Click here to download the certificate document": "Clique aqui para fazer download do documento do certificado",
+                "Click here to access the certificate credential": "Clique aqui para acessar a credencial do certificado"
+            }
         }
     },
     "Sections": {

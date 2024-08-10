@@ -47,6 +47,14 @@
         "Blog": {
             "My personal blog": "My personal blog",
             "No posts found": "No posts found"
+        },
+        "InternalPage": {
+            "Authors": "Authors",
+            "Published on": "Published on",
+            "Certificates": {
+                "Click here to download the certificate document": "Click here to download the certificate document",
+                "Click here to access the certificate credential": "Click here to access the certificate credential"
+            }
         }
     },
     "Sections": {
