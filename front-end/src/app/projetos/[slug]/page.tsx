@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function ProjetoPage({ params }: { params: { slug: string } }) {
     const projeto: any = await getProjeto(
         params.slug,
-        '&populate[cover][fields][0]=*&populate[autores][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
+        '&populate[cover][fields][0]=*&populate[autores][fields][0]=nome&populate[autores][fields][1]=slug&populate[autores][populate][foto][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
     );
     return (
         <>
