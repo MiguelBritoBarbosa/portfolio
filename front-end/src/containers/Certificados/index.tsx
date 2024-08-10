@@ -64,7 +64,7 @@ export default async function Certificados({ certificados }: CertificadosProps) 
                             <Heading as="h3" className="text-center" size={'4'}>
                                 <Link
                                     className="hover:text-[--accent-a9] transition"
-                                    href={`/certificado/${certificado.attributes.slug}`}
+                                    href={`/certificados/${certificado.attributes.slug}`}
                                     title={certificado.attributes.titulo}
                                 >
                                     {certificado.attributes.titulo}

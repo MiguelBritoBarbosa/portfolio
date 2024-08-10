@@ -1,39 +1,43 @@
-import Link from 'next/link';
-import { DateFormat } from '../DateFormat';
 import { Container } from './styled';
-import { AutorData } from '@/config/domain/autores/autores';
+import { StrapiFiles } from '@/config/domain/StrapiFiles/strapifiles';
+import { Text } from '@radix-ui/themes';
+import { getTranslations } from 'next-intl/server';
 
 export interface CertificadoDetailsProps {
-    date: string;
-    autor: AutorData;
+    documento: StrapiFiles;
     credencial: string;
 }
 
-export const CertificadoDetails = ({ date, autor, credencial }: CertificadoDetailsProps) => {
+export const CertificadoDetails = async ({ documento, credencial }: CertificadoDetailsProps) => {
+    const t = await getTranslations('Pages.InternalPage.Certificates');
     return (
-        <Container className="rounded p-3 d-flex align-items-center">
-            <div className="fs-5 text-white font-bold ">
-                <div className="mb-4 text-break">
-                    <span>
-                        Publicado em <DateFormat date={date} /> por:{' '}
-                    </span>
-                    <Link className="purple-color" href={`/autores/${autor.attributes.slug}`}>
-                        {autor.attributes.nome}
-                    </Link>
-                </div>
-                <div className="mb-4 text-break">
-                    <span>Credencial: </span>
-                    {credencial !== null ? (
-                        <a className="purple-color" href={credencial} target="_new">
-                            {credencial}
-                        </a>
-                    ) : (
-                        <>
-                            <span className="text-purple">...</span>
-                        </>
-                    )}
-                </div>
-            </div>
+        <Container className="rounded p-3 bg-gray-200 dark:bg-gray-800 grid gap-3">
+            {documento.data !== null && (
+                <Text as="p">
+                    <a
+                        title={t('Click here to download the certificate document')}
+                        target="_new"
+                        href={documento.data.attributes.url}
+                        className="hover:text-[--accent-a9] transition"
+                    >
+                        {`${t('Click here to download the certificate document')} `}
+                        <i className="bi bi-file-earmark-arrow-down-fill"></i>
+                    </a>
+                </Text>
+            )}
+            {credencial && (
+                <Text as="p">
+                    <a
+                        title={t('Click here to access the certificate credential')}
+                        target="_new"
+                        href={credencial}
+                        className="hover:text-[--accent-a9] transition"
+                    >
+                        {`${t('Click here to access the certificate credential')} `}
+                        <i className="bi bi-check2-all"></i>
+                    </a>
+                </Text>
+            )}
         </Container>
     );
 };

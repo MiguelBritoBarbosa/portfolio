@@ -1,31 +1,54 @@
 import { CertificadoData } from '@/config/domain/certificados/certificados';
 import { Container } from './styles';
 import { API_ROOT } from '@/config/siteConfig';
-import { CertificadoContainer } from '@/components/CertificadoContainer';
-import { CertificadoDetails } from '@/components/CertificadoDetails';
 import { Heading } from '@radix-ui/themes';
+import { getPredominantColor } from '@/utils/getPredominantColor';
+import { InternalPageContainer } from '@/components/InternalPageContainer';
+import { InternalPageDetails } from '@/components/InternalPageDetails';
+import { CertificadoDetails } from '@/components/CertificadoDetails';
 
 export interface CertificadoProps {
     certificado: CertificadoData;
 }
 
-export default function Certificado({ certificado }: CertificadoProps) {
+export default async function Certificado({ certificado }: CertificadoProps) {
+    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
+    const width = certificado.attributes.cover.data.attributes.width;
+    const height = certificado.attributes.cover.data.attributes.height;
+    const predominantColor: number[] = await getPredominantColor(url);
     return (
-        <Container id={certificado.attributes.slug} className="container mt-3 p-md-5">
-            <Heading>{certificado.attributes.titulo}</Heading>
-            <CertificadoContainer
-                content={certificado.attributes.descricao}
-                titulo={certificado.attributes.titulo}
-                url={`${API_ROOT}${certificado.attributes.documento.data.attributes.url}`}
-                width={certificado.attributes.documento.data.attributes.formats.medium.width}
-                height={certificado.attributes.documento.data.attributes.formats.medium.height}
-            />
+        <Container className="">
+            <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
+                {certificado.attributes.titulo}
+            </Heading>
+            <section className="container mx-auto py-8 grid px-2 sm:px-4 gap-4 rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
+                <InternalPageContainer
+                    content={certificado.attributes.descricao}
+                    titulo={certificado.attributes.titulo}
+                    url={url}
+                    predominantColor={predominantColor}
+                    width={width}
+                    height={height}
+                />
+                <CertificadoDetails
+                    documento={certificado.attributes.documento}
+                    credencial={certificado.attributes.credencial}
+                />
+                <InternalPageDetails
+                    date={certificado.attributes.createdAt}
+                    autores={[certificado.attributes.autor.data]}
+                />
+            </section>
+            {/*
             <hr />
-            <CertificadoDetails
+            <ProjetoDetails
                 date={certificado.attributes.createdAt}
-                autor={certificado.attributes.autor.data}
-                credencial={certificado.attributes.credencial}
-            />
+                autores={certificado.attributes.autores.data}
+                tipoProjeto={certificado.attributes.tipoProjeto}
+                link={certificado.attributes.link}
+                repositorio={certificado.attributes.repositorio}
+                visibilidade={certificado.attributes.visibilidade}
+            /> */}
         </Container>
     );
 }
