@@ -24,7 +24,6 @@ export const ProjetosCarrossel = ({ projetos, sectionData, predominantColors }: 
             </Heading>
             <Swiper
                 effect={'coverflow'}
-                loop={true}
                 centeredSlides={true}
                 slidesPerView={1}
                 coverflowEffect={{
@@ -85,54 +84,6 @@ export const ProjetosCarrossel = ({ projetos, sectionData, predominantColors }: 
                                         {projeto.attributes.titulo}
                                     </Link>
                                 </Heading>
-                                {projeto.attributes.autores !== undefined ? (
-                                    <div className="mb-3">
-                                        Autores:{' '}
-                                        {projeto.attributes.autores.data.map((autor, index) => {
-                                            return (
-                                                <span
-                                                    key={`${projeto.attributes.slug}autor:${autor.attributes.slug}${index}`}
-                                                >
-                                                    <Link href={`/autores/${autor.attributes.slug}`}>
-                                                        {autor.attributes.nome}
-                                                    </Link>
-                                                    {index !== projeto.attributes.autores.data.length - 1 ? (
-                                                        <> | </>
-                                                    ) : (
-                                                        <></>
-                                                    )}
-                                                </span>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <></>
-                                )}
-
-                                {projeto.attributes.tecnologias !== undefined ? (
-                                    <div className="d-flex gap-3">
-                                        <span>Tecnologias: </span>
-                                        {projeto.attributes.tecnologias.data.map((tecnologia) => {
-                                            const iconUrl = `${API_ROOT}${tecnologia.attributes.icon.data.attributes.url}`;
-                                            return (
-                                                <Link
-                                                    key={`destaque${projeto.id}tecnologia${tecnologia.id}`}
-                                                    href={`/tecnologias/${tecnologia.attributes.slug}`}
-                                                >
-                                                    <Image
-                                                        className="img-fluid"
-                                                        src={iconUrl}
-                                                        alt={tecnologia.attributes.nome}
-                                                        width={20}
-                                                        height={20}
-                                                    />
-                                                </Link>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <></>
-                                )}
                             </div>
                         </SwiperSlide>
                     );

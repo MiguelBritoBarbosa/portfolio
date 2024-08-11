@@ -22,6 +22,7 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
             <Swiper
                 slidesPerView={1}
                 spaceBetween={20}
+                loop={true}
                 breakpoints={{
                     420: {
                         slidesPerView: 1.2,
