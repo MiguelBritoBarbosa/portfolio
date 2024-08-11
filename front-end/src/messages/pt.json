@@ -50,7 +50,9 @@
         },
         "InternalPage": {
             "Authors": "Autores",
+            "Author": "Autor",
             "Published on": "Publicado em",
+            "Type": "Tipo",
             "Projects": {
                 "Project scope": "Escopo do projeto",
                 "Source code visibility": "Visibilidade do código fonte",
@@ -58,6 +60,17 @@
                 "Link to the online project": "Link para o projeto online",
                 "Technologies used in the project": "Tecnologias utilizadas no projeto",
                 "Database used in the project": "Banco de Dados utilizado no projeto"
+            },
+            "AuthorsPage": {
+                "Projects made by": "Projetos feitos por",
+                "Posts made by": "Posts feitos por",
+                "until now": "até o momento",
+                "GitHub link": "Link do github",
+                "Github profile": "Perfil no Github",
+                "Linkedin link": "Link do Linkedin",
+                "Linkedin profile": "Perfil do Linkedin",
+                "Website link": "Link do site",
+                "Link to access the website": "Link para acessar o site"
             },
             "Certificates": {
                 "Click here to download the certificate document": "Clique aqui para fazer download do documento do certificado",

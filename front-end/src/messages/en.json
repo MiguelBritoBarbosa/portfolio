@@ -50,7 +50,28 @@
         },
         "InternalPage": {
             "Authors": "Authors",
+            "Author": "Author",
             "Published on": "Published on",
+            "Type": "Type",
+            "Projects": {
+                "Project scope": "Project scope",
+                "Source code visibility": "Source code visibility",
+                "Project repository": "Project repository",
+                "Link to the online project": "Link to the online project",
+                "Technologies used in the project": "Technologies used in the project",
+                "Database used in the project": "Database used in the project"
+            },
+            "AuthorsPage": {
+                "Projects made by": "Projects made by",
+                "Posts made by": "Posts made by",
+                "until now": "until now",
+                "GitHub link": "GitHub link",
+                "Github profile": "Github profile",
+                "Linkedin link": "Linkedin link",
+                "Linkedin profile": "Linkedin profile",
+                "Website link": "Website link",
+                "Link to access the website": "Link to access the website"
+            },
             "Certificates": {
                 "Click here to download the certificate document": "Click here to download the certificate document",
                 "Click here to access the certificate credential": "Click here to access the certificate credential"
