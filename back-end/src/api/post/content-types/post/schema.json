@@ -56,11 +56,11 @@
         }
       }
     },
-    "autores": {
+    "autor": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::autor.autor",
-      "mappedBy": "posts"
+      "inversedBy": "posts"
     },
     "slug": {
       "pluginOptions": {
