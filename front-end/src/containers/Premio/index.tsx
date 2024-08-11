@@ -32,7 +32,7 @@ export default async function Premio({ premio }: PremioProps) {
             <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {premio.attributes.titulo}
             </Heading>
-            <section className="container mx-auto py-8 grid px-2 sm:px-4 gap-4 rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
+            <section className="container mx-auto py-8 grid px-2 sm:px-4 gap-4 sm:rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
                 <InternalPageContainer
                     content={premio.attributes.descricao}
                     titulo={premio.attributes.titulo}
