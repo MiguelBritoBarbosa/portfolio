@@ -31,7 +31,8 @@
           "localized": true
         }
       },
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "conteudo": {
       "pluginOptions": {

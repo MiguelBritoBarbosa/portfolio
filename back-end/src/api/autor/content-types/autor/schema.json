@@ -29,7 +29,8 @@
       ]
     },
     "apresentacao": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "github": {
       "type": "text"

@@ -126,12 +126,6 @@
       "relation": "manyToMany",
       "target": "api::banco-de-dados.banco-de-dados",
       "inversedBy": "projetos"
-    },
-    "experiencia": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::experiencia.experiencia",
-      "inversedBy": "projetos"
     }
   }
 }

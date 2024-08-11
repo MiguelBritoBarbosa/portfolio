@@ -30,11 +30,6 @@
     "nome": {
       "type": "string",
       "required": true
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "nome",
-      "required": true
     }
   }
 }
