@@ -18,7 +18,7 @@ export interface ExperienciasData {
         publishedAt: string;
         locale: string;
         slug: string;
-        autores: { data: AutorData };
+        autor: { data: AutorData };
     };
 }
 

@@ -78,7 +78,7 @@ export const AutorDetails = async ({ experiencias, gitHub, linkedin, site, curri
                                     <div className="grid w-fit gap-3 items-start p-2 sm:p-3 rounded bg-white dark:bg-gray-950">
                                         <Link
                                             className="flex justify-center items-center"
-                                            href={`/experiencia/${experiencia.attributes.slug}`}
+                                            href={`/experiencias/${experiencia.attributes.slug}`}
                                             title={`${experiencia.attributes.cargo} - ${experiencia.attributes.empresa}`}
                                         >
                                             <Image
@@ -98,7 +98,7 @@ export const AutorDetails = async ({ experiencias, gitHub, linkedin, site, curri
                                         <Heading as="h3" className="text-center" size={'4'}>
                                             <Link
                                                 className="hover:text-[--accent-a9] transition"
-                                                href={`/experiencia/${experiencia.attributes.slug}`}
+                                                href={`/experiencias/${experiencia.attributes.slug}`}
                                                 title={`${experiencia.attributes.cargo} - ${experiencia.attributes.empresa}`}
                                             >
                                                 {`${experiencia.attributes.cargo} - ${experiencia.attributes.empresa}`}

@@ -40,6 +40,7 @@ export default async function Premio({ premio }: PremioProps) {
                     predominantColor={predominantColor}
                     width={width}
                     height={height}
+                    description={''}
                 />
 
                 <InternalPageDetails date={premio.attributes.createdAt} autores={[premio.attributes.autor.data]} />
