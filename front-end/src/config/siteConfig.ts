@@ -12,6 +12,8 @@ export const CERTIFICADOS_URL: string = `${API_URL}/certificados?`;
 export const PROJETOS_URL: string = `${API_URL}/projetos?`;
 export const DESTAQUES_URL: string = `${API_URL}/projetos?filters[destaque][$eq]=true&`;
 export const PREMIOS_URL: string = `${API_URL}/premios?`;
+export const TECNOLOGIAS_URL: string = `${API_URL}/tecnologias?`;
+export const BANCO_DE_DADOS_URL: string = `${API_URL}/bancos-de-dados?`;
 export const AUTOR_URL: string = `${API_URL}/autores?`;
 export const POSTS_URL: string = `${API_URL}/posts?`;
 
