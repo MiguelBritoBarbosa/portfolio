@@ -12,9 +12,21 @@ export interface CertificadoProps {
 }
 
 export default async function Certificado({ certificado }: CertificadoProps) {
-    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
-    const width = certificado.attributes.cover.data.attributes.width;
-    const height = certificado.attributes.cover.data.attributes.height;
+    let url;
+    let width;
+    let height;
+    if (
+        certificado.attributes.cover.data.attributes.formats !== null &&
+        certificado.attributes.cover.data.attributes.formats.medium !== undefined
+    ) {
+        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.medium.url}`;
+        width = certificado.attributes.cover.data.attributes.formats.medium.width;
+        height = certificado.attributes.cover.data.attributes.formats.medium.height;
+    } else {
+        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
+        width = certificado.attributes.cover.data.attributes.width;
+        height = certificado.attributes.cover.data.attributes.height;
+    }
     const predominantColor: number[] = await getPredominantColor(url);
     return (
         <Container className="">
@@ -29,6 +41,7 @@ export default async function Certificado({ certificado }: CertificadoProps) {
                     predominantColor={predominantColor}
                     width={width}
                     height={height}
+                    description={''}
                 />
                 <CertificadoDetails
                     documento={certificado.attributes.documento}

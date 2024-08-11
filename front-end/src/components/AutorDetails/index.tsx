@@ -31,14 +31,6 @@ export const AutorDetails = async ({ experiencias, gitHub, linkedin, site, curri
         <Container className="rounded p-1 sm:p-3 bg-gray-200 dark:bg-gray-800 grid gap-3">
             {experiencias !== undefined && experiencias.length > 0 && (
                 <Timeline position="alternate">
-                    <TimelineItem>
-                        <TimelineOppositeContent color="text.secondary">09:30 am</TimelineOppositeContent>
-                        <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                        </TimelineSeparator>
-                        <TimelineContent>Eat</TimelineContent>
-                    </TimelineItem>
                     {experiencias.map(async (experiencia, index) => {
                         let url;
                         let width;

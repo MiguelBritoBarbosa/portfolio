@@ -14,9 +14,21 @@ interface CardDestaqueProps {
 }
 
 export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
-    const url = `${API_ROOT}${destaque.attributes.cover.data.attributes.formats.small.url}`;
-    const width = destaque.attributes.cover.data.attributes.formats.small.width;
-    const height = destaque.attributes.cover.data.attributes.formats.small.height;
+    let url;
+    let width;
+    let height;
+    if (
+        destaque.attributes.cover.data.attributes.formats !== null &&
+        destaque.attributes.cover.data.attributes.formats.small !== undefined
+    ) {
+        url = `${API_ROOT}${destaque.attributes.cover.data.attributes.formats.small.url}`;
+        width = destaque.attributes.cover.data.attributes.formats.small.width;
+        height = destaque.attributes.cover.data.attributes.formats.small.height;
+    } else {
+        url = `${API_ROOT}${destaque.attributes.cover.data.attributes.url}`;
+        width = destaque.attributes.cover.data.attributes.width;
+        height = destaque.attributes.cover.data.attributes.height;
+    }
     const description: any = destaque.attributes.descricao[0].children[0];
 
     const predominantColor = await getPredominantColor(url);

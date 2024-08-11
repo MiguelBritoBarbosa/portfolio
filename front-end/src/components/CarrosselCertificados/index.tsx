@@ -53,9 +53,21 @@ export const CarrosselCertificados = ({ certificados, sectionData, predominantCo
                 className="certificadosCarouselSwiper bg-gray-200 dark:bg-gray-800"
             >
                 {certificados.map((certificado: CertificadoData, index) => {
-                    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.small.url}`;
-                    const width = certificado.attributes.cover.data.attributes.formats.small.width;
-                    const height = certificado.attributes.cover.data.attributes.formats.small.height;
+                    let url;
+                    let width;
+                    let height;
+                    if (
+                        certificado.attributes.cover.data.attributes.formats !== null &&
+                        certificado.attributes.cover.data.attributes.formats.small !== undefined
+                    ) {
+                        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.small.url}`;
+                        width = certificado.attributes.cover.data.attributes.formats.small.width;
+                        height = certificado.attributes.cover.data.attributes.formats.small.height;
+                    } else {
+                        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
+                        width = certificado.attributes.cover.data.attributes.width;
+                        height = certificado.attributes.cover.data.attributes.height;
+                    }
                     const predominantColor: number[] = predominantColors[index];
                     return (
                         <SwiperSlide

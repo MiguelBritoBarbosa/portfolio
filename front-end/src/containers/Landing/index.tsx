@@ -86,7 +86,7 @@ export default async function Landing({ sections }: LandingProps) {
                         const premios: { data: PremioData[] } | undefined = await getAllPremios('populate=*');
                         if (premios !== undefined && premios.data.length > 0) {
                             let PremiosSliderPredominantColors: any = premios.data.map(async (premio: PremioData) => {
-                                const url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats.thumbnail.url}`;
+                                const url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats !== null && premio.attributes.cover.data.attributes.formats.thumbnail.url !== undefined ? premio.attributes.cover.data.attributes.formats.thumbnail.url : premio.attributes.cover.data.attributes.url}`;
                                 return await getPredominantColor(url);
                             });
                             PremiosSliderPredominantColors = await Promise.all(PremiosSliderPredominantColors).then(
@@ -114,7 +114,7 @@ export default async function Landing({ sections }: LandingProps) {
                         if (certificados !== undefined && certificados.data.length > 0) {
                             let CarrosselCertificadosPredominantColors: any = certificados.data.map(
                                 async (certificado) => {
-                                    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.small.url}`;
+                                    const url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats !== null && certificado.attributes.cover.data.attributes.formats.small.url !== undefined ? certificado.attributes.cover.data.attributes.formats.small.url : certificado.attributes.cover.data.attributes.url}`;
                                     return await getPredominantColor(url);
                                 },
                             );
@@ -142,7 +142,7 @@ export default async function Landing({ sections }: LandingProps) {
                         );
                         if (projetos !== undefined && projetos.data.length > 0) {
                             let ProjetosCarrosselPredominantColors: any = projetos.data.map(async (projeto) => {
-                                const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats.thumbnail.url}`;
+                                const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats !== null && projeto.attributes.cover.data.attributes.formats.thumbnail.url !== undefined ? projeto.attributes.cover.data.attributes.formats.thumbnail.url : projeto.attributes.cover.data.attributes.url}`;
                                 return await getPredominantColor(url);
                             });
                             ProjetosCarrosselPredominantColors = await Promise.all(
@@ -167,7 +167,7 @@ export default async function Landing({ sections }: LandingProps) {
                         const posts: { data: PostData[] } | undefined = await getAllPosts('populate=*');
                         if (posts !== undefined && posts.data.length > 0) {
                             let UltimasPostagensPredominantColors: any = posts.data.map(async (post) => {
-                                const url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats.thumbnail.url}`;
+                                const url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats !== null && post.attributes.thumbnail.data.attributes.formats.thumbnail.url !== undefined ? post.attributes.thumbnail.data.attributes.formats.thumbnail.url : post.attributes.thumbnail.data.attributes.url}`;
                                 return await getPredominantColor(url);
                             });
                             UltimasPostagensPredominantColors = await Promise.all(

@@ -20,15 +20,11 @@ interface PremiosSliderProps {
 }
 
 export const PremiosSlider = ({ premios, sectionData, predominantColors }: PremiosSliderProps) => {
-    const url = premios[0].attributes.cover.data.attributes.formats.large
-        ? premios[0].attributes.cover.data.attributes.formats.large.url
-        : premios[0].attributes.cover.data.attributes.url;
+    const url = premios[0].attributes.cover.data.attributes.url;
     const [backgroundImage, setBackgroundImage] = useState(url);
 
     const changeBackground = (target: SwiperType) => {
-        const url = premios[target.activeIndex].attributes.cover.data.attributes.formats.large
-            ? premios[target.activeIndex].attributes.cover.data.attributes.formats.large.url
-            : premios[target.activeIndex].attributes.cover.data.attributes.url;
+        const url = premios[target.activeIndex].attributes.cover.data.attributes.url;
         setBackgroundImage(url);
     };
 
