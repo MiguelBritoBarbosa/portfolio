@@ -1,6 +1,4 @@
 'use client';
 import styled from 'styled-components';
 
-export const Container = styled.section`
-    background: #eee;
-`;
+export const Container = styled.section``;
