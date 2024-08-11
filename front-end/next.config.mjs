@@ -12,7 +12,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'localhost',
+                hostname: 'portifolio_backend',
                 port: '1337',
                 pathname: '/uploads/**',
             },

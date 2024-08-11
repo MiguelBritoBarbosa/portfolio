@@ -20,3 +20,11 @@ services:
             - ./public:/portfolio/public/
         ports:
             - "3000:3000"
+        networks:
+            - strapi
+
+networks:
+    strapi:
+        name: Strapi
+        driver: bridge
+        external: false  # Declara que a rede será criada se não existir
