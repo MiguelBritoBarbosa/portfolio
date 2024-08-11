@@ -9,7 +9,9 @@ import { Heading } from '@radix-ui/themes';
 import { ProjectsData } from '@/config/domain/pages/sections/projects';
 import { API_ROOT } from '@/config/siteConfig';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
-
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 interface ProjetosCarrosselProps {
     projetos: ProjetoData[];
     sectionData: ProjectsData;
