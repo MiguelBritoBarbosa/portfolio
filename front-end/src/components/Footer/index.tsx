@@ -119,7 +119,7 @@ export const Footer = ({ footerData }: footerProps) => {
                             radius="small"
                             size="3"
                         >
-                            <a href={redeSocial.link} role="button">
+                            <a target="_new" href={redeSocial.link} role="button">
                                 <i className={`bi bi-${redeSocial.rede}`}></i>
                             </a>
                         </IconButton>
