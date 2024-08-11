@@ -27,7 +27,7 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
     }
     return (
         <Container className="grid gap-1 items-start">
-            <Link className="block aspect-video" href={`/posts/${post.attributes.slug}`} title={post.attributes.titulo}>
+            <Link className="block aspect-video" href={`/blog/${post.attributes.slug}`} title={post.attributes.titulo}>
                 <Image
                     placeholder="blur"
                     blurDataURL={rgbDataURL(predominantColor[0], predominantColor[1], predominantColor[2])}
@@ -43,26 +43,26 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
                     <Text as="p" size={'2'}>
                         <DateFormat date={post.attributes.createdAt} />
                     </Text>
-                    <Text as="p" size={'2'} align={'right'}>
-                        {t('By')}{' '}
-                        {post.attributes.autores.data.map((autor) => {
-                            return (
-                                <Text
-                                    key={`last-posts-authors-${autor.attributes.slug}`}
-                                    color="violet"
-                                    className="hover:text-[--accent-a12] transition"
-                                    title={autor.attributes.nome}
-                                >
-                                    <Link href={`/autores/${autor.attributes.slug}`}>{autor.attributes.nome} </Link>
-                                </Text>
-                            );
-                        })}
-                    </Text>
+                    {post.attributes.autor !== undefined && (
+                        <Text as="p" size={'2'} align={'right'}>
+                            {t('By')}{' '}
+                            <Text
+                                key={`last-posts-authors-${post.attributes.autor.data.attributes.slug}`}
+                                color="violet"
+                                className="hover:text-[--accent-a12] transition"
+                                title={post.attributes.autor.data.attributes.nome}
+                            >
+                                <Link href={`/autores/${post.attributes.autor.data.attributes.slug}`}>
+                                    {post.attributes.autor.data.attributes.nome}{' '}
+                                </Link>
+                            </Text>
+                        </Text>
+                    )}
                 </div>
                 <Heading as="h3">
                     <Link
                         className="hover:text-[--accent-a9] transition"
-                        href={`/posts/${post.attributes.slug}`}
+                        href={`/blog/${post.attributes.slug}`}
                         title={post.attributes.titulo}
                     >
                         {post.attributes.titulo}
