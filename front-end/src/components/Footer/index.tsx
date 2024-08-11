@@ -5,6 +5,7 @@ import { Heading, IconButton } from '@radix-ui/themes';
 import { footerData } from '@/config/domain/footer/footer';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useTranslations } from 'next-intl';
+import { whatsAppLink } from '@/utils/whatsAppLink';
 
 interface footerProps {
     footerData: footerData | null;
@@ -81,12 +82,24 @@ export const Footer = ({ footerData }: footerProps) => {
                             )}
                             {footerData.attributes.contato.emailDeContato !== null && (
                                 <p className="mb-1">
-                                    <i className="bi bi-envelope"></i> {footerData.attributes.contato.emailDeContato}
+                                    <i className="bi bi-envelope"></i>{' '}
+                                    <a
+                                        className="hover:underline"
+                                        href={`mailto:${footerData.attributes.contato.emailDeContato}`}
+                                    >
+                                        {footerData.attributes.contato.emailDeContato}
+                                    </a>
                                 </p>
                             )}
                             {footerData.attributes.contato.telefone !== null && (
                                 <p className="mb-1">
-                                    <i className="bi bi-phone"></i> {footerData.attributes.contato.telefone}
+                                    <i className="bi bi-whatsapp"></i>{' '}
+                                    <a
+                                        className="hover:underline"
+                                        href={whatsAppLink(footerData.attributes.contato.telefone)}
+                                    >
+                                        {footerData.attributes.contato.telefone}
+                                    </a>
                                 </p>
                             )}
                         </div>
