@@ -19,7 +19,7 @@ export interface InternalPageContainerProps {
 
 export const InternalPageContainer = ({
     content,
-    description,
+    description = '',
     titulo,
     url,
     predominantColor,
