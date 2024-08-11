@@ -64,7 +64,7 @@ export default async function Experiencia({ experiencia }: PremioProps) {
                     predominantColor={predominantColor}
                     width={width}
                     height={height}
-                    description={`${inicio} - ${experiencia.attributes.termino !== null ? termino : t('until now')}`}
+                    description={`${t('Experience time')}: ${inicio} - ${experiencia.attributes.termino !== null ? termino : t('until now')}`}
                 />
                 <InternalPageDetails
                     date={experiencia.attributes.createdAt}
