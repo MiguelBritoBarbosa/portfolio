@@ -8,6 +8,7 @@ import { rgbDataURL } from '@/utils/rgbDataUrl';
 
 export interface InternalPageContainerProps {
     content: RootNode[] | string;
+    description: string;
     titulo: string;
     url: string;
     predominantColor: number[];
@@ -18,6 +19,7 @@ export interface InternalPageContainerProps {
 
 export const InternalPageContainer = ({
     content,
+    description,
     titulo,
     url,
     predominantColor,
@@ -45,6 +47,11 @@ export const InternalPageContainer = ({
                 width={width}
                 height={height}
             />
+            {description !== null && (
+                <Text as="p" size="2" color="gray">
+                    {description}
+                </Text>
+            )}
             {typeof content === 'string' ? <Text as="p">{content}</Text> : <BlocksRenderer content={content} />}
         </Container>
     );

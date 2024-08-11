@@ -20,7 +20,9 @@ export const InternalPageDetails = async ({ date, autores }: InternalPageDetails
         <Container className="rounded p-3 bg-[--violet-9] grid gap-y-2 sm:flex justify-between">
             {autores.length > 0 ? (
                 <div className="grid gap-y-2">
-                    <Text className="font-semibold text-violet-300">{`${t('Authors')}: `}</Text>
+                    <Text className="font-semibold text-violet-300">
+                        {autores.length > 1 ? `${t('Authors')}: ` : `${t('Author')}: `}
+                    </Text>
                     <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {autores.map(async (autor) => {
                             let url;

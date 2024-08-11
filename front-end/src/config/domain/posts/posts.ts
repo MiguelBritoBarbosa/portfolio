@@ -16,6 +16,6 @@ export interface PostData {
         publishedAt: string;
         locale: string;
         thumbnail: StrapiFiles;
-        autores: { data: AutorData[] };
+        autor: { data: AutorData };
     };
 }
