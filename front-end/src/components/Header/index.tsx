@@ -22,12 +22,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
             <div className="flex flex-wrap justify-center">
                 <HeaderTop headerData={headerData} />
                 {!isHome ? (
-                    <Link
-                        className="w-full mt-12"
-                        id="menu"
-                        href="/"
-                        title="Home"
-                    >
+                    <Link className="w-full mt-12" id="menu" href="/" title="Home">
                         <Image
                             className="w-full"
                             placeholder="blur"
