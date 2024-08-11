@@ -30,6 +30,7 @@ export default async function Projeto({ projeto }: ProjetoProps) {
                     width={width}
                     height={height}
                     destaque={projeto.attributes.destaque}
+                    description={''}
                 />
                 <ProjetoDetails
                     tipoProjeto={projeto.attributes.tipoProjeto}
