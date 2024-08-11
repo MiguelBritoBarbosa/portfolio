@@ -128,7 +128,7 @@ export const Footer = ({ footerData }: footerProps) => {
             )}
             <section className="text-center py-3 bg-gray-200 dark:bg-gray-800">
                 <i className="bi bi-c-circle"></i> {new Date().getFullYear()} Copyright:{' '}
-                <a className="hover:underline" href="https://miguelbritobarbosa.com/">
+                <a target="_new" className="hover:underline" href="https://miguelbritobarbosa.com/">
                     Miguel Brito Barbosa
                 </a>
             </section>
