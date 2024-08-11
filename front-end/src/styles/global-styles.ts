@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
-    body {
-        font-size: 20px;
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 75px
     }
 
     .radix-themes {

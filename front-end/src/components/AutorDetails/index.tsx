@@ -150,7 +150,7 @@ export const AutorDetails = async ({ experiencias, gitHub, linkedin, site, curri
                         )}
                     </div>
                     {curriculos !== undefined && curriculos.length > 0 && (
-                        <div className="grid gap-y-2">
+                        <div className="grid gap-y-2" id="curriculos">
                             {curriculos.map((curriculo) => {
                                 return (
                                     <a
