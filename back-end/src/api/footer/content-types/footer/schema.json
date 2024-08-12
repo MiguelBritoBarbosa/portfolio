@@ -20,32 +20,53 @@
       "displayName": "Paragrafo",
       "type": "component",
       "repeatable": false,
-      "component": "footer.paragrafo"
+      "component": "footer.paragrafo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "conteudo": {
       "displayName": "Conteúdo",
       "type": "component",
       "repeatable": false,
-      "component": "footer.conteudo"
+      "component": "footer.conteudo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "paginas": {
       "displayName": "Páginas",
       "type": "component",
       "repeatable": false,
-      "component": "footer.paginas"
+      "component": "footer.paginas",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "contato": {
       "displayName": "Contato",
       "type": "component",
       "repeatable": false,
-      "component": "footer.contato"
+      "component": "footer.contato",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "redesSociais": {
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "component": "footer.redes-sociais",
