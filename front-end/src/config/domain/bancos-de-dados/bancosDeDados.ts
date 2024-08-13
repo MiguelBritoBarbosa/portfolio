@@ -4,7 +4,7 @@ import { ProjetoData } from '../projetos/projetos';
 
 export type bancosDeDadosID = number;
 
-export interface bancosDeDadosData {
+export interface BancosDeDadosData {
     id: bancosDeDadosID;
     attributes: {
         nome: string;

@@ -3,12 +3,12 @@ import { API_ROOT } from '@/config/siteConfig';
 import { Heading } from '@radix-ui/themes';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { TecnologiaContainer } from '@/components/TecnologiaContainer';
-import { bancosDeDadosData } from '@/config/domain/bancos de dados/bancosDeDados';
+import { BancosDeDadosData } from '@/config/domain/bancos-de-dados/bancosDeDados';
 import { TecnologiaDetails } from '@/components/TecnologiaDetails';
 import { TecnologiaContent } from '@/components/TecnologiaContent';
 
 export interface BancoDeDadosProps {
-    bancoDeDados: bancosDeDadosData;
+    bancoDeDados: BancosDeDadosData;
 }
 
 export default async function BancoDeDados({ bancoDeDados }: BancoDeDadosProps) {

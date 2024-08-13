@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Container } from './styled';
 import { tipoProjeto, visibilidadeProjeto } from '@/config/domain/projetos/projetos';
 import { TecnologiasData } from '@/config/domain/tecnologias/tecnologias';
-import { bancosDeDadosData } from '@/config/domain/bancos de dados/bancosDeDados';
+import { BancosDeDadosData } from '@/config/domain/bancos-de-dados/bancosDeDados';
 import { Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ export interface ProjetoDetailsProps {
     repositorio: string;
     visibilidade: visibilidadeProjeto;
     tecnologias: TecnologiasData[];
-    bancosDeDados: bancosDeDadosData[];
+    bancosDeDados: BancosDeDadosData[];
 }
 
 export const ProjetoDetails = async ({

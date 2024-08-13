@@ -3,7 +3,7 @@ import { Container } from './styled';
 import { Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 import { tipoTecnologia } from '@/config/domain/tecnologias/tecnologias';
-import { tipoBanco } from '@/config/domain/bancos de dados/bancosDeDados';
+import { tipoBanco } from '@/config/domain/bancos-de-dados/bancosDeDados';
 
 export interface InternalPageDetailsProps {
     date: string;
