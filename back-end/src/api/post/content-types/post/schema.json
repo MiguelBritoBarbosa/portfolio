@@ -32,7 +32,7 @@
         }
       },
       "type": "text",
-      "required": true
+      "required": false
     },
     "conteudo": {
       "pluginOptions": {
