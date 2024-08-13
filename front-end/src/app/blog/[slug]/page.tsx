@@ -1,5 +1,6 @@
 import { getPost } from '@/config/data/posts/getPost';
 import Post from '@/containers/Post';
+import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -7,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (post !== undefined && post.data.length > 0) {
         return {
             title: post.data[0].attributes.titulo,
-            description: post.data[0].attributes.descricao.slice(0, 160),
+            description: getDescription(post.data[0].attributes.descricao),
         };
     } else {
         return notFound();

@@ -1,5 +1,6 @@
 import { getAutor } from '@/config/data/autores/getAutor';
 import Autor from '@/containers/Autor';
+import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -7,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (autor !== undefined && autor.data.length > 0) {
         return {
             title: autor.data[0].attributes.titulo,
-            description: autor.data[0].attributes.apresentacao[0].children[0].text.slice(0, 160),
+            description: getDescription(autor.data[0].attributes.apresentacao),
         };
     } else {
         return notFound();

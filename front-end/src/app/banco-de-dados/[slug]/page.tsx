@@ -1,5 +1,6 @@
 import { getBancoDeDados } from '@/config/data/bancoDeDados/getBancoDeDados';
 import BancoDeDados from '@/containers/BancoDeDados';
+import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -7,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (bancoDeDados !== undefined && bancoDeDados.data.length > 0) {
         return {
             title: bancoDeDados.data[0].attributes.titulo,
-            description: bancoDeDados.data[0].attributes.descricao[0].children[0].text.slice(0, 160),
+            description: getDescription(bancoDeDados.data[0].attributes.descricao),
         };
     } else {
         return notFound();

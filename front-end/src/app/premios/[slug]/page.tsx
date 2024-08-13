@@ -1,5 +1,6 @@
 import { getPremio } from '@/config/data/premios/getPremio';
 import Premio from '@/containers/Premio';
+import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -7,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (premio !== undefined && premio.data.length > 0) {
         return {
             title: premio.data[0].attributes.titulo,
-            description: premio.data[0].attributes.descricao[0].children[0].text.slice(0, 160),
+            description: getDescription(premio.data[0].attributes.descricao),
         };
     } else {
         return notFound();

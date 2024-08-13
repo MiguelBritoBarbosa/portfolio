@@ -1,5 +1,6 @@
 import { getExperiencia } from '@/config/data/experiencias/getExperiencia';
 import Experiencia from '@/containers/Experiencia';
+import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -7,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (experiencia !== undefined && experiencia.data.length > 0) {
         return {
             title: experiencia.data[0].attributes.titulo,
-            description: experiencia.data[0].attributes.descricao[0].children[0].text.slice(0, 160),
+            description: getDescription(experiencia.data[0].attributes.descricao),
         };
     } else {
         return notFound();
