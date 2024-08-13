@@ -20,10 +20,10 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
     const height = post.attributes.thumbnail.data.attributes.formats.small.height;
     let content: string;
     if (post.attributes.descricao) {
-        content = post.attributes.descricao;
+        content = post.attributes.descricao.slice(0, 160);
     } else {
-        const text: any = post.attributes.conteudo[0].children[0];
-        content = text.split(' ').splice(0, 20).join(' ') + text.split(' ').length > 42 ? '...' : '';
+        const text: string = getDescription(post.attributes.conteudo);
+        content = text + (text.length === 160 ? '...' : '');
     }
     return (
         <Container className="grid gap-1 items-start">

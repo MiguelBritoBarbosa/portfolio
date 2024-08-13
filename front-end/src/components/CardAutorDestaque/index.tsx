@@ -7,6 +7,7 @@ import { rgbDataURL } from '@/utils/rgbDataUrl';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { Button, Heading, Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
+import { getDescription } from '@/utils/getDescription';
 
 interface CardAutorDestaqueProps {
     autorDestaque: AutorData;
@@ -29,9 +30,7 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
         width = autorDestaque.attributes.foto.data.attributes.width;
         height = autorDestaque.attributes.foto.data.attributes.height;
     }
-    const description: any = autorDestaque.attributes.apresentacao
-        ? autorDestaque.attributes.apresentacao[0].children[0]
-        : { text: '' };
+    const description: any = getDescription(autorDestaque.attributes.apresentacao);
 
     const predominantColor = await getPredominantColor(url);
 
@@ -58,8 +57,8 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
                     </Link>
                 </Heading>
                 <Text as="p" className="mb-3">
-                    {description.text.split(' ').splice(0, 24).join(' ')}
-                    {description.text.split(' ').length > 24 ? <>...</> : <></>}
+                    {description}
+                    {description.length === 160 ? <>...</> : <></>}
                 </Text>
                 <Button color="violet" className="transition">
                     <Link title={t('See my profile')} href={`/autores/${autorDestaque.attributes.slug}`}>

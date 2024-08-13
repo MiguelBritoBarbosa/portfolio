@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { getDescription } from '@/utils/getDescription';
 
 interface PremiosContainerProps {
     premio: PremioData;
@@ -17,7 +18,7 @@ interface PremiosContainerProps {
 
 export const CardPremio = ({ premio, predominantColor }: PremiosContainerProps) => {
     const t = useTranslations('Sections.Awards');
-    const description: any = premio.attributes.descricao[0].children[0];
+    const description: string = getDescription(premio.attributes.descricao);
 
     let url;
     let width;
@@ -61,8 +62,8 @@ export const CardPremio = ({ premio, predominantColor }: PremiosContainerProps) 
                     </Link>
                 </Heading>
                 <Text as="p" className="mb-3">
-                    {description.text.split(' ').splice(0, 24).join(' ')}
-                    {description.text.split(' ').length > 24 ? <>...</> : <></>}
+                    {description}
+                    {description.length === 160 ? <>...</> : <></>}
                 </Text>
                 <Button color="violet" className="transition">
                     <Link href={`/premios/${premio.attributes.slug}`} title={t('See more')}>

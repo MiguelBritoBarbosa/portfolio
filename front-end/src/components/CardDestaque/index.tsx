@@ -8,6 +8,7 @@ import { getPredominantColor } from '@/utils/getPredominantColor';
 import { Heading, Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 import { SVGContainer } from '../SVGContainer';
+import { getDescription } from '@/utils/getDescription';
 
 interface CardDestaqueProps {
     destaque: ProjetoData;
@@ -29,7 +30,7 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
         width = destaque.attributes.cover.data.attributes.width;
         height = destaque.attributes.cover.data.attributes.height;
     }
-    const description: any = destaque.attributes.descricao[0].children[0];
+    const description: string = getDescription(destaque.attributes.descricao);
 
     const predominantColor = await getPredominantColor(url);
     const t = await getTranslations('Sections.Highlights');
@@ -56,14 +57,16 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
                 />
             </Link>
             <div className="mt-1 mb-3">
-                <Text as="p">{description.text.split(' ').splice(0, 42).join(' ')}</Text>
-                <Link
-                    className="underline hover:text-[--accent-a9] transition"
-                    href={`/projetos/${destaque.attributes.slug}`}
-                    title={`${t('see more about')}: ${destaque.attributes.titulo}`}
-                >
-                    {t('see more')}
-                </Link>
+                <Text as="p">
+                    {description + ' '}
+                    <Link
+                        className="underline hover:text-[--accent-a9] transition"
+                        href={`/projetos/${destaque.attributes.slug}`}
+                        title={`${t('see more about')}: ${destaque.attributes.titulo}`}
+                    >
+                        {t('see more')}
+                    </Link>
+                </Text>
             </div>
             {destaque.attributes.autores.data.length > 0 && (
                 <Text as="p">
