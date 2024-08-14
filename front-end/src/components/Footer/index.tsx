@@ -5,7 +5,7 @@ import { Heading, IconButton, Text } from '@radix-ui/themes';
 import { footerData } from '@/config/domain/footer/footer';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useTranslations } from 'next-intl';
-import { whatsAppLink } from '@/utils/whatsAppLink';
+import { WhatsAppLink } from '@/utils/whatsAppLink';
 import { capitalize } from '@mui/material';
 
 interface footerProps {
@@ -97,7 +97,7 @@ export const Footer = ({ footerData }: footerProps) => {
                                     <i className="bi bi-whatsapp"></i>{' '}
                                     <a
                                         className="hover:underline"
-                                        href={whatsAppLink(footerData.attributes.contato.telefone)}
+                                        href={WhatsAppLink(footerData.attributes.contato.telefone)}
                                     >
                                         {footerData.attributes.contato.telefone}
                                     </a>
