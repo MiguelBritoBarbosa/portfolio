@@ -4,8 +4,6 @@ import Projetos from '@/containers/Projetos';
 import { Heading } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 
-export const revalidate = 300;
-
 export default async function ProjetosPage() {
     const t = await getTranslations('Pages.Projects');
     const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(

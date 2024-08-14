@@ -4,8 +4,6 @@ import Autores from '@/containers/Autores';
 import { Heading } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 
-export const revalidate = 300;
-
 export default async function AutoresPage() {
     const t = await getTranslations('Pages.Authors');
     const autores: { data: AutorData[] } | undefined = await getAllAutores('&populate=*');
