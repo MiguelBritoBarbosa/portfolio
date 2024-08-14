@@ -5,7 +5,7 @@ import { getDescription } from '@/utils/getDescription';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const projeto: any = await getProjeto(params.slug);
     return {
-        title: projeto.data[0].attributes.Titulo,
+        title: projeto.data[0].attributes.titulo,
         description: getDescription(projeto.data[0].attributes.descricao),
     };
 }
