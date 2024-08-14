@@ -7,6 +7,7 @@ import { rgbDataURL } from '@/utils/rgbDataUrl';
 import { PostData } from '@/config/domain/posts/posts';
 import { useTranslations } from 'next-intl';
 import { DateFormat } from '../DateFormat';
+import { getDescription } from '@/utils/getDescription';
 
 interface UltimasPostagensProps {
     post: PostData;
@@ -38,7 +39,7 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
         content = text + (text.length === 160 ? '...' : '');
     }
     return (
-        <Container className="grid gap-1 items-start">
+        <Container className="grid gap-1 items-start h-full grid-rows-[auto,1fr]">
             <Link className="block aspect-video" href={`/blog/${post.attributes.slug}`} title={post.attributes.titulo}>
                 <Image
                     placeholder="blur"
@@ -50,7 +51,7 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
                     height={height}
                 />
             </Link>
-            <div className="grid p-2 sm:p-3 rounded bg-white dark:bg-gray-950">
+            <div className="grid p-2 sm:p-3 rounded bg-white dark:bg-gray-950 h-full">
                 <div className="flex flex-wrap justify-between">
                     <Text as="p" size={'2'}>
                         <DateFormat date={post.attributes.createdAt} />
