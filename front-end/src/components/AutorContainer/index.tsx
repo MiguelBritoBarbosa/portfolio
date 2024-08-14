@@ -4,9 +4,11 @@ import { Container } from './styled';
 import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 import Image from 'next/image';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
+import { Text } from '@radix-ui/themes';
 
 export interface AutorContainerProps {
     content: RootNode[];
+    title: string;
     nome: string;
     url: string;
     predominantColor: number[];
@@ -14,7 +16,7 @@ export interface AutorContainerProps {
     height: number;
 }
 
-export const AutorContainer = ({ content, nome, url, predominantColor, width, height }: AutorContainerProps) => {
+export const AutorContainer = ({ content, title, nome, url, predominantColor, width, height }: AutorContainerProps) => {
     return (
         <Container className="grid">
             <Image
@@ -26,7 +28,21 @@ export const AutorContainer = ({ content, nome, url, predominantColor, width, he
                 width={width}
                 height={height}
             />
-            <BlocksRenderer content={content} />
+            {title !== null && (
+                <Text as="p" size="2" color="gray" align="center">
+                    {title}
+                </Text>
+            )}
+            <BlocksRenderer
+                content={content}
+                blocks={{
+                    link: ({ children, url }) => (
+                        <a className="underline hover:text-[--accent-a9] transition" target="_new" href={url}>
+                            {children}
+                        </a>
+                    ),
+                }}
+            />
         </Container>
     );
 };

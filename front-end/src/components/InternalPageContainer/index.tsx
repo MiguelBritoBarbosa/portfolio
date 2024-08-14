@@ -52,7 +52,20 @@ export const InternalPageContainer = ({
                     {description}
                 </Text>
             )}
-            {typeof content === 'string' ? <Text as="p">{content}</Text> : <BlocksRenderer content={content} />}
+            {typeof content === 'string' ? (
+                <Text as="p">{content}</Text>
+            ) : (
+                <BlocksRenderer
+                    content={content}
+                    blocks={{
+                        link: ({ children, url }) => (
+                            <a className="underline hover:text-[--accent-a9] transition" target="_new" href={url}>
+                                {children}
+                            </a>
+                        ),
+                    }}
+                />
+            )}
         </Container>
     );
 };

@@ -10,7 +10,16 @@ export interface TecnologiaContentProps {
 export const TecnologiaContent = ({ content }: TecnologiaContentProps) => {
     return (
         <Container className="grid">
-            <BlocksRenderer content={content} />
+            <BlocksRenderer
+                content={content}
+                blocks={{
+                    link: ({ children, url }) => (
+                        <a className="underline hover:text-[--accent-a9] transition" target="_new" href={url}>
+                            {children}
+                        </a>
+                    ),
+                }}
+            />
         </Container>
     );
 };
