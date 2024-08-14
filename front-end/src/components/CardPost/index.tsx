@@ -15,9 +15,21 @@ interface UltimasPostagensProps {
 
 export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
     const t = useTranslations('Sections.LastPosts');
-    const url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats.small.url}`;
-    const width = post.attributes.thumbnail.data.attributes.formats.small.width;
-    const height = post.attributes.thumbnail.data.attributes.formats.small.height;
+    let url;
+    let width;
+    let height;
+    if (
+        post.attributes.thumbnail.data.attributes.formats !== null &&
+        post.attributes.thumbnail.data.attributes.formats.small !== undefined
+    ) {
+        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats.small.url}`;
+        width = post.attributes.thumbnail.data.attributes.formats.small.width;
+        height = post.attributes.thumbnail.data.attributes.formats.small.height;
+    } else {
+        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.url}`;
+        width = post.attributes.thumbnail.data.attributes.width;
+        height = post.attributes.thumbnail.data.attributes.height;
+    }
     let content: string;
     if (post.attributes.descricao) {
         content = post.attributes.descricao.slice(0, 160);
