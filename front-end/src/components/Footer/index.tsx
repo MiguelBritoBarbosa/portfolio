@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { ContainerFooter, LineTopic } from './styled';
-import { Heading, IconButton } from '@radix-ui/themes';
+import { Heading, IconButton, Text } from '@radix-ui/themes';
 import { footerData } from '@/config/domain/footer/footer';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useTranslations } from 'next-intl';
 import { whatsAppLink } from '@/utils/whatsAppLink';
+import { capitalize } from '@mui/material';
 
 interface footerProps {
     footerData: footerData | null;
@@ -110,19 +111,24 @@ export const Footer = ({ footerData }: footerProps) => {
             {footerData !== null && footerData.attributes.redesSociais !== null && (
                 <section className="flex justify-center items-center gap-x-2 py-3 bg-[--accent-a9]">
                     {footerData.attributes.redesSociais.map((redeSocial) => (
-                        <IconButton
+                        <a
+                            title={`${t('Link to my')} ${capitalize(redeSocial.rede)}`}
+                            target="_new"
+                            href={redeSocial.link}
                             key={redeSocial.id}
-                            className="cursor-pointer text-lg hover:text-[--accent-surface] hover:bg-[--accent-12] transition dark:hover:text-[--violet-4]"
-                            variant="surface"
-                            color="gray"
-                            highContrast
-                            radius="small"
-                            size="3"
                         >
-                            <a target="_new" href={redeSocial.link} role="button">
+                            <IconButton
+                                className="cursor-pointer text-lg hover:text-[--accent-surface] hover:bg-[--accent-12] transition dark:hover:text-[--violet-4]"
+                                variant="surface"
+                                color="gray"
+                                highContrast
+                                radius="small"
+                                size="3"
+                                aria-label={capitalize(redeSocial.rede)}
+                            >
                                 <i className={`bi bi-${redeSocial.rede}`}></i>
-                            </a>
-                        </IconButton>
+                            </IconButton>
+                        </a>
                     ))}
                 </section>
             )}
@@ -131,6 +137,8 @@ export const Footer = ({ footerData }: footerProps) => {
                 <a target="_new" className="hover:underline" href="https://miguelbritobarbosa.com/">
                     Miguel Brito Barbosa
                 </a>
+                {' - '}
+                <Text>{t('All rights reserved')}</Text>
             </section>
         </ContainerFooter>
     );

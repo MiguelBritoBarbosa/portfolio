@@ -30,7 +30,7 @@ export const ThemeSwitcher = () => {
         <SwitchThemeButton>
             <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
-                    <Button variant="soft" className="cursor-pointer transition">
+                    <Button variant="soft" className="cursor-pointer transition" aria-label={t('Theme Switcher')}>
                         {currentTheme}
                         <DropdownMenu.TriggerIcon />
                     </Button>

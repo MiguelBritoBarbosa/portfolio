@@ -17,10 +17,10 @@ export interface InternalPageDetailsProps {
 export const InternalPageDetails = async ({ date, autores }: InternalPageDetailsProps) => {
     const t = await getTranslations('Pages.InternalPage');
     return (
-        <Container className="rounded p-3 bg-[--violet-9] grid gap-y-2 sm:flex justify-between">
+        <Container className="rounded p-3 dark:bg-[#331b71] bg-violet-300 grid gap-y-2 sm:flex justify-between">
             {autores.length > 0 ? (
                 <div className="grid gap-y-2">
-                    <Text className="font-semibold text-violet-300">
+                    <Text className="font-semibold dark:text-violet-300 text-[#331b71]">
                         {autores.length > 1 ? `${t('Authors')}: ` : `${t('Author')}: `}
                     </Text>
                     <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -57,7 +57,7 @@ export const InternalPageDetails = async ({ date, autores }: InternalPageDetails
                                     </Link>
                                     <Link
                                         href={`/autores/${autor.attributes.slug}`}
-                                        className="text-violet-300 font-semibold hover:text-[--accent-a12] transition"
+                                        className="dark:text-violet-300 text-[#331b71] font-semibold hover:bg-[#331b71] hover:text-violet-300 hover:dark:bg-violet-300 hover:dark:text-[#331b71] transition rounded-md p-1"
                                     >
                                         {autor.attributes.nome}
                                     </Link>
@@ -70,7 +70,7 @@ export const InternalPageDetails = async ({ date, autores }: InternalPageDetails
                 <></>
             )}
 
-            <Text className="text-violet-300 font-semibold content-center">
+            <Text className="dark:text-violet-300 text-[#331b71] font-semibold content-center">
                 {t('Published on')} <DateFormat date={date} />
             </Text>
         </Container>
