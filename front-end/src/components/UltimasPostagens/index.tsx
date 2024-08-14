@@ -47,7 +47,7 @@ export const UltimasPostagens = ({ posts, sectionData, predominantColors }: Ulti
                 {posts.map((post, index) => {
                     const predominantColor: number[] = predominantColors[index];
                     return (
-                        <SwiperSlide key={`post-${post.attributes.slug}`}>
+                        <SwiperSlide key={`post-${post.attributes.slug}`} className="!h-auto">
                             <CardPost post={post} predominantColor={predominantColor} />
                         </SwiperSlide>
                     );
