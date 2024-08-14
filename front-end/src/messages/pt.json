@@ -1,13 +1,16 @@
 {
     "HeaderTop": {
         "Theme": {
+            "Theme Switcher": "Seletor de Temas",
             "Dark": "Escuro",
             "Light": "Claro",
             "System": "Sistema"
         }
     },
     "Footer": {
-        "Contact": "Contato"
+        "Contact": "Contato",
+        "Link to my": "Link para meu",
+        "All rights reserved": "Todos os direitos reservados"
     },
     "Pages": {
         "Page not found!": "Página não encontrada",

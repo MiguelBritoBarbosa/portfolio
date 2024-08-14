@@ -1,13 +1,16 @@
 {
     "HeaderTop": {
         "Theme": {
+            "Theme Switcher": "Theme Switcher",
             "Dark": "Dark",
             "Light": "Light",
             "System": "System"
         }
     },
     "Footer": {
-        "Contact": "Contact"
+        "Contact": "Contact",
+        "Link to my": "Link to my",
+        "All rights reserved": "All rights reserved"
     },
     "Pages": {
         "Page not found!": "Page not found!",
