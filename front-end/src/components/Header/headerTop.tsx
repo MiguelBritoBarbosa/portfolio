@@ -65,6 +65,7 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                         <Tabs.Trigger
                             className="cursor-pointer btn-transition"
                             value="pt"
+                            aria-label="PT"
                             onClick={() => {
                                 setUserLocale('pt').then(() => {
                                     const pathSegments = pathname.split('/').filter(Boolean);
@@ -85,6 +86,7 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                         <Tabs.Trigger
                             className="cursor-pointer btn-transition"
                             value="en"
+                            aria-label="EN"
                             onClick={() => {
                                 setUserLocale('en').then(() => {
                                     const pathSegments = pathname.split('/').filter(Boolean);
