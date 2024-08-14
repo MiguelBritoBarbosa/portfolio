@@ -49,7 +49,7 @@
         },
         "Blog": {
             "My personal blog": "Meu blog pessoal",
-            "No posts found": "Nenhuma postagem encontrada!"
+            "No posts found!": "Nenhuma postagem encontrada!"
         },
         "InternalPage": {
             "Authors": "Autores",
