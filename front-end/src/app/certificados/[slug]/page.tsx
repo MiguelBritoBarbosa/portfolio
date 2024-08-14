@@ -1,7 +1,6 @@
 import { getCertificado } from '@/config/data/certificados/getCertificado';
 import { CertificadoData } from '@/config/domain/certificados/certificados';
 import Certificado from '@/containers/Certificado';
-import { getDescription } from '@/utils/getDescription';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -9,7 +8,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (certificado !== undefined && certificado.data.length > 0) {
         return {
             title: certificado.data[0].attributes.titulo,
-            description: getDescription(certificado.data[0].attributes.descricao),
+            description: certificado.data[0].attributes.descricao.slice(0, 160),
         };
     } else {
         return notFound();

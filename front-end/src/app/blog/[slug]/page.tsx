@@ -8,7 +8,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (post !== undefined && post.data.length > 0) {
         return {
             title: post.data[0].attributes.titulo,
-            description: getDescription(post.data[0].attributes.descricao),
+            description: !post.data[0].attributes.descricao
+                ? getDescription(post.data[0].attributes.conteudo)
+                : post.data[0].attributes.descricao,
         };
     } else {
         return notFound();
