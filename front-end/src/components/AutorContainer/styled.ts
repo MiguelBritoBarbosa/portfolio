@@ -23,4 +23,9 @@ export const Container = styled.div`
         margin-bottom: 12px;
         padding: revert;
     }
+
+    img {
+        justify-self: center;
+        margin-bottom: 12px;
+    }
 `;
