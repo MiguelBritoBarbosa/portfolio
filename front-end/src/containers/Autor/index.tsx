@@ -63,6 +63,7 @@ export default async function Autor({ autor }: AutorProps) {
             <section className="container mx-auto py-8 grid px-2 sm:px-4 gap-4 sm:rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
                 <AutorContainer
                     content={autor.attributes.apresentacao}
+                    title={autor.attributes.titulo}
                     nome={autor.attributes.nome}
                     url={url}
                     predominantColor={predominantColor}

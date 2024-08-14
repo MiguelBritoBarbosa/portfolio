@@ -16,6 +16,7 @@ export interface AutorData {
         linkedin: string;
         site: string;
         apresentacao: RootNode[];
+        titulo: string;
         experiencias: { data: ExperienciasData[] };
         curriculos: { data: CurriculosData[] };
         projetos: { data: ProjetoData[] };
