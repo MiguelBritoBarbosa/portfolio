@@ -94,7 +94,12 @@
             "Visibility": "Visibilidade",
             "Repository": "Repositório",
             "Technologies": "Tecnologias",
-            "Database": "Banco de Dados"
+            "Database": "Banco de Dados",
+            "Profissional": "Profissional",
+            "Pessoal": "Pessoal",
+            "Estudo": "Estudo",
+            "Público": "Público",
+            "Privado": "Privado"
         },
         "Awards": {
             "See more": "Veja mais"

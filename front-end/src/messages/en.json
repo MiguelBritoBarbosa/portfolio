@@ -94,7 +94,12 @@
             "Visibility": "Visibility",
             "Repository": "Repository",
             "Technologies": "Technologies",
-            "Database": "Database"
+            "Database": "Database",
+            "Profissional": "Professional",
+            "Pessoal": "Personal",
+            "Estudo": "Study",
+            "Público": "Public",
+            "Privado": "Private"
         },
         "Awards": {
             "See more": "See more"
