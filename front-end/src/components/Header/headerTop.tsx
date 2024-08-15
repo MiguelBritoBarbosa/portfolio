@@ -73,7 +73,7 @@ export const HeaderTop = ({ headerData }: headerTopProps) => {
                                     if (pathSegments.length > 1) {
                                         const slug = pathSegments[pathSegments.length - 1];
                                         if (slug.endsWith('-en')) {
-                                            const newSlug = slug.replace('-en', '');
+                                            const newSlug = slug.replace(/-en$/, '');
                                             const newPath = pathname.replace(slug, newSlug);
                                             router.push(newPath);
                                         }
