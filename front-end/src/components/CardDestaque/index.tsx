@@ -91,46 +91,47 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
             )}
 
             <Text as="p">
-                {`${t('Scope')}:`} <Text color="violet">{destaque.attributes.tipoProjeto}</Text>
+                {`${t('Scope')}:`} <Text color="violet">{t(destaque.attributes.tipoProjeto)}</Text>
                 {' | '}
                 {destaque.attributes.visibilidade !== null && (
                     <>
-                        {`${t('Visibility')}:`} <Text color="violet">{destaque.attributes.visibilidade}</Text>
+                        {`${t('Visibility')}:`} <Text color="violet">{t(destaque.attributes.visibilidade)}</Text>
                     </>
                 )}
             </Text>
-            {destaque.attributes.repositorio !== null ||
-                (destaque.attributes.link !== null && (
-                    <Text as="p">
-                        {destaque.attributes.repositorio !== null && (
-                            <Text>
-                                {`${t('Repository')}: `}
-                                <a
-                                    className="underline hover:text-[--accent-a9] transition"
-                                    href={destaque.attributes.repositorio}
-                                    target="_new"
-                                    title={`${destaque.attributes.titulo} ${t('repository')}`}
-                                >
-                                    {destaque.attributes.repositorio}
-                                </a>
-                            </Text>
-                        )}
-                        {destaque.attributes.repositorio !== null && destaque.attributes.link !== null && <> | </>}
-                        {destaque.attributes.link !== null && (
-                            <Text>
-                                Link:{' '}
-                                <a
-                                    className="underline hover:text-[--accent-a9] transition"
-                                    href={destaque.attributes.link}
-                                    target="_new"
-                                    title={`${destaque.attributes.titulo} Link`}
-                                >
-                                    {destaque.attributes.link}
-                                </a>
-                            </Text>
-                        )}
-                    </Text>
-                ))}
+            {destaque.attributes.repositorio !== null || destaque.attributes.link !== null ? (
+                <Text as="p">
+                    {destaque.attributes.repositorio !== null && (
+                        <Text>
+                            {`${t('Repository')}: `}
+                            <a
+                                className="underline hover:text-[--accent-a9] transition break-all"
+                                href={destaque.attributes.repositorio}
+                                target="_new"
+                                title={`${destaque.attributes.titulo} ${t('repository')}`}
+                            >
+                                {destaque.attributes.repositorio}
+                            </a>
+                        </Text>
+                    )}
+                    {destaque.attributes.repositorio !== null && destaque.attributes.link !== null && <> | </>}
+                    {destaque.attributes.link !== null && (
+                        <Text>
+                            Link:{' '}
+                            <a
+                                className="underline hover:text-[--accent-a9] transition break-all"
+                                href={destaque.attributes.link}
+                                target="_new"
+                                title={`${destaque.attributes.titulo} Link`}
+                            >
+                                {destaque.attributes.link}
+                            </a>
+                        </Text>
+                    )}
+                </Text>
+            ) : (
+                <></>
+            )}
 
             {destaque.attributes.tecnologias.data.length > 0 && (
                 <Text as="p" className="flex flex-wrap items-center gap-2">

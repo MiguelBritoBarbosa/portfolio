@@ -38,38 +38,39 @@ export const ProjetoDetails = async ({
                     </>
                 )}
             </Text>
-            {repositorio !== null ||
-                (link !== null && (
-                    <Text as="p">
-                        {repositorio !== null && (
-                            <Text>
-                                {`${t('Project repository')}: `}
-                                <a
-                                    className="underline hover:text-[--accent-a9] transition"
-                                    href={repositorio}
-                                    target="_new"
-                                    title={t('Project repository')}
-                                >
-                                    {repositorio}
-                                </a>
-                            </Text>
-                        )}
-                        {repositorio !== null && link !== null && <> | </>}
-                        {link !== null && (
-                            <Text>
-                                Link:{' '}
-                                <a
-                                    className="underline hover:text-[--accent-a9] transition"
-                                    href={link}
-                                    target="_new"
-                                    title={t('Link to the online project')}
-                                >
-                                    {link}
-                                </a>
-                            </Text>
-                        )}
-                    </Text>
-                ))}
+            {repositorio !== null || link !== null ? (
+                <Text as="p">
+                    {repositorio !== null && (
+                        <Text>
+                            {`${t('Project repository')}: `}
+                            <a
+                                className="underline hover:text-[--accent-a9] transition break-all"
+                                href={repositorio}
+                                target="_new"
+                                title={t('Project repository')}
+                            >
+                                {repositorio}
+                            </a>
+                        </Text>
+                    )}
+                    {repositorio !== null && link !== null && <> | </>}
+                    {link !== null && (
+                        <Text>
+                            {`${t('Link to the online project')}: `}
+                            <a
+                                className="underline hover:text-[--accent-a9] transition break-all"
+                                href={link}
+                                target="_new"
+                                title={t('Link to the online project')}
+                            >
+                                {link}
+                            </a>
+                        </Text>
+                    )}
+                </Text>
+            ) : (
+                <></>
+            )}
 
             {tecnologias.length > 0 && (
                 <Text as="p" className="flex flex-wrap items-center gap-2">
