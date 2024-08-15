@@ -99,38 +99,31 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
                     </>
                 )}
             </Text>
-            {destaque.attributes.repositorio !== null || destaque.attributes.link !== null ? (
+            {destaque.attributes.repositorio !== null && (
                 <Text as="p">
-                    {destaque.attributes.repositorio !== null && (
-                        <Text>
-                            {`${t('Repository')}: `}
-                            <a
-                                className="underline hover:text-[--accent-a9] transition break-all"
-                                href={destaque.attributes.repositorio}
-                                target="_new"
-                                title={`${destaque.attributes.titulo} ${t('repository')}`}
-                            >
-                                {destaque.attributes.repositorio}
-                            </a>
-                        </Text>
-                    )}
-                    {destaque.attributes.repositorio !== null && destaque.attributes.link !== null && <> | </>}
-                    {destaque.attributes.link !== null && (
-                        <Text>
-                            Link:{' '}
-                            <a
-                                className="underline hover:text-[--accent-a9] transition break-all"
-                                href={destaque.attributes.link}
-                                target="_new"
-                                title={`${destaque.attributes.titulo} Link`}
-                            >
-                                {destaque.attributes.link}
-                            </a>
-                        </Text>
-                    )}
+                    {`${t('Repository')}: `}
+                    <a
+                        className="underline hover:text-[--accent-a9] transition break-all"
+                        href={destaque.attributes.repositorio}
+                        target="_new"
+                        title={`${destaque.attributes.titulo} ${t('repository')}`}
+                    >
+                        {destaque.attributes.repositorio}
+                    </a>
                 </Text>
-            ) : (
-                <></>
+            )}
+            {destaque.attributes.link !== null && (
+                <Text as="p">
+                    Link:{' '}
+                    <a
+                        className="underline hover:text-[--accent-a9] transition break-all"
+                        href={destaque.attributes.link}
+                        target="_new"
+                        title={`${destaque.attributes.titulo} Link`}
+                    >
+                        {destaque.attributes.link}
+                    </a>
+                </Text>
             )}
 
             {destaque.attributes.tecnologias.data.length > 0 && (
