@@ -36,7 +36,7 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
     const t = await getTranslations('Sections.Highlights');
     return (
         <Container className="grid p-2 sm:p-4 shadow rounded bg-white dark:bg-gray-950">
-            <Heading as="h4" size="3" className="text-center hover:text-[--accent-a9] transition">
+            <Heading as="h3" size="3" className="text-center hover:text-[--accent-a9] transition">
                 <Link title={destaque.attributes.titulo} href={`projetos/${destaque.attributes.slug}`}>
                     {destaque.attributes.titulo}
                 </Link>
