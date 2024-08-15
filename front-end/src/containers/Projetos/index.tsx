@@ -15,10 +15,17 @@ export default async function Projetos({ projetos }: ProjetosProps) {
             <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>
                 {t('Projects I participated in')}
             </Heading>
-            <section className="container mx-auto py-8 grid md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-4 gap-4 sm:rounded bg-gray-300 dark:bg-gray-900 justify-center items-stretch">
-                {projetos.map((projeto) => {
-                    return <CardDestaque key={`projects-page-projeto-${projeto.attributes.slug}`} destaque={projeto} />;
-                })}
+            <section className="container mx-auto py-8  px-2 sm:px-4 sm:rounded bg-gray-300 dark:bg-gray-900">
+                <Heading as="h2" className="mb-3" size={{ initial: '6', sm: '7', md: '8' }}>
+                    {t('Projects') + ': '}
+                </Heading>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-stretch">
+                    {projetos.map((projeto) => {
+                        return (
+                            <CardDestaque key={`projects-page-projeto-${projeto.attributes.slug}`} destaque={projeto} />
+                        );
+                    })}
+                </div>
             </section>
         </Container>
     );
