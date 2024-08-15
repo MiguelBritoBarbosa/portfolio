@@ -49,6 +49,7 @@
         },
         "Blog": {
             "My personal blog": "My personal blog",
+            "Posts": "Posts",
             "No posts found!": "No posts found"
         },
         "InternalPage": {
