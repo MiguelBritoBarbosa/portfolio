@@ -11,13 +11,13 @@ export interface InternalPageDetailsProps {
 }
 
 export const TecnologiaDetails = async ({ date, tipo }: InternalPageDetailsProps) => {
-    const t = await getTranslations('Pages.InternalPage');
+    const t = await getTranslations('Pages.InternalPage.Technologies');
     return (
         <Container className="rounded p-3 dark:bg-[#331b71] bg-violet-300 grid gap-y-2 gap-x-6 sm:flex justify-between">
             {tipo !== undefined && (
                 <Text as="p" className="content-center">
                     {`${t('Type')}: `}
-                    <Text className="dark:text-violet-300 text-[#331b71] font-semibold">{tipo}</Text>
+                    <Text className="dark:text-violet-300 text-[#331b71] font-semibold">{t(tipo)}</Text>
                 </Text>
             )}
 

@@ -56,7 +56,17 @@
             "Authors": "Authors",
             "Author": "Author",
             "Published on": "Published on",
-            "Type": "Type",
+            "Technologies": {
+                "Type": "Type",
+                "Linguagem de Programação": "Programming Language",
+                "Linguagem de Marcação de Texto": "Text Markup Language",
+                "Linguagem de Estilização": "Styling Language",
+                "Framework": "Framework",
+                "Biblioteca": "Library",
+                "Formato de Dados": "Data Format",
+                "Ferramenta": "Tool",
+                "Outro": "Other"
+            },
             "Projects": {
                 "Project scope": "Project scope",
                 "Source code visibility": "Source code visibility",
