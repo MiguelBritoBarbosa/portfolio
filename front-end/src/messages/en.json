@@ -65,7 +65,8 @@
                 "Biblioteca": "Library",
                 "Formato de Dados": "Data Format",
                 "Ferramenta": "Tool",
-                "Outro": "Other"
+                "Outro": "Other",
+                "Published on": "Published on"
             },
             "Projects": {
                 "Project scope": "Project scope",

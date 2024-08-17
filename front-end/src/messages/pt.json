@@ -65,7 +65,8 @@
                 "Biblioteca": "Biblioteca",
                 "Formato de Dados": "Formato de Dados",
                 "Ferramenta": "Ferramenta",
-                "Outro": "Outro"
+                "Outro": "Outro",
+                "Published on": "Publicado em"
             },
             "Projects": {
                 "Project scope": "Escopo do projeto",
