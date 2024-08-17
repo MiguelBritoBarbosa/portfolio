@@ -22,11 +22,11 @@ export default async function Tecnologia({ tecnologia }: TecnologiaProps) {
         height = 256;
     } else if (
         tecnologia.attributes.icon.data.attributes.formats !== null &&
-        tecnologia.attributes.icon.data.attributes.formats.small !== undefined
+        tecnologia.attributes.icon.data.attributes.formats.large !== undefined
     ) {
-        url = `${API_ROOT}${tecnologia.attributes.icon.data.attributes.formats.small.url}`;
-        width = tecnologia.attributes.icon.data.attributes.formats.small.width;
-        height = tecnologia.attributes.icon.data.attributes.formats.small.height;
+        url = `${API_ROOT}${tecnologia.attributes.icon.data.attributes.formats.large.url}`;
+        width = tecnologia.attributes.icon.data.attributes.formats.large.width;
+        height = tecnologia.attributes.icon.data.attributes.formats.large.height;
         predominantColor = await getPredominantColor(url);
     } else {
         url = `${API_ROOT}${tecnologia.attributes.icon.data.attributes.url}`;

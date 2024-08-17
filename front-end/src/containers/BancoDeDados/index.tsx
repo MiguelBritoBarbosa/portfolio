@@ -22,11 +22,11 @@ export default async function BancoDeDados({ bancoDeDados }: BancoDeDadosProps) 
         height = 256;
     } else if (
         bancoDeDados.attributes.icon.data.attributes.formats !== null &&
-        bancoDeDados.attributes.icon.data.attributes.formats.small !== undefined
+        bancoDeDados.attributes.icon.data.attributes.formats.large !== undefined
     ) {
-        url = `${API_ROOT}${bancoDeDados.attributes.icon.data.attributes.formats.small.url}`;
-        width = bancoDeDados.attributes.icon.data.attributes.formats.small.width;
-        height = bancoDeDados.attributes.icon.data.attributes.formats.small.height;
+        url = `${API_ROOT}${bancoDeDados.attributes.icon.data.attributes.formats.large.url}`;
+        width = bancoDeDados.attributes.icon.data.attributes.formats.large.width;
+        height = bancoDeDados.attributes.icon.data.attributes.formats.large.height;
         predominantColor = await getPredominantColor(url);
     } else {
         url = `${API_ROOT}${bancoDeDados.attributes.icon.data.attributes.url}`;

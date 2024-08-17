@@ -16,11 +16,11 @@ export default async function Post({ post }: PostProps) {
     let height;
     if (
         post.attributes.thumbnail.data.attributes.formats !== null &&
-        post.attributes.thumbnail.data.attributes.formats.medium !== undefined
+        post.attributes.thumbnail.data.attributes.formats.large !== undefined
     ) {
-        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats.medium.url}`;
-        width = post.attributes.thumbnail.data.attributes.formats.medium.width;
-        height = post.attributes.thumbnail.data.attributes.formats.medium.height;
+        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats.large.url}`;
+        width = post.attributes.thumbnail.data.attributes.formats.large.width;
+        height = post.attributes.thumbnail.data.attributes.formats.large.height;
     } else {
         url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.url}`;
         width = post.attributes.thumbnail.data.attributes.width;

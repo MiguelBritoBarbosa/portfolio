@@ -12,10 +12,24 @@ export interface ProjetoProps {
 }
 
 export default async function Projeto({ projeto }: ProjetoProps) {
-    const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.url}`;
-    const width = projeto.attributes.cover.data.attributes.width;
-    const height = projeto.attributes.cover.data.attributes.height;
-    const predominantColor: number[] = await getPredominantColor(url);
+    let url;
+    let width;
+    let height;
+    let predominantColor: number[] = [];
+    if (
+        projeto.attributes.cover.data.attributes.formats !== null &&
+        projeto.attributes.cover.data.attributes.formats.large !== undefined
+    ) {
+        url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats.large.url}`;
+        width = projeto.attributes.cover.data.attributes.formats.large.width;
+        height = projeto.attributes.cover.data.attributes.formats.large.height;
+        predominantColor = await getPredominantColor(url);
+    } else {
+        url = `${API_ROOT}${projeto.attributes.cover.data.attributes.url}`;
+        width = projeto.attributes.cover.data.attributes.width;
+        height = projeto.attributes.cover.data.attributes.height;
+        predominantColor = await getPredominantColor(url);
+    }
     return (
         <Container className="">
             <Heading className="text-center my-3" size={{ initial: '6', sm: '7', md: '8' }}>

@@ -17,11 +17,11 @@ export default async function Certificado({ certificado }: CertificadoProps) {
     let height;
     if (
         certificado.attributes.cover.data.attributes.formats !== null &&
-        certificado.attributes.cover.data.attributes.formats.medium !== undefined
+        certificado.attributes.cover.data.attributes.formats.large !== undefined
     ) {
-        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.medium.url}`;
-        width = certificado.attributes.cover.data.attributes.formats.medium.width;
-        height = certificado.attributes.cover.data.attributes.formats.medium.height;
+        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.formats.large.url}`;
+        width = certificado.attributes.cover.data.attributes.formats.large.width;
+        height = certificado.attributes.cover.data.attributes.formats.large.height;
     } else {
         url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
         width = certificado.attributes.cover.data.attributes.width;

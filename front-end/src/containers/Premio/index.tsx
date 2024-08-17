@@ -16,11 +16,11 @@ export default async function Premio({ premio }: PremioProps) {
     let height;
     if (
         premio.attributes.cover.data.attributes.formats !== null &&
-        premio.attributes.cover.data.attributes.formats.medium !== undefined
+        premio.attributes.cover.data.attributes.formats.large !== undefined
     ) {
-        url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats.medium.url}`;
-        width = premio.attributes.cover.data.attributes.formats.medium.width;
-        height = premio.attributes.cover.data.attributes.formats.medium.height;
+        url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats.large.url}`;
+        width = premio.attributes.cover.data.attributes.formats.large.width;
+        height = premio.attributes.cover.data.attributes.formats.large.height;
     } else {
         url = `${API_ROOT}${premio.attributes.cover.data.attributes.url}`;
         width = premio.attributes.cover.data.attributes.width;
