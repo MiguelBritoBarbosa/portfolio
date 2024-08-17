@@ -25,6 +25,7 @@ export enum tipoTecnologia {
     'Linguagem de Marcação de Texto',
     'Linguagem de Estilização',
     'Framework',
+    'Biblioteca',
     'Formato de Dados',
     'Ferramenta',
     'Outro',
