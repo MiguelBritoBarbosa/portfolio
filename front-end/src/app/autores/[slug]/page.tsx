@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function AutorPage({ params }: { params: { slug: string } }) {
     const autor: any = await getAutor(
         params.slug,
-        'populate[projetos][fields][0]=titulo&populate[projetos][fields][1]=slug&populate[projetos][populate][cover][fields]=*&populate[foto][fields]=*&populate[curriculos][populate][documento][fields]=*&populate[experiencias][sort]=createdAt:desc&populate[experiencias][populate][cover][fields]=*&populate[posts][populate][thumbnail][fields]=*',
+        'populate[projetos][fields][0]=titulo&populate[projetos][fields][1]=slug&populate[projetos][populate][cover][fields]=*&populate[projetos][sort]=createdAt:desc&populate[foto][fields]=*&populate[curriculos][populate][documento][fields]=*&populate[experiencias][sort]=createdAt:desc&populate[experiencias][populate][cover][fields]=*&populate[posts][populate][thumbnail][fields]=*',
     );
     return (
         <>
