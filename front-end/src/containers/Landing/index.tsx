@@ -83,7 +83,9 @@ export default async function Landing({ sections }: LandingProps) {
                         );
                     case 'section.premios-slider': {
                         section = section as AwardsData;
-                        const premios: { data: PremioData[] } | undefined = await getAllPremios('populate=*');
+                        const premios: { data: PremioData[] } | undefined = await getAllPremios(
+                            'sort[0]=createdAt:desc&populate=*&',
+                        );
                         if (premios !== undefined && premios.data.length > 0) {
                             let PremiosSliderPredominantColors: any = premios.data.map(async (premio: PremioData) => {
                                 const url = `${API_ROOT}${premio.attributes.cover.data.attributes.formats !== null && premio.attributes.cover.data.attributes.formats.thumbnail.url !== undefined ? premio.attributes.cover.data.attributes.formats.thumbnail.url : premio.attributes.cover.data.attributes.url}`;
@@ -109,8 +111,9 @@ export default async function Landing({ sections }: LandingProps) {
                     }
                     case 'section.certificados-carrossel': {
                         section = section as CertificatesData;
-                        const certificados: { data: CertificadoData[] } | undefined =
-                            await getAllCertificados('populate=*&');
+                        const certificados: { data: CertificadoData[] } | undefined = await getAllCertificados(
+                            'sort[0]=createdAt:desc&populate=*&',
+                        );
                         if (certificados !== undefined && certificados.data.length > 0) {
                             let CarrosselCertificadosPredominantColors: any = certificados.data.map(
                                 async (certificado) => {
@@ -138,7 +141,7 @@ export default async function Landing({ sections }: LandingProps) {
                     case 'section.projetos-carrossel': {
                         section = section as ProjectsData;
                         const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(
-                            'populate[cover][fields][0]=*&filters[destaque][$eq]=false',
+                            'sort[0]=createdAt:desc&populate[cover][fields][0]=*&filters[destaque][$eq]=false',
                         );
                         if (projetos !== undefined && projetos.data.length > 0) {
                             let ProjetosCarrosselPredominantColors: any = projetos.data.map(async (projeto) => {
@@ -164,7 +167,9 @@ export default async function Landing({ sections }: LandingProps) {
                     }
                     case 'section.ultimas-postagens': {
                         section = section as PostsData;
-                        const posts: { data: PostData[] } | undefined = await getAllPosts('populate=*');
+                        const posts: { data: PostData[] } | undefined = await getAllPosts(
+                            'sort[0]=createdAt:desc&populate=*&',
+                        );
                         if (posts !== undefined && posts.data.length > 0) {
                             let UltimasPostagensPredominantColors: any = posts.data.map(async (post) => {
                                 const url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.formats !== null && post.attributes.thumbnail.data.attributes.formats.thumbnail.url !== undefined ? post.attributes.thumbnail.data.attributes.formats.thumbnail.url : post.attributes.thumbnail.data.attributes.url}`;
