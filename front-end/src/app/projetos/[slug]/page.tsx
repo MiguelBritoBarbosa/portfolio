@@ -1,13 +1,18 @@
 import { getProjeto } from '@/config/data/projetos/getProjeto';
 import Projeto from '@/containers/Projeto';
 import { getDescription } from '@/utils/getDescription';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const projeto: any = await getProjeto(params.slug);
-    return {
-        title: projeto.data[0].attributes.titulo,
-        description: getDescription(projeto.data[0].attributes.descricao),
-    };
+    if (projeto !== undefined && projeto.data.length > 0) {
+        return {
+            title: projeto.data[0].attributes.titulo,
+            description: getDescription(projeto.data[0].attributes.descricao),
+        };
+    } else {
+        return notFound();
+    }
 }
 
 export default async function ProjetoPage({ params }: { params: { slug: string } }) {
