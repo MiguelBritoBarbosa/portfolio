@@ -33,7 +33,7 @@ export const InternalPageContainer = ({
             {destaque === true && (
                 <Text
                     weight="bold"
-                    className="bg-orange-500 text-yellow-300 gap-x-1 justify-self-end rounded-full mb-2 px-1 dark:bg-yellow-300 dark:text-orange-500"
+                    className="bg-orange-900 text-yellow-300 flex gap-x-1 justify-self-end rounded-full mb-2 px-1 dark:bg-yellow-300 dark:text-orange-900"
                 >
                     <i className="bi bi-star-fill"></i>Projeto Destaque<i className="bi bi-star-fill"></i>
                 </Text>
