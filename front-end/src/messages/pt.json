@@ -66,7 +66,9 @@
                 "Formato de Dados": "Formato de Dados",
                 "Ferramenta": "Ferramenta",
                 "Outro": "Outro",
-                "Published on": "Publicado em"
+                "Published on": "Publicado em",
+                "Relacional": "Relacional",
+                "Não Relacional": "Não Relacional"
             },
             "Projects": {
                 "Project scope": "Escopo do projeto",
