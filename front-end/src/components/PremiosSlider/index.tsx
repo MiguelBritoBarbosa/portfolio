@@ -1,7 +1,7 @@
 'use client';
 import { Container } from './styled';
 import { PremioData } from '@/config/domain/premios/premios';
-import { API_ROOT } from '@/config/siteConfig';
+import { API_PUBLIC_ROOT } from '@/config/siteConfig';
 import { useState } from 'react';
 import { Heading } from '@radix-ui/themes';
 import { AwardsData } from '@/config/domain/pages/sections/awards';
@@ -31,10 +31,7 @@ export const PremiosSlider = ({ premios, sectionData, predominantColors }: Premi
     return (
         <Container
             style={{
-                backgroundImage: `url(${API_ROOT}${backgroundImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
+                backgroundImage: `url('${API_PUBLIC_ROOT}${backgroundImage}')`,
             }}
             className="transition-all"
         >
