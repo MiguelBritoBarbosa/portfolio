@@ -1,4 +1,5 @@
 'use client';
+import { Text } from '@radix-ui/themes';
 import { Container } from './styled';
 import Image from 'next/image';
 
@@ -16,8 +17,8 @@ export const CertificadoContainer = ({ content, titulo, url, width, height }: Ce
             <div className="text-center">
                 <Image className="img-fluid img-thumbnail mb-3" src={url} alt={titulo} width={width} height={height} />
             </div>
-            <div className="fs-5 tw-text-justify text-break">
-                <span>{content}</span>
+            <div className="grid">
+                <Text as="p">{content}</Text>
             </div>
         </Container>
     );
