@@ -2,6 +2,7 @@ export const SITE_NAME: string = process.env.NEXT_PUBLIC_SITE_NAME ?? '';
 export const SITE_URL: string = process.env.NEXT_PUBLIC_SITE_URL ?? '';
 export const API_URL: string = process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL + '/api' : '';
 export const API_ROOT: string = process.env.NEXT_PUBLIC_API_URL ?? '';
+export const API_PUBLIC_ROOT: string = process.env.NEXT_PUBLIC_API_PUBLIC_ROOT ?? '';
 export const API_TOKEN: string = process.env.API_TOKEN ?? '';
 export const HEADER_URL: string = `${API_URL}/header?populate[menuFixo][populate]=*&populate[banner]=*&populate[links][populate]=*&`;
 export const FOOTER_URL: string = `${API_URL}/footer?populate[paragrafo]=*&populate[conteudo][populate]=*&populate[paginas][populate]=*&populate[contato]=*&populate[redesSociais]=*&`;
