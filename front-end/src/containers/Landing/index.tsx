@@ -44,41 +44,46 @@ export default async function Landing({ sections }: LandingProps) {
                     case 'section.destaques':
                         section = section as HighlightsData;
                         return (
-                            <section className="container mx-auto grid lg:grid-cols-[4fr,2fr] py-8 gap-5">
-                                {(section as HighlightsData).projetos.data.length > 0 ? (
-                                    <div className="order-2 lg:order-1 p-2">
-                                        <Heading
-                                            as="h3"
-                                            className="text-center mb-2"
-                                            size={{ initial: '6', sm: '7', md: '8' }}
-                                        >
-                                            {(section as HighlightsData).destaquesTitulo}
+                            <section className="container mx-auto py-8 gap-5">
+                                <Heading as="h2" className="mb-4 text-center" size={{ initial: '6', sm: '7', md: '8' }}>
+                                    {section.metadados.nome}
+                                </Heading>
+                                <div className="grid lg:grid-cols-[4fr,2fr]">
+                                    {(section as HighlightsData).projetos.data.length > 0 ? (
+                                        <div className="order-2 lg:order-1 p-2">
+                                            <Heading
+                                                as="h3"
+                                                className="text-center mb-2"
+                                                size={{ initial: '5', sm: '6', md: '7' }}
+                                            >
+                                                {(section as HighlightsData).destaquesTitulo}
+                                            </Heading>
+                                            <ProjetosDestaque destaques={(section as HighlightsData).projetos.data} />
+                                        </div>
+                                    ) : (
+                                        <Heading as="h3" className="text-center mb-2">
+                                            {t('No highlight projects found!')}
                                         </Heading>
-                                        <ProjetosDestaque destaques={(section as HighlightsData).projetos.data} />
-                                    </div>
-                                ) : (
-                                    <Heading as="h3" className="text-center mb-2">
-                                        {t('No highlight projects found!')}
-                                    </Heading>
-                                )}
-                                {(section as HighlightsData).autorDestaque.data !== null ? (
-                                    <div className="grid grid-rows-[min-content] items-start justify-center order-1 lg:order-2  p-2">
-                                        <Heading
-                                            as="h3"
-                                            size={{ initial: '6', sm: '7', md: '8' }}
-                                            className="text-center mb-2"
-                                        >
-                                            {(section as HighlightsData).autorTitulo}
+                                    )}
+                                    {(section as HighlightsData).autorDestaque.data !== null ? (
+                                        <div className="grid grid-rows-[min-content] items-start justify-center order-1 lg:order-2  p-2">
+                                            <Heading
+                                                as="h3"
+                                                size={{ initial: '5', sm: '6', md: '7' }}
+                                                className="text-center mb-2"
+                                            >
+                                                {(section as HighlightsData).autorTitulo}
+                                            </Heading>
+                                            <CardAutorDestaque
+                                                autorDestaque={(section as HighlightsData).autorDestaque.data}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <Heading as="h3" className="text-center mb-2">
+                                            {t('Highlight author not found!')}
                                         </Heading>
-                                        <CardAutorDestaque
-                                            autorDestaque={(section as HighlightsData).autorDestaque.data}
-                                        />
-                                    </div>
-                                ) : (
-                                    <Heading as="h3" className="text-center mb-2">
-                                        {t('Highlight author not found!')}
-                                    </Heading>
-                                )}
+                                    )}
+                                </div>
                             </section>
                         );
                     case 'section.premios-slider': {
