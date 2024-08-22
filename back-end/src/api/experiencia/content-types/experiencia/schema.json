@@ -28,7 +28,7 @@
     "inicio": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "date",
@@ -37,7 +37,7 @@
     "termino": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "date"
