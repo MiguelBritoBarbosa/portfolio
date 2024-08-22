@@ -5,11 +5,11 @@ export const FormatDate = (date: string): string => {
     const dateObj = new Date(date);
     if (locale === 'pt') {
         return dateObj.toLocaleDateString('pt-BR', {
-            timeZone: 'America/Sao_Paulo',
+            timeZone: 'UTC',
         });
     } else {
         return dateObj.toLocaleDateString('en', {
-            timeZone: 'America/Sao_Paulo',
+            timeZone: 'UTC',
         });
     }
 };
