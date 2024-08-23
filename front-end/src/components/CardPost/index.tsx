@@ -27,7 +27,7 @@ export const CardPost = ({ post, predominantColor }: UltimasPostagensProps) => {
         width = post.attributes.thumbnail.data.attributes.formats.small.width;
         height = post.attributes.thumbnail.data.attributes.formats.small.height;
     } else {
-        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.url}`;
+        url = post.attributes.thumbnail.data.attributes.url;
         width = post.attributes.thumbnail.data.attributes.width;
         height = post.attributes.thumbnail.data.attributes.height;
     }

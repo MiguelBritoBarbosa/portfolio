@@ -26,7 +26,7 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
         width = autorDestaque.attributes.foto.data.attributes.formats.medium.width;
         height = autorDestaque.attributes.foto.data.attributes.formats.medium.height;
     } else {
-        url = `${API_ROOT}${autorDestaque.attributes.foto.data.attributes.url}`;
+        url = autorDestaque.attributes.foto.data.attributes.url;
         width = autorDestaque.attributes.foto.data.attributes.width;
         height = autorDestaque.attributes.foto.data.attributes.height;
     }

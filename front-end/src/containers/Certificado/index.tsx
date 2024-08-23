@@ -23,7 +23,7 @@ export default async function Certificado({ certificado }: CertificadoProps) {
         width = certificado.attributes.cover.data.attributes.formats.large.width;
         height = certificado.attributes.cover.data.attributes.formats.large.height;
     } else {
-        url = `${API_ROOT}${certificado.attributes.cover.data.attributes.url}`;
+        url = certificado.attributes.cover.data.attributes.url;
         width = certificado.attributes.cover.data.attributes.width;
         height = certificado.attributes.cover.data.attributes.height;
     }

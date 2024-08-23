@@ -77,7 +77,7 @@ export const InternalPageContainer = ({
                                 width = image.formats.large.width;
                                 height = image.formats.large.height;
                             } else {
-                                url = `${API_ROOT}${url}`;
+                                url = image.url;
                                 width = image.width;
                                 height = image.height;
                             }

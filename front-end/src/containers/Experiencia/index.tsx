@@ -23,7 +23,7 @@ export default async function Experiencia({ experiencia }: PremioProps) {
         width = experiencia.attributes.cover.data.attributes.formats.large.width;
         height = experiencia.attributes.cover.data.attributes.formats.large.height;
     } else {
-        url = `${API_ROOT}${experiencia.attributes.cover.data.attributes.url}`;
+        url = experiencia.attributes.cover.data.attributes.url;
         width = experiencia.attributes.cover.data.attributes.width;
         height = experiencia.attributes.cover.data.attributes.height;
     }

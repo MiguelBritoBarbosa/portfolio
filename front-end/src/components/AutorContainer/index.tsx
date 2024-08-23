@@ -51,7 +51,7 @@ export const AutorContainer = ({ content, title, nome, url, predominantColor, wi
                             width = image.formats.large.width;
                             height = image.formats.large.height;
                         } else {
-                            url = `${API_ROOT}${url}`;
+                            url = image.url;
                             width = image.width;
                             height = image.height;
                         }

@@ -22,7 +22,7 @@ export default async function Post({ post }: PostProps) {
         width = post.attributes.thumbnail.data.attributes.formats.large.width;
         height = post.attributes.thumbnail.data.attributes.formats.large.height;
     } else {
-        url = `${API_ROOT}${post.attributes.thumbnail.data.attributes.url}`;
+        url = post.attributes.thumbnail.data.attributes.url;
         width = post.attributes.thumbnail.data.attributes.width;
         height = post.attributes.thumbnail.data.attributes.height;
     }

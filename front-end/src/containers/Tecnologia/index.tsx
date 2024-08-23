@@ -29,7 +29,7 @@ export default async function Tecnologia({ tecnologia }: TecnologiaProps) {
         height = tecnologia.attributes.icon.data.attributes.formats.large.height;
         predominantColor = await getPredominantColor(url);
     } else {
-        url = `${API_ROOT}${tecnologia.attributes.icon.data.attributes.url}`;
+        url = tecnologia.attributes.icon.data.attributes.url;
         width = tecnologia.attributes.icon.data.attributes.width;
         height = tecnologia.attributes.icon.data.attributes.height;
         predominantColor = await getPredominantColor(url);
