@@ -37,6 +37,17 @@ export default async function Landing({ sections }: LandingProps) {
             </Container>
         );
     }
+
+    let projectsParameters = 'sort[0]=createdAt:desc&populate[cover][fields][0]=*';
+    if (sections.some((section) => section.__component === 'section.destaques')) {
+        sections.map((section) => {
+            if (section.__component === 'section.destaques') {
+                (section as HighlightsData).projetos.data.map((project) => {
+                    projectsParameters += `&filters[id][$notIn]=${project.id}`;
+                });
+            }
+        });
+    }
     return (
         <Container className="w-full">
             {sections.map(async (section) => {
@@ -145,9 +156,7 @@ export default async function Landing({ sections }: LandingProps) {
                     }
                     case 'section.projetos-carrossel': {
                         section = section as ProjectsData;
-                        const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(
-                            'sort[0]=createdAt:desc&populate[cover][fields][0]=*&filters[destaque][$eq]=false',
-                        );
+                        const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(projectsParameters);
                         if (projetos !== undefined && projetos.data.length > 0) {
                             let ProjetosCarrosselPredominantColors: any = projetos.data.map(async (projeto) => {
                                 const url = `${API_ROOT}${projeto.attributes.cover.data.attributes.formats !== null && projeto.attributes.cover.data.attributes.formats.thumbnail.url !== undefined ? projeto.attributes.cover.data.attributes.formats.thumbnail.url : projeto.attributes.cover.data.attributes.url}`;
