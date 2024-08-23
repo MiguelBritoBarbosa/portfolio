@@ -3,7 +3,21 @@ export const getDescription = (description: any) => {
     let totalLength = 0;
     for (const item of description) {
         for (const child of item.children) {
-            const text = child.text;
+            let text: string;
+            if (child.type === 'text') {
+                text = child.text;
+            } else if (child.type === 'link' || child.type === 'list-item') {
+                text = '';
+                child.children.map((son: any) => {
+                    if (son.type === 'link') {
+                        text += son.children[0].text;
+                    } else {
+                        text += son.text;
+                    }
+                });
+            } else {
+                text = '';
+            }
             const remainingLength = 160 - totalLength;
 
             if (text.length <= remainingLength) {
