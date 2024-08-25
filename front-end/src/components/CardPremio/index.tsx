@@ -31,7 +31,7 @@ export const CardPremio = ({ premio, predominantColor }: PremiosContainerProps) 
         width = premio.attributes.cover.data.attributes.formats.medium.width;
         height = premio.attributes.cover.data.attributes.formats.medium.height;
     } else {
-        url = premio.attributes.cover.data.attributes.url;
+        url = `${API_ROOT}${premio.attributes.cover.data.attributes.url}`;
         width = premio.attributes.cover.data.attributes.width;
         height = premio.attributes.cover.data.attributes.height;
     }

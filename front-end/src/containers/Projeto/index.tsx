@@ -25,7 +25,7 @@ export default async function Projeto({ projeto }: ProjetoProps) {
         height = projeto.attributes.cover.data.attributes.formats.large.height;
         predominantColor = await getPredominantColor(url);
     } else {
-        url = projeto.attributes.cover.data.attributes.url;
+        url = `${API_ROOT}${projeto.attributes.cover.data.attributes.url}`;
         width = projeto.attributes.cover.data.attributes.width;
         height = projeto.attributes.cover.data.attributes.height;
         predominantColor = await getPredominantColor(url);

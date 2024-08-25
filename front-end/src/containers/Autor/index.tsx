@@ -28,7 +28,7 @@ export default async function Autor({ autor }: AutorProps) {
         width = autor.attributes.foto.data.attributes.formats.small.width;
         height = autor.attributes.foto.data.attributes.formats.small.height;
     } else {
-        url = autor.attributes.foto.data.attributes.url;
+        url = `${API_ROOT}${autor.attributes.foto.data.attributes.url}`;
         width = autor.attributes.foto.data.attributes.width;
         height = autor.attributes.foto.data.attributes.height;
     }

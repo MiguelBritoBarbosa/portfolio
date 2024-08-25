@@ -22,7 +22,7 @@ export default async function Premio({ premio }: PremioProps) {
         width = premio.attributes.cover.data.attributes.formats.large.width;
         height = premio.attributes.cover.data.attributes.formats.large.height;
     } else {
-        url = premio.attributes.cover.data.attributes.url;
+        url = `${API_ROOT}${premio.attributes.cover.data.attributes.url}`;
         width = premio.attributes.cover.data.attributes.width;
         height = premio.attributes.cover.data.attributes.height;
     }

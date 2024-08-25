@@ -29,7 +29,7 @@ export default async function BancoDeDados({ bancoDeDados }: BancoDeDadosProps) 
         height = bancoDeDados.attributes.icon.data.attributes.formats.large.height;
         predominantColor = await getPredominantColor(url);
     } else {
-        url = bancoDeDados.attributes.icon.data.attributes.url;
+        url = `${API_ROOT}${bancoDeDados.attributes.icon.data.attributes.url}`;
         width = bancoDeDados.attributes.icon.data.attributes.width;
         height = bancoDeDados.attributes.icon.data.attributes.height;
         predominantColor = await getPredominantColor(url);

@@ -26,7 +26,7 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
         width = destaque.attributes.cover.data.attributes.formats.small.width;
         height = destaque.attributes.cover.data.attributes.formats.small.height;
     } else {
-        url = destaque.attributes.cover.data.attributes.url;
+        url = `${API_ROOT}${destaque.attributes.cover.data.attributes.url}`;
         width = destaque.attributes.cover.data.attributes.width;
         height = destaque.attributes.cover.data.attributes.height;
     }
