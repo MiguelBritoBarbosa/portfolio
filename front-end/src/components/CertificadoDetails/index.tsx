@@ -1,5 +1,6 @@
 import { Container } from './styled';
 import { StrapiFiles } from '@/config/domain/StrapiFiles/strapifiles';
+import { API_ROOT } from '@/config/siteConfig';
 import { Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 
@@ -17,7 +18,7 @@ export const CertificadoDetails = async ({ documento, credencial }: CertificadoD
                     <a
                         title={t('Click here to download the certificate document')}
                         target="_new"
-                        href={documento.data.attributes.url}
+                        href={`${API_ROOT}${documento.data.attributes.url}`}
                         className="hover:text-[--accent-a9] transition"
                     >
                         {`${t('Click here to download the certificate document')} `}
