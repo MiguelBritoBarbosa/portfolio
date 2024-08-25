@@ -2,7 +2,7 @@ import { Heading, Text } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 import { Container } from './styled';
 import { getPredominantColor } from '@/utils/getPredominantColor';
-import { API_ROOT } from '@/config/siteConfig';
+import { API_PUBLIC_ROOT, API_ROOT } from '@/config/siteConfig';
 import { CertificadoData } from '@/config/domain/certificados/certificados';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
 import Link from 'next/link';
@@ -79,7 +79,7 @@ export default async function Certificados({ certificados }: CertificadosProps) 
                                         <a
                                             title={t('Download the certificate')}
                                             target="_new"
-                                            href={certificado.attributes.documento.data.attributes.url}
+                                            href={`${API_PUBLIC_ROOT}${certificado.attributes.documento.data.attributes.url}`}
                                             className="hover:text-[--accent-a9] transition"
                                         >
                                             {`${t('Document')} `}
