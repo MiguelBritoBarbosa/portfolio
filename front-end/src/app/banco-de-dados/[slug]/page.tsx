@@ -1,6 +1,7 @@
 import { getBancoDeDados } from '@/config/data/bancoDeDados/getBancoDeDados';
 import BancoDeDados from '@/containers/BancoDeDados';
 import { getDescription } from '@/utils/getDescription';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -11,7 +12,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: getDescription(bancoDeDados.data[0].attributes.descricao),
         };
     } else {
-        return notFound();
+        const t = await getTranslations('Pages');
+        return {
+            title: t('Page not found!'),
+            description: t('Page not found!'),
+        };
     }
 }
 
@@ -20,9 +25,13 @@ export default async function BancoDeDadosPage({ params }: { params: { slug: str
         params.slug,
         'populate[projetos][fields][0]=titulo&populate[projetos][fields][1]=slug&populate[projetos][populate][cover][fields]=*&populate[icon][fields]=*',
     );
-    return (
-        <>
-            <BancoDeDados bancoDeDados={bancoDeDados.data[0]} />
-        </>
-    );
+    if (bancoDeDados !== undefined && bancoDeDados.data.length > 0) {
+        return (
+            <>
+                <BancoDeDados bancoDeDados={bancoDeDados.data[0]} />
+            </>
+        );
+    } else {
+        return notFound();
+    }
 }

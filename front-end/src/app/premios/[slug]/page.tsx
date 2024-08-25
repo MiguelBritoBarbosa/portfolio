@@ -1,6 +1,7 @@
 import { getPremio } from '@/config/data/premios/getPremio';
 import Premio from '@/containers/Premio';
 import { getDescription } from '@/utils/getDescription';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -11,7 +12,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: getDescription(premio.data[0].attributes.descricao),
         };
     } else {
-        return notFound();
+        const t = await getTranslations('Pages');
+        return {
+            title: t('Page not found!'),
+            description: t('Page not found!'),
+        };
     }
 }
 
@@ -20,9 +25,13 @@ export default async function PremioPage({ params }: { params: { slug: string } 
         params.slug,
         'populate[autor][fields][0]=nome&populate[autor][fields][1]=slug&populate[autor][populate][foto][fields][0]=*&populate[cover][fields]=*',
     );
-    return (
-        <>
-            <Premio premio={premio.data[0]} />
-        </>
-    );
+    if (premio !== undefined && premio.data.length > 0) {
+        return (
+            <>
+                <Premio premio={premio.data[0]} />
+            </>
+        );
+    } else {
+        return notFound();
+    }
 }

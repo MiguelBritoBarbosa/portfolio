@@ -1,6 +1,7 @@
 import { getExperiencia } from '@/config/data/experiencias/getExperiencia';
 import Experiencia from '@/containers/Experiencia';
 import { getDescription } from '@/utils/getDescription';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -11,7 +12,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: getDescription(experiencia.data[0].attributes.descricao),
         };
     } else {
-        return notFound();
+        const t = await getTranslations('Pages');
+        return {
+            title: t('Page not found!'),
+            description: t('Page not found!'),
+        };
     }
 }
 
@@ -20,9 +25,13 @@ export default async function ExperienciaPage({ params }: { params: { slug: stri
         params.slug,
         'populate[autor][fields][0]=nome&populate[autor][fields][1]=slug&populate[autor][populate][foto][fields][0]=*&populate[cover][fields]=*',
     );
-    return (
-        <>
-            <Experiencia experiencia={experiencia.data[0]} />
-        </>
-    );
+    if (experiencia !== undefined && experiencia.data.length > 0) {
+        return (
+            <>
+                <Experiencia experiencia={experiencia.data[0]} />
+            </>
+        );
+    } else {
+        return notFound();
+    }
 }
