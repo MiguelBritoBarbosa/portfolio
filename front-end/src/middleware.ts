@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server';
 export function middleware(req: NextRequest) {
     const url = req.nextUrl.clone();
     const pathnameSegments = url.pathname.split('/').filter(Boolean);
-    console.log('PRIMEIRO');
     if (pathnameSegments.length === 2) {
         const slug = pathnameSegments[1];
 
@@ -15,7 +14,6 @@ export function middleware(req: NextRequest) {
             const response = NextResponse.redirect(url);
             req.cookies.set('NEXT_LOCALE', locale);
             response.cookies.set('NEXT_LOCALE', locale);
-            console.log('Cookie setado: ', response.cookies.get('NEXT_LOCALE'));
             return response;
         }
     }
