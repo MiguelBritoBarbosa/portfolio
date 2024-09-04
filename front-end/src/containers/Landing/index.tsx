@@ -62,7 +62,7 @@ export default async function Landing({ sections }: LandingProps) {
                                 </Heading>
                                 <div className="grid lg:grid-cols-[4fr,2fr]">
                                     {(section as HighlightsData).projetos.data.length > 0 ? (
-                                        <div className="order-2 lg:order-1 p-2">
+                                        <div className="grid grid-rows-[max-content] order-2 lg:order-1 p-2">
                                             <Heading
                                                 as="h3"
                                                 className="text-center mb-2"
