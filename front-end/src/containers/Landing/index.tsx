@@ -38,7 +38,8 @@ export default async function Landing({ sections }: LandingProps) {
         );
     }
 
-    let projectsParameters = 'sort[0]=createdAt:desc&populate[cover][fields][0]=*';
+    let projectsParameters =
+        '&sort[0]=destaque:desc&sort[1]=createdAt:desc&pagination[limit]=10&populate[cover][fields][0]=*';
     if (sections.some((section) => section.__component === 'section.destaques')) {
         sections.map((section) => {
             if (section.__component === 'section.destaques') {
@@ -182,7 +183,7 @@ export default async function Landing({ sections }: LandingProps) {
                     case 'section.ultimas-postagens': {
                         section = section as PostsData;
                         const posts: { data: PostData[] } | undefined = await getAllPosts(
-                            'sort[0]=createdAt:desc&populate=*&',
+                            'sort[0]=createdAt:desc&populate=*&pagination[limit]=10',
                         );
                         if (posts !== undefined && posts.data.length > 0) {
                             let UltimasPostagensPredominantColors: any = posts.data.map(async (post) => {

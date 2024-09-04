@@ -7,7 +7,7 @@ import { getTranslations } from 'next-intl/server';
 export default async function ProjetosPage() {
     const t = await getTranslations('Pages.Projects');
     const projetos: { data: ProjetoData[] } | undefined = await getAllProjetos(
-        'sort[0]=createdAt:desc&populate[cover][fields][0]=*&populate[autores][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
+        '&sort[0]=destaque:desc&sort[1]=createdAt:desc&populate[cover][fields][0]=*&populate[autores][fields][0]=*&populate[tecnologias][populate][icon][fields][0]=*&populate[bancosDeDados][populate][icon][fields][0]=*',
     );
     if (projetos !== undefined && projetos.data.length > 0) {
         return <Projetos projetos={projetos.data} />;
