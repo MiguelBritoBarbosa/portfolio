@@ -39,7 +39,7 @@ export default async function Landing({ sections }: LandingProps) {
     }
 
     let projectsParameters =
-        '&sort[0]=destaque:desc&sort[1]=createdAt:desc&pagination[limit]=10&populate[cover][fields][0]=*';
+        '&sort[0]=destaque:desc&sort[1]=createdAt:desc&pagination[limit]=11&populate[cover][fields][0]=*';
     if (sections.some((section) => section.__component === 'section.destaques')) {
         sections.map((section) => {
             if (section.__component === 'section.destaques') {
