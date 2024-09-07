@@ -16,6 +16,11 @@ const nextConfig = {
                 port: '1337',
                 pathname: '/uploads/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'api.miguelbritobarbosa.com.br',
+                pathname: '/uploads/**',
+            },
         ],
     },
     reactStrictMode: false,
