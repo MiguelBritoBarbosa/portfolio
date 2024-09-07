@@ -4,7 +4,7 @@ import { Container } from './styled';
 import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 import Image from 'next/image';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
-import { Text } from '@radix-ui/themes';
+import { Blockquote, Code, Text } from '@radix-ui/themes';
 import { API_ROOT } from '@/config/siteConfig';
 
 export interface AutorContainerProps {
@@ -37,6 +37,9 @@ export const AutorContainer = ({ content, title, nome, url, predominantColor, wi
             <BlocksRenderer
                 content={content}
                 blocks={{
+                    paragraph: ({ children }) => {
+                        return <Text as="p">{children}</Text>;
+                    },
                     link: ({ children, url }) => (
                         <a className="underline hover:text-[--accent-a9] transition break-all" target="_new" href={url}>
                             {children}
@@ -62,6 +65,21 @@ export const AutorContainer = ({ content, title, nome, url, predominantColor, wi
                                 height={height}
                                 alt={image.caption ? image.caption : 'image'}
                             />
+                        );
+                    },
+                    quote: ({ children }: any) => {
+                        console.log(children);
+                        return (
+                            <pre>
+                                <Blockquote>{children}</Blockquote>
+                            </pre>
+                        );
+                    },
+                    code: ({ children }: any) => {
+                        return (
+                            <Code>
+                                <pre>{children}</pre>
+                            </Code>
                         );
                     },
                 }}

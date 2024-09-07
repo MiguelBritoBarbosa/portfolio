@@ -2,7 +2,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-    p {
+    p,
+    blockquote,
+    code {
         margin-bottom: 12px;
     }
 
@@ -27,5 +29,34 @@ export const Container = styled.section`
     img {
         justify-self: center;
         margin-bottom: 12px;
+    }
+
+    pre {
+        font-family: unset;
+        white-space: pre-wrap;
+    }
+
+    code {
+        background-color: var(--accent-a3);
+        color: var(--accent-a11);
+        --code-variant-font-size-adjust: calc(var(--code-font-size-adjust) * 0.95);
+        font-family: var(--code-font-family);
+        font-size: calc(var(--code-variant-font-size-adjust) * 1em);
+        font-style: var(--code-font-style);
+        font-weight: var(--code-font-weight);
+        line-height: 1.25;
+        letter-spacing: calc(var(--code-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing)));
+        border-radius: calc((0.5px + 0.2em) * var(--radius-factor));
+        box-sizing: border-box;
+        padding-top: var(--code-padding-top);
+        padding-left: var(--code-padding-left);
+        padding-bottom: var(--code-padding-bottom);
+        padding-right: var(--code-padding-right);
+        height: -moz-fit-content;
+        height: fit-content;
+    }
+
+    .rt-Blockquote {
+        border-left: max(var(--space-1), 0.25em) solid var(--accent-a9);
     }
 `;

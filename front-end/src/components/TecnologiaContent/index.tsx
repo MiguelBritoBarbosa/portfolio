@@ -4,6 +4,7 @@ import { Container } from './styled';
 import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 import { API_ROOT } from '@/config/siteConfig';
 import Image from 'next/image';
+import { Blockquote, Code, Text } from '@radix-ui/themes';
 
 export interface TecnologiaContentProps {
     content: RootNode[];
@@ -15,6 +16,9 @@ export const TecnologiaContent = ({ content }: TecnologiaContentProps) => {
             <BlocksRenderer
                 content={content}
                 blocks={{
+                    paragraph: ({ children }) => {
+                        return <Text as="p">{children}</Text>;
+                    },
                     link: ({ children, url }) => (
                         <a className="underline hover:text-[--accent-a9] transition break-all" target="_new" href={url}>
                             {children}
@@ -40,6 +44,21 @@ export const TecnologiaContent = ({ content }: TecnologiaContentProps) => {
                                 height={height}
                                 alt={image.caption ? image.caption : 'image'}
                             />
+                        );
+                    },
+                    quote: ({ children }: any) => {
+                        console.log(children);
+                        return (
+                            <pre>
+                                <Blockquote>{children}</Blockquote>
+                            </pre>
+                        );
+                    },
+                    code: ({ children }: any) => {
+                        return (
+                            <Code>
+                                <pre>{children}</pre>
+                            </Code>
                         );
                     },
                 }}
