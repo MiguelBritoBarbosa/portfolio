@@ -47,7 +47,6 @@ export const TecnologiaContent = ({ content }: TecnologiaContentProps) => {
                         );
                     },
                     quote: ({ children }: any) => {
-                        console.log(children);
                         return (
                             <pre>
                                 <Blockquote>{children}</Blockquote>

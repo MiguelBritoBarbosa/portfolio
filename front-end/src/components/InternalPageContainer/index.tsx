@@ -94,7 +94,6 @@ export const InternalPageContainer = ({
                             );
                         },
                         quote: ({ children }: any) => {
-                            console.log(children);
                             return (
                                 <pre>
                                     <Blockquote>{children}</Blockquote>

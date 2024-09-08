@@ -68,7 +68,6 @@ export const AutorContainer = ({ content, title, nome, url, predominantColor, wi
                         );
                     },
                     quote: ({ children }: any) => {
-                        console.log(children);
                         return (
                             <pre>
                                 <Blockquote>{children}</Blockquote>
