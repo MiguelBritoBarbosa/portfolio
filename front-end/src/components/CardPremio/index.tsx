@@ -66,8 +66,8 @@ export const CardPremio = ({ premio, predominantColor }: PremiosContainerProps) 
                     {description.length === 160 ? <>...</> : <></>}
                 </Text>
                 <Button color="violet" className="transition">
-                    <Link href={`/premios/${premio.attributes.slug}`} title={t('See more')}>
-                        {t('See more')}
+                    <Link href={`/premios/${premio.attributes.slug}`} title={t('Read more')}>
+                        {t('Read more')}
                     </Link>
                 </Button>
             </div>
