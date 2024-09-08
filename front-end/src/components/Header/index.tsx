@@ -24,6 +24,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
                 {!isHome ? (
                     <Link className="w-full mt-12" id="menu" href="/" title="Home">
                         <Image
+                            priority
                             className="w-full"
                             placeholder="blur"
                             blurDataURL={rgbDataURL(bannerColor[0], bannerColor[1], bannerColor[2])}
@@ -35,6 +36,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
                     </Link>
                 ) : (
                     <Image
+                        priority
                         className="w-full mt-12"
                         placeholder="blur"
                         blurDataURL={rgbDataURL(bannerColor[0], bannerColor[1], bannerColor[2])}

@@ -54,6 +54,7 @@ export const CardDestaque = async ({ destaque }: CardDestaqueProps) => {
                     alt={destaque.attributes.titulo}
                     width={width}
                     height={height}
+                    priority
                 />
             </Link>
             <div className="mt-1 mb-3">

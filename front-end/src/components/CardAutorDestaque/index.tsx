@@ -44,6 +44,7 @@ export const CardAutorDestaque = async ({ autorDestaque }: CardAutorDestaqueProp
                     alt={autorDestaque.attributes.nome}
                     width={width}
                     height={height}
+                    priority
                 />
             </Link>
             <div className="p-4 md:p-6">
