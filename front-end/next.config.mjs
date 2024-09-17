@@ -22,7 +22,6 @@ const nextConfig = {
                 pathname: '/uploads/**',
             },
         ],
-        deviceSizes: [640, 768, 1024, 120],
     },
     reactStrictMode: false,
 };

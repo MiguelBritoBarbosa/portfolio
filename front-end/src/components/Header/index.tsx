@@ -32,6 +32,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
                             alt={headerData !== null ? headerData.attributes.banner.data.attributes.caption : 'image'}
                             width={headerData?.attributes.banner.data.attributes.width}
                             height={headerData?.attributes.banner.data.attributes.height}
+                            sizes="(max-width: 1200px) 1200px, (max-width: 1080px) 1080px, (max-width: 828px) 828px, (max-width: 750px) 750px, (max-width: 640px) 640px, 100vw"
                         />
                     </Link>
                 ) : (
@@ -44,6 +45,7 @@ export const Header = ({ headerData, bannerColor }: headerProps) => {
                         alt={headerData !== null ? headerData.attributes.banner.data.attributes.caption : 'image'}
                         width={headerData?.attributes.banner.data.attributes.width}
                         height={headerData?.attributes.banner.data.attributes.height}
+                        sizes="(max-width: 1200px) 1200px, (max-width: 1080px) 1080px, (max-width: 828px) 828px, (max-width: 750px) 750px, (max-width: 640px) 640px, 100vw"
                     />
                 )}
             </div>
