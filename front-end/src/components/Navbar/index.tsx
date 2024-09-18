@@ -5,14 +5,15 @@ import { menuLinksData } from '@/config/domain/menu/menuLinks';
 
 interface navbarTopProps {
     links: menuLinksData[] | undefined;
+    isHome: boolean;
 }
 
-export const Navbar = ({ links }: navbarTopProps) => {
+export const Navbar = ({ links, isHome }: navbarTopProps) => {
     if (links === undefined) {
         return <></>;
     }
     return (
-        <Disclosure as="nav" className="bg-[--accent-a9] px-2 py-2">
+        <Disclosure as="nav" className={`bg-[--accent-a9] px-2 py-2 ${!isHome && 'mt-12'}`}>
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
