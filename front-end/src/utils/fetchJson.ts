@@ -7,7 +7,7 @@ export const fetchJson = async <T>(url: string): Promise<T> => {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + API_TOKEN,
         }),
-        // next: { revalidate: 43200 },
+        next: { revalidate: 43200 },
     });
     if (!data.ok) {
         console.log(data);
