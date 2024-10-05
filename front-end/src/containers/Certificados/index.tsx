@@ -7,12 +7,15 @@ import { CertificadoData } from '@/config/domain/certificados/certificados';
 import { rgbDataURL } from '@/utils/rgbDataUrl';
 import Link from 'next/link';
 import Image from 'next/image';
+import { PaginationContainer } from '@/components/Pagination';
 
 interface CertificadosProps {
     certificados: CertificadoData[];
+    totalPage: number;
+    page: number;
 }
 
-export default async function Certificados({ certificados }: CertificadosProps) {
+export default async function Certificados({ certificados, totalPage, page }: CertificadosProps) {
     const t = await getTranslations('Pages.Certificates');
     return (
         <Container>
@@ -118,6 +121,7 @@ export default async function Certificados({ certificados }: CertificadosProps) 
                         );
                     })}
                 </div>
+                <PaginationContainer totalPage={totalPage} page={page} />
             </section>
         </Container>
     );

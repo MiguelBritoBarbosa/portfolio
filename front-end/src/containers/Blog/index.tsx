@@ -5,12 +5,15 @@ import { PostData } from '@/config/domain/posts/posts';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { API_ROOT } from '@/config/siteConfig';
 import { CardPost } from '@/components/CardPost';
+import { PaginationContainer } from '@/components/Pagination';
 
 interface BlogProps {
     posts: PostData[];
+    totalPage: number;
+    page: number;
 }
 
-export default async function Blog({ posts }: BlogProps) {
+export default async function Blog({ posts, totalPage, page }: BlogProps) {
     const t = await getTranslations('Pages.Blog');
     return (
         <Container>
@@ -34,6 +37,7 @@ export default async function Blog({ posts }: BlogProps) {
                         );
                     })}
                 </div>
+                <PaginationContainer totalPage={totalPage} page={page} />
             </section>
         </Container>
     );

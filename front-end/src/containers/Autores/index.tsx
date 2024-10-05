@@ -3,12 +3,15 @@ import { getTranslations } from 'next-intl/server';
 import { Container } from './styled';
 import { CardAutorDestaque } from '@/components/CardAutorDestaque';
 import { AutorData } from '@/config/domain/autores/autores';
+import { PaginationContainer } from '@/components/Pagination';
 
 interface AuthorsProps {
     autores: AutorData[];
+    totalPage: number;
+    page: number;
 }
 
-export default async function Autores({ autores }: AuthorsProps) {
+export default async function Autores({ autores, totalPage, page }: AuthorsProps) {
     const t = await getTranslations('Pages.Authors');
     return (
         <Container>
@@ -24,6 +27,7 @@ export default async function Autores({ autores }: AuthorsProps) {
                         return <CardAutorDestaque key={`author-${autor.attributes.slug}`} autorDestaque={autor} />;
                     })}
                 </div>
+                <PaginationContainer totalPage={totalPage} page={page} />
             </section>
         </Container>
     );

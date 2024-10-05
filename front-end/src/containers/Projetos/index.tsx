@@ -3,12 +3,15 @@ import { Heading } from '@radix-ui/themes';
 import { getTranslations } from 'next-intl/server';
 import { Container } from './styled';
 import { CardDestaque } from '@/components/CardDestaque';
+import { PaginationContainer } from '@/components/Pagination';
 
 interface ProjetosProps {
     projetos: ProjetoData[];
+    totalPage: number;
+    page: number;
 }
 
-export default async function Projetos({ projetos }: ProjetosProps) {
+export default async function Projetos({ projetos, totalPage, page }: ProjetosProps) {
     const t = await getTranslations('Pages.Projects');
     return (
         <Container>
@@ -26,6 +29,7 @@ export default async function Projetos({ projetos }: ProjetosProps) {
                         );
                     })}
                 </div>
+                <PaginationContainer totalPage={totalPage} page={page} />
             </section>
         </Container>
     );

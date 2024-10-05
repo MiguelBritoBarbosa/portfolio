@@ -5,12 +5,15 @@ import { PremioData } from '@/config/domain/premios/premios';
 import { CardPremio } from '@/components/CardPremio';
 import { getPredominantColor } from '@/utils/getPredominantColor';
 import { API_ROOT } from '@/config/siteConfig';
+import { PaginationContainer } from '@/components/Pagination';
 
 interface PremiosProps {
     premios: PremioData[];
+    totalPage: number;
+    page: number;
 }
 
-export default async function Projetos({ premios }: PremiosProps) {
+export default async function Projetos({ premios, totalPage, page }: PremiosProps) {
     const t = await getTranslations('Pages.Awards');
     return (
         <Container>
@@ -34,6 +37,7 @@ export default async function Projetos({ premios }: PremiosProps) {
                         );
                     })}
                 </div>
+                <PaginationContainer totalPage={totalPage} page={page} />
             </section>
         </Container>
     );
