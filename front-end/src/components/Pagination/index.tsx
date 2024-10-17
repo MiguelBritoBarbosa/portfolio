@@ -9,7 +9,7 @@ interface PaginationContainerProps {
     page: number;
 }
 
-export const PaginationContainer = ({ totalPage, page }: PaginationContainerProps) => {
+export const PaginationContainer = ({ totalPage }: PaginationContainerProps) => {
     const { items } = usePagination({
         count: totalPage,
     });
