@@ -19,9 +19,9 @@ export default async function Experiencia({ experiencia }: PremioProps) {
         experiencia.attributes.cover.data.attributes.formats !== null &&
         experiencia.attributes.cover.data.attributes.formats.medium !== undefined
     ) {
-        url = `${API_ROOT}${experiencia.attributes.cover.data.attributes.formats.large.url}`;
-        width = experiencia.attributes.cover.data.attributes.formats.large.width;
-        height = experiencia.attributes.cover.data.attributes.formats.large.height;
+        url = `${API_ROOT}${experiencia.attributes.cover.data.attributes.formats.medium.url}`;
+        width = experiencia.attributes.cover.data.attributes.formats.medium.width;
+        height = experiencia.attributes.cover.data.attributes.formats.medium.height;
     } else {
         url = `${API_ROOT}${experiencia.attributes.cover.data.attributes.url}`;
         width = experiencia.attributes.cover.data.attributes.width;
