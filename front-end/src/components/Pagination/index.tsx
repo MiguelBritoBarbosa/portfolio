@@ -31,7 +31,6 @@ export const PaginationContainer = ({ totalPage }: PaginationContainerProps) => 
                             </Button>
                         );
                     } else {
-                        console.log(item);
                         children = (
                             <Button variant="soft" className="px-2 cursor-pointer transition" {...item}>
                                 {item.disabled ? (
